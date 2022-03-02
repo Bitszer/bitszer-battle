@@ -1,0 +1,924 @@
+fileFormatVersion: 2
+guid: 3553c541af46c2d4ca5e5c10d646049b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Dragon Hawk_0
+  - first:
+      213: 21300002
+    second: Dragon Hawk_1
+  - first:
+      213: 21300004
+    second: Dragon Hawk_2
+  - first:
+      213: 21300006
+    second: Dragon Hawk_3
+  - first:
+      213: 21300008
+    second: Dragon Hawk_4
+  - first:
+      213: 21300010
+    second: Dragon Hawk_5
+  - first:
+      213: 21300012
+    second: Dragon Hawk_6
+  - first:
+      213: 21300014
+    second: Dragon Hawk_7
+  - first:
+      213: 21300016
+    second: Dragon Hawk_8
+  - first:
+      213: 21300018
+    second: Dragon Hawk_9
+  - first:
+      213: 21300020
+    second: Dragon Hawk_10
+  - first:
+      213: 21300022
+    second: Dragon Hawk_11
+  - first:
+      213: 21300024
+    second: Dragon Hawk_12
+  - first:
+      213: 21300026
+    second: Dragon Hawk_13
+  - first:
+      213: 21300028
+    second: Dragon Hawk_14
+  - first:
+      213: 21300030
+    second: Dragon Hawk_15
+  - first:
+      213: 21300032
+    second: Dragon Hawk_16
+  - first:
+      213: 21300034
+    second: Dragon Hawk_17
+  - first:
+      213: 21300036
+    second: Dragon Hawk_18
+  - first:
+      213: 21300038
+    second: Dragon Hawk_19
+  - first:
+      213: 21300040
+    second: Dragon Hawk_20
+  - first:
+      213: 21300042
+    second: Dragon Hawk_21
+  - first:
+      213: 21300044
+    second: Dragon Hawk_22
+  - first:
+      213: 21300046
+    second: Dragon Hawk_23
+  - first:
+      213: 21300048
+    second: Dragon Hawk_24
+  - first:
+      213: 21300050
+    second: Dragon Hawk_25
+  - first:
+      213: 21300052
+    second: Dragon Hawk_26
+  - first:
+      213: 21300054
+    second: Dragon Hawk_27
+  - first:
+      213: 21300056
+    second: Dragon Hawk_28
+  - first:
+      213: 21300058
+    second: Dragon Hawk_29
+  - first:
+      213: 21300060
+    second: Dragon Hawk_30
+  - first:
+      213: 21300062
+    second: Dragon Hawk_31
+  - first:
+      213: 21300064
+    second: Dragon Hawk_32
+  - first:
+      213: 21300066
+    second: Dragon Hawk_33
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 16
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dragon Hawk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4050
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aa84e8d007afcf469c3e4ea6fff50cc
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_1
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 4050
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c07f6dace77b13a499ea3f412d9181d3
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_2
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 4050
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e617079dc1196de49960732d1124ed54
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_3
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 4050
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05ebdbe428c6e6a40ad63b2570cc9dc0
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3600
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e806f7cbe807cb49a9a7dc6d0130768
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_5
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 3600
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70ca62dc21d19f74ba7d3e6379a3f8e2
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_6
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 3600
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab65d05689214944dbf6bebe4672064f
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_7
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 3600
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7b02a0e34e27724aa7a92d3c9b129bb
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_8
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 3600
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaf07bf1df05f2945a9292ab9661c504
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_9
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 3600
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 226ecf7ff86d1ee418151a0dc5d22bb1
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3150
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70ff653952a2359479505332b061f711
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2700
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 012d3417a1b83f640af102c20e17b3ce
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_12
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 2694
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb43922c460fd1d4c9183194f8449045
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_13
+      rect:
+        serializedVersion: 2
+        x: 1254
+        y: 2700
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d606d60968e5924a8ede65415260bc1
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2250
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b277b93bbdfaaf8409877d0df120b7e1
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_15
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 2250
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5331dda0640b2434eaf20749b92e2862
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_16
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 2250
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4e1a796fc609154687aff7cadfd58d1
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_17
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 2250
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5990246d511a6e4084d101643a5779a
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_18
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 2250
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea39fb37cffe08b45bcccfe5b26a911b
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_19
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 2250
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c1af51c03f11724f8203b08596d954e
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1800
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7903fd970c4a9b24a93e4e8232c8b15a
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_21
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1800
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e8452b59202a384b90956fb33e91684
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_22
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1800
+        width: 630
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c55e150d10e3e484987ac5af9efb8605
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1350
+        width: 1260
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f38a91a28766e848867e9ab8b215ec4
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_24
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1350
+        width: 1260
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a11d68bf7915abe47be57f86808837c9
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_25
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1350
+        width: 1259
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d4b6ef978c405e4db413a998fa693e0
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 900
+        width: 1260
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 347fa9dabefbf4149b4b6c51f19ed2d6
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1260
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b056149f7c56ece4cbe8271c7679728a
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 450
+        width: 1260
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b640b6ca8b95194385774d70933a704
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_29
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 900
+        width: 1260
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbd08c579c6f13943b30c2bdfd5d516b
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_30
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 900
+        width: 1260
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4668eb497382602479bd1808fe2dbf6d
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_31
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 450
+        width: 1260
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 063f3d086161e184c979d01da4591c1b
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_32
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 450
+        width: 1260
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e527fd4c79a2134e8a9f79f615293a1
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Hawk_33
+      rect:
+        serializedVersion: 2
+        x: 1259
+        y: 0
+        width: 1260
+        height: 450
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e386bcaf84c3a88428abd1c16404f436
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

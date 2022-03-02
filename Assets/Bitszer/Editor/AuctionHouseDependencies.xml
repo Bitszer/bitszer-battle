@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dependencies>
+    <androidPackages>
+        
+        <androidPackage spec="com.google.android.material:material:1.2.1"/>
+        
+        <androidPackage spec="androidx.appcompat:appcompat:1.2.0"/>
+        <androidPackage spec="androidx.annotation:annotation:1.1.0"/>
+        <androidPackage spec="androidx.constraintlayout:constraintlayout:2.0.1"/>
+        <androidPackage spec="androidx.lifecycle:lifecycle-extensions:2.2.0"/>
+        
+        <androidPackage spec="com.amazonaws:aws-android-sdk-core:2.16.12"/>
+        <androidPackage spec="com.amazonaws:aws-android-sdk-appsync:2.8.3"/>
+        <androidPackage spec="com.amazonaws:aws-android-sdk-auth-userpools:2.13.7"/>
+        <androidPackage spec="com.amazonaws:aws-android-sdk-cognito:2.16.12"/>
+        <androidPackage spec="com.amazonaws:aws-android-sdk-cognitoidentityprovider:2.16.12"/>
+        <androidPackage spec="com.amazonaws:aws-android-sdk-mobile-client:2.16.12"/>
+
+        <androidPackage spec="com.github.bumptech.glide:glide:4.11.0"/>
+        <androidPackage spec="de.hdodenhof:circleimageview:3.1.0"/>
+
+    </androidPackages>
+</dependencies>

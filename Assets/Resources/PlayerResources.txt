@@ -1,0 +1,26 @@
+{
+   "wood":{
+      "Stick":0,
+      "Lumber":0,
+      "Ironwood":0,
+      "Bloodwood":0
+   },
+   "ore":{
+      "Copper":0,
+      "Silver":0,
+      "Gold":0,
+      "Platinum":0
+   },
+   "food":{
+      "Wheat":0,
+      "Rice":0,
+      "Corn":0,
+      "Potatoes":0
+   },
+   "herbs":{
+      "Sage":0,
+      "Rosemary":0,
+      "Chamomile":0,
+      "Valerian":0
+   }
+}

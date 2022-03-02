@@ -1,0 +1,6695 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ccf793b7ca1cc645b9cd36d753b8e3c, type: 3}
+  m_Name: bitszerApi
+  m_EditorClassIdentifier: 
+  url: https://b5x3h3u32vgodgxtjjdod7oawu.appsync-api.us-west-2.amazonaws.com/graphql
+  queries:
+  - name: getUserAuctions
+    type: 0
+    query: "query getUserAuctions{\n    getUserAuctions{\n        nextToken\n       
+      auctions{\n            bid\n            buyout\n            createdAt\n           
+      expiration\n            highBidderProfile{\n                backgroundImageUrl\n               
+      buyAmount\n                buyCount\n                createdAt\n               
+      id\n                imageUrl\n                name\n                postedAuctionsCount\n               
+      screenName\n                soldAmount\n                soldCount\n               
+      title\n        }\n            sellerProfile{\n                buyCount\n               
+      createdAt\n                postedAuctionsCount\n                title\n               
+      soldCount\n                soldAmount\n                screenName\n               
+      name\n                backgroundImageUrl\n                buyAmount\n               
+      id\n                imageUrl\n        }\n            gameItem{\n               
+      description\n                gameName\n                imageUrl\n               
+      itemId\n                itemName\n        }\n            id\n            quantity\n       
+      }\n    }\n}"
+    queryString: getUserAuctions
+    returnType: AuctionPage
+    queryOptions:
+    - getImageUploadUrl
+    - getUserAuctions
+    - getMyProfile
+    - getProfile
+    - getAuctions
+    - getInventory
+    - getGameNames
+    - getMyGames
+    - getUserAdsInfo
+    - getCampaign
+    - getAdvertisersCampaigns
+    - getCampaignResults
+    - getAdtoView
+    - getMyInventorybyGame
+    - getAuctionsbyGame
+    - getGameItemsbyGame
+    fields:
+    - index: 1
+      name: nextToken
+      type: String
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: auctions
+        type: Auction
+      - name: nextToken
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: auctions
+      type: Auction
+      parentIndexes: 
+      hasSubField: 1
+      possibleFields:
+      - name: auctions
+        type: Auction
+      - name: nextToken
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: bid
+      type: Float
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 3
+      name: buyout
+      type: Float
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 1
+      name: createdAt
+      type: AWSDateTime
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 4
+      name: expiration
+      type: AWSDateTime
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 7
+      name: highBidderProfile
+      type: OtherProfile
+      parentIndexes: 01000000
+      hasSubField: 1
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 4
+      name: backgroundImageUrl
+      type: AWSURL
+      parentIndexes: 0100000006000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 10
+      name: buyAmount
+      type: Float
+      parentIndexes: 0100000006000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 8
+      name: buyCount
+      type: Int
+      parentIndexes: 0100000006000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 5
+      name: createdAt
+      type: AWSDateTime
+      parentIndexes: 0100000006000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: id
+      type: ID
+      parentIndexes: 0100000006000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 0100000006000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: name
+      type: String
+      parentIndexes: 0100000006000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 7
+      name: postedAuctionsCount
+      type: Int
+      parentIndexes: 0100000006000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: screenName
+      type: String
+      parentIndexes: 0100000006000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 11
+      name: soldAmount
+      type: Float
+      parentIndexes: 0100000006000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 9
+      name: soldCount
+      type: Int
+      parentIndexes: 0100000006000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 12
+      name: title
+      type: String
+      parentIndexes: 0100000006000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 8
+      name: sellerProfile
+      type: OtherProfile
+      parentIndexes: 01000000
+      hasSubField: 1
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 8
+      name: buyCount
+      type: Int
+      parentIndexes: 0100000013000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 5
+      name: createdAt
+      type: AWSDateTime
+      parentIndexes: 0100000013000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 7
+      name: postedAuctionsCount
+      type: Int
+      parentIndexes: 0100000013000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 12
+      name: title
+      type: String
+      parentIndexes: 0100000013000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 9
+      name: soldCount
+      type: Int
+      parentIndexes: 0100000013000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 11
+      name: soldAmount
+      type: Float
+      parentIndexes: 0100000013000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: screenName
+      type: String
+      parentIndexes: 0100000013000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: name
+      type: String
+      parentIndexes: 0100000013000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 4
+      name: backgroundImageUrl
+      type: AWSURL
+      parentIndexes: 0100000013000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 10
+      name: buyAmount
+      type: Float
+      parentIndexes: 0100000013000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: id
+      type: ID
+      parentIndexes: 0100000013000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 0100000013000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 6
+      name: gameItem
+      type: GameItem
+      parentIndexes: 01000000
+      hasSubField: 1
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 4
+      name: description
+      type: String
+      parentIndexes: 0100000020000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: gameName
+      type: String
+      parentIndexes: 0100000020000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 0100000020000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: itemId
+      type: ID
+      parentIndexes: 0100000020000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: itemName
+      type: String
+      parentIndexes: 0100000020000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: id
+      type: ID
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 5
+      name: quantity
+      type: Int
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    isComplete: 1
+  - name: getMyProfile
+    type: 0
+    query: "query getMyProfile{\n    getMyProfile{\n        activeBidAmount\n       
+      activeBids\n        backgroundImageUrl\n        balance\n        buyAmount\n       
+      buyCount\n        createdAt\n        id\n        imageUrl\n        name\n       
+      postedAuctionsCount\n        screenName\n        soldAmount\n        soldCount\n       
+      title\n        titles\n        role\n    }\n}"
+    queryString: getMyProfile
+    returnType: MyProfile
+    queryOptions:
+    - getImageUploadUrl
+    - getUserAuctions
+    - getMyProfile
+    - getProfile
+    - getAuctions
+    - getInventory
+    - getGameNames
+    - getMyGames
+    - getUserAdsInfo
+    - getCampaign
+    - getAdvertisersCampaigns
+    - getCampaignResults
+    - getAdtoView
+    - getMyInventorybyGame
+    - getAuctionsbyGame
+    - getGameItemsbyGame
+    fields:
+    - index: 8
+      name: activeBidAmount
+      type: Float
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 7
+      name: activeBids
+      type: Int
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 4
+      name: backgroundImageUrl
+      type: AWSURL
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 13
+      name: balance
+      type: Float
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 11
+      name: buyAmount
+      type: Float
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 9
+      name: buyCount
+      type: Int
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 5
+      name: createdAt
+      type: AWSDateTime
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: id
+      type: ID
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: name
+      type: String
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 14
+      name: postedAuctionsCount
+      type: Int
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: screenName
+      type: String
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 12
+      name: soldAmount
+      type: Float
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 10
+      name: soldCount
+      type: Int
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 15
+      name: title
+      type: String
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 17
+      name: titles
+      type: String
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    - index: 16
+      name: role
+      type: String
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: activeBids
+        type: Int
+      - name: activeBidAmount
+        type: Float
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: balance
+        type: Float
+      - name: postedAuctionsCount
+        type: Int
+      - name: title
+        type: String
+      - name: role
+        type: String
+      - name: titles
+        type: String
+      hasChanged: 0
+    isComplete: 1
+  - name: getProfile
+    type: 0
+    query: "query getProfile{\n    getProfile(  screenName :\"Hannah\" ){\n       
+      backgroundImageUrl\n        buyAmount\n        buyCount\n        createdAt\n       
+      imageUrl\n        name\n        id\n        screenName\n        soldAmount\n       
+      soldCount\n        title\n    }\n}"
+    queryString: getProfile
+    returnType: OtherProfile
+    queryOptions:
+    - getImageUploadUrl
+    - getUserAuctions
+    - getMyProfile
+    - getProfile
+    - getAuctions
+    - getInventory
+    - getGameNames
+    - getMyGames
+    - getUserAdsInfo
+    - getCampaign
+    - getAdvertisersCampaigns
+    - getCampaignResults
+    - getAdtoView
+    - getMyInventorybyGame
+    - getAuctionsbyGame
+    - getGameItemsbyGame
+    fields:
+    - index: 4
+      name: backgroundImageUrl
+      type: AWSURL
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 10
+      name: buyAmount
+      type: Float
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 8
+      name: buyCount
+      type: Int
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 5
+      name: createdAt
+      type: AWSDateTime
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: name
+      type: String
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: id
+      type: ID
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: screenName
+      type: String
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 11
+      name: soldAmount
+      type: Float
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 9
+      name: soldCount
+      type: Int
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 12
+      name: title
+      type: String
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    isComplete: 1
+  - name: getAuctions
+    type: 0
+    query: "query getAuctions{\n    getAuctions(  itemName :\"\", limit :5 ){\n       
+      nextToken\n        auctions{\n            bid\n            buyout\n           
+      createdAt\n            expiration\n            id\n            quantity\n           
+      gameItem{\n                description\n                gameName\n               
+      imageUrl\n                itemId\n                itemName\n        }\n           
+      highBidderProfile{\n                backgroundImageUrl\n                buyAmount\n               
+      buyCount\n                createdAt\n                id\n                imageUrl\n               
+      name\n                postedAuctionsCount\n                screenName\n               
+      soldAmount\n                soldCount\n                title\n        }\n           
+      sellerProfile{\n                backgroundImageUrl\n                buyAmount\n               
+      buyCount\n                createdAt\n                id\n                imageUrl\n               
+      name\n                postedAuctionsCount\n                screenName\n               
+      soldAmount\n                soldCount\n                title\n            }\n       
+      }\n    }\n}"
+    queryString: getAuctions
+    returnType: AuctionPage
+    queryOptions:
+    - getImageUploadUrl
+    - getUserAuctions
+    - getMyProfile
+    - getProfile
+    - getAuctions
+    - getInventory
+    - getGameNames
+    - getMyGames
+    - getUserAdsInfo
+    - getCampaign
+    - getAdvertisersCampaigns
+    - getCampaignResults
+    - getAdtoView
+    - getMyInventorybyGame
+    - getAuctionsbyGame
+    - getGameItemsbyGame
+    fields:
+    - index: 1
+      name: nextToken
+      type: String
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: auctions
+        type: Auction
+      - name: nextToken
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: auctions
+      type: Auction
+      parentIndexes: 
+      hasSubField: 1
+      possibleFields:
+      - name: auctions
+        type: Auction
+      - name: nextToken
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: bid
+      type: Float
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 3
+      name: buyout
+      type: Float
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 1
+      name: createdAt
+      type: AWSDateTime
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 4
+      name: expiration
+      type: AWSDateTime
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 0
+      name: id
+      type: ID
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 5
+      name: quantity
+      type: Int
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 6
+      name: gameItem
+      type: GameItem
+      parentIndexes: 01000000
+      hasSubField: 1
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 4
+      name: description
+      type: String
+      parentIndexes: 0100000008000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: gameName
+      type: String
+      parentIndexes: 0100000008000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 0100000008000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: itemId
+      type: ID
+      parentIndexes: 0100000008000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: itemName
+      type: String
+      parentIndexes: 0100000008000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 7
+      name: highBidderProfile
+      type: OtherProfile
+      parentIndexes: 01000000
+      hasSubField: 1
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 4
+      name: backgroundImageUrl
+      type: AWSURL
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 10
+      name: buyAmount
+      type: Float
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 8
+      name: buyCount
+      type: Int
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 5
+      name: createdAt
+      type: AWSDateTime
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: id
+      type: ID
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: name
+      type: String
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 7
+      name: postedAuctionsCount
+      type: Int
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: screenName
+      type: String
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 11
+      name: soldAmount
+      type: Float
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 9
+      name: soldCount
+      type: Int
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 12
+      name: title
+      type: String
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 8
+      name: sellerProfile
+      type: OtherProfile
+      parentIndexes: 01000000
+      hasSubField: 1
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 4
+      name: backgroundImageUrl
+      type: AWSURL
+      parentIndexes: 010000001b000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 10
+      name: buyAmount
+      type: Float
+      parentIndexes: 010000001b000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 8
+      name: buyCount
+      type: Int
+      parentIndexes: 010000001b000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 5
+      name: createdAt
+      type: AWSDateTime
+      parentIndexes: 010000001b000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: id
+      type: ID
+      parentIndexes: 010000001b000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 010000001b000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: name
+      type: String
+      parentIndexes: 010000001b000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 7
+      name: postedAuctionsCount
+      type: Int
+      parentIndexes: 010000001b000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: screenName
+      type: String
+      parentIndexes: 010000001b000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 11
+      name: soldAmount
+      type: Float
+      parentIndexes: 010000001b000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 9
+      name: soldCount
+      type: Int
+      parentIndexes: 010000001b000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 12
+      name: title
+      type: String
+      parentIndexes: 010000001b000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    isComplete: 1
+  - name: getInventory
+    type: 0
+    query: "query getInventory{\n    getInventory(  limit :5 ){\n        nextToken\n       
+      inventory{\n            ItemCount\n            username\n            gameItem{\n               
+      description\n                imageUrl\n                itemName\n               
+      itemId\n                gameName\n            }\n        }\n    }\n}"
+    queryString: getInventory
+    returnType: InventoryPage
+    queryOptions:
+    - getImageUploadUrl
+    - getUserAuctions
+    - getMyProfile
+    - getProfile
+    - getAuctions
+    - getInventory
+    - getGameNames
+    - getMyGames
+    - getUserAdsInfo
+    - getCampaign
+    - getAdvertisersCampaigns
+    - getCampaignResults
+    - getAdtoView
+    - getMyInventorybyGame
+    - getAuctionsbyGame
+    - getGameItemsbyGame
+    fields:
+    - index: 1
+      name: nextToken
+      type: String
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: inventory
+        type: Inventory
+      - name: nextToken
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: inventory
+      type: Inventory
+      parentIndexes: 
+      hasSubField: 1
+      possibleFields:
+      - name: inventory
+        type: Inventory
+      - name: nextToken
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: ItemCount
+      type: Int
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: username
+        type: String
+      - name: ItemCount
+        type: Int
+      - name: gameItem
+        type: GameItem
+      hasChanged: 0
+    - index: 0
+      name: username
+      type: String
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: username
+        type: String
+      - name: ItemCount
+        type: Int
+      - name: gameItem
+        type: GameItem
+      hasChanged: 0
+    - index: 2
+      name: gameItem
+      type: GameItem
+      parentIndexes: 01000000
+      hasSubField: 1
+      possibleFields:
+      - name: username
+        type: String
+      - name: ItemCount
+        type: Int
+      - name: gameItem
+        type: GameItem
+      hasChanged: 0
+    - index: 4
+      name: description
+      type: String
+      parentIndexes: 0100000004000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 0100000004000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: itemName
+      type: String
+      parentIndexes: 0100000004000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: itemId
+      type: ID
+      parentIndexes: 0100000004000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: gameName
+      type: String
+      parentIndexes: 0100000004000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    isComplete: 1
+  - name: getMyInventorybyGame
+    type: 0
+    query: "query getMyInventorybyGame{\n    getMyInventorybyGame(  limit :10, gameId
+      :\"\" ){\n        nextToken\n        inventory{\n            username\n           
+      ItemCount\n            gameItem{\n                itemId\n                gameName\n               
+      itemName\n                imageUrl\n                description\n           
+      }\n        }\n    }\n}"
+    queryString: getMyInventorybyGame
+    returnType: InventoryPage
+    queryOptions:
+    - getImageUploadUrl
+    - getUserAuctions
+    - getMyProfile
+    - getProfile
+    - getAuctions
+    - getInventory
+    - getGameNames
+    - getMyGames
+    - getUserAdsInfo
+    - getCampaign
+    - getAdvertisersCampaigns
+    - getCampaignResults
+    - getAdtoView
+    - getMyInventorybyGame
+    - getAuctionsbyGame
+    - getGameItemsbyGame
+    fields:
+    - index: 1
+      name: nextToken
+      type: String
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: inventory
+        type: Inventory
+      - name: nextToken
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: inventory
+      type: Inventory
+      parentIndexes: 
+      hasSubField: 1
+      possibleFields:
+      - name: inventory
+        type: Inventory
+      - name: nextToken
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: username
+      type: String
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: username
+        type: String
+      - name: ItemCount
+        type: Int
+      - name: gameItem
+        type: GameItem
+      hasChanged: 0
+    - index: 1
+      name: ItemCount
+      type: Int
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: username
+        type: String
+      - name: ItemCount
+        type: Int
+      - name: gameItem
+        type: GameItem
+      hasChanged: 0
+    - index: 2
+      name: gameItem
+      type: GameItem
+      parentIndexes: 01000000
+      hasSubField: 1
+      possibleFields:
+      - name: username
+        type: String
+      - name: ItemCount
+        type: Int
+      - name: gameItem
+        type: GameItem
+      hasChanged: 0
+    - index: 0
+      name: itemId
+      type: ID
+      parentIndexes: 0100000004000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: gameName
+      type: String
+      parentIndexes: 0100000004000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: itemName
+      type: String
+      parentIndexes: 0100000004000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 0100000004000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 4
+      name: description
+      type: String
+      parentIndexes: 0100000004000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    isComplete: 1
+  - name: getAuctionsbyGame
+    type: 0
+    query: "query getAuctionsbyGame{\n    getAuctionsbyGame(  gameId :\"01ARYZ6S41S3DFR1ETQG5WHCTZ\",
+      limit :10 ){\n        nextToken\n        auctions{\n            id\n           
+      createdAt\n            bid\n            buyout\n            expiration\n           
+      quantity\n            gameItem{\n                itemId\n                gameName\n               
+      itemName\n                imageUrl\n                description\n        }\n           
+      highBidderProfile{\n                id\n                name\n               
+      screenName\n                imageUrl\n                backgroundImageUrl\n               
+      createdAt\n                postedAuctionsCount\n                buyCount\n               
+      soldCount\n                buyAmount\n                soldAmount\n               
+      title\n                role\n        }\n            sellerProfile{\n               
+      id\n                name\n                screenName\n                imageUrl\n               
+      backgroundImageUrl\n                createdAt\n                postedAuctionsCount\n               
+      buyCount\n                soldCount\n                buyAmount\n               
+      soldAmount\n                title\n                role\n            }\n       
+      }\n    }\n}"
+    queryString: getAuctionsbyGame
+    returnType: AuctionPage
+    queryOptions:
+    - getImageUploadUrl
+    - getUserAuctions
+    - getMyProfile
+    - getProfile
+    - getAuctions
+    - getInventory
+    - getGameNames
+    - getMyGames
+    - getUserAdsInfo
+    - getCampaign
+    - getAdvertisersCampaigns
+    - getCampaignResults
+    - getAdtoView
+    - getMyInventorybyGame
+    - getAuctionsbyGame
+    - getGameItemsbyGame
+    fields:
+    - index: 1
+      name: nextToken
+      type: String
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: auctions
+        type: Auction
+      - name: nextToken
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: auctions
+      type: Auction
+      parentIndexes: 
+      hasSubField: 1
+      possibleFields:
+      - name: auctions
+        type: Auction
+      - name: nextToken
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: id
+      type: ID
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 1
+      name: createdAt
+      type: AWSDateTime
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 2
+      name: bid
+      type: Float
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 3
+      name: buyout
+      type: Float
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 4
+      name: expiration
+      type: AWSDateTime
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 5
+      name: quantity
+      type: Int
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 6
+      name: gameItem
+      type: GameItem
+      parentIndexes: 01000000
+      hasSubField: 1
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 0
+      name: itemId
+      type: ID
+      parentIndexes: 0100000008000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: gameName
+      type: String
+      parentIndexes: 0100000008000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: itemName
+      type: String
+      parentIndexes: 0100000008000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 0100000008000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 4
+      name: description
+      type: String
+      parentIndexes: 0100000008000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 7
+      name: highBidderProfile
+      type: OtherProfile
+      parentIndexes: 01000000
+      hasSubField: 1
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 0
+      name: id
+      type: ID
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: name
+      type: String
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: screenName
+      type: String
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 4
+      name: backgroundImageUrl
+      type: AWSURL
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 5
+      name: createdAt
+      type: AWSDateTime
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 7
+      name: postedAuctionsCount
+      type: Int
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 8
+      name: buyCount
+      type: Int
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 9
+      name: soldCount
+      type: Int
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 10
+      name: buyAmount
+      type: Float
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 11
+      name: soldAmount
+      type: Float
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 12
+      name: title
+      type: String
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 13
+      name: role
+      type: String
+      parentIndexes: 010000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 8
+      name: sellerProfile
+      type: OtherProfile
+      parentIndexes: 01000000
+      hasSubField: 1
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 0
+      name: id
+      type: ID
+      parentIndexes: 010000001c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: name
+      type: String
+      parentIndexes: 010000001c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: screenName
+      type: String
+      parentIndexes: 010000001c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 010000001c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 4
+      name: backgroundImageUrl
+      type: AWSURL
+      parentIndexes: 010000001c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 5
+      name: createdAt
+      type: AWSDateTime
+      parentIndexes: 010000001c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 7
+      name: postedAuctionsCount
+      type: Int
+      parentIndexes: 010000001c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 8
+      name: buyCount
+      type: Int
+      parentIndexes: 010000001c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 9
+      name: soldCount
+      type: Int
+      parentIndexes: 010000001c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 10
+      name: buyAmount
+      type: Float
+      parentIndexes: 010000001c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 11
+      name: soldAmount
+      type: Float
+      parentIndexes: 010000001c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 12
+      name: title
+      type: String
+      parentIndexes: 010000001c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 13
+      name: role
+      type: String
+      parentIndexes: 010000001c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    isComplete: 1
+  - name: getGameItemsbyGame
+    type: 0
+    query: "query getGameItemsbyGame{\n    getGameItemsbyGame{\n        nextToken\n       
+      gameItems{\n            itemId\n            gameName\n            itemName\n           
+      imageUrl\n            description\n        }\n    }\n}"
+    queryString: getGameItemsbyGame
+    returnType: GameItemsPage
+    queryOptions:
+    - getImageUploadUrl
+    - getUserAuctions
+    - getMyProfile
+    - getProfile
+    - getAuctions
+    - getInventory
+    - getGameNames
+    - getMyGames
+    - getUserAdsInfo
+    - getCampaign
+    - getAdvertisersCampaigns
+    - getCampaignResults
+    - getAdtoView
+    - getMyInventorybyGame
+    - getAuctionsbyGame
+    - getGameItemsbyGame
+    fields:
+    - index: 1
+      name: nextToken
+      type: String
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: gameItems
+        type: GameItem
+      - name: nextToken
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: gameItems
+      type: GameItem
+      parentIndexes: 
+      hasSubField: 1
+      possibleFields:
+      - name: gameItems
+        type: GameItem
+      - name: nextToken
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: itemId
+      type: ID
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: gameName
+      type: String
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: itemName
+      type: String
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 4
+      name: description
+      type: String
+      parentIndexes: 01000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    isComplete: 1
+  mutations:
+  - name: createAuction
+    type: 1
+    query: "mutation createAuction{\n    createAuction{\n        id\n        createdAt\n       
+      bid\n        buyout\n        expiration\n        quantity\n        gameItem{\n           
+      itemId\n            gameName\n            itemName\n            imageUrl\n           
+      description\n        }\n        highBidderProfile{\n            id\n           
+      name\n            screenName\n            imageUrl\n            backgroundImageUrl\n           
+      createdAt\n            postedAuctionsCount\n            buyCount\n           
+      soldCount\n            buyAmount\n            soldAmount\n            title\n           
+      role\n        }\n        sellerProfile{\n            id\n            name\n           
+      screenName\n            imageUrl\n            backgroundImageUrl\n           
+      createdAt\n            postedAuctionsCount\n            buyCount\n           
+      soldCount\n            buyAmount\n            soldAmount\n            title\n           
+      role\n        }\n    }\n}"
+    queryString: createAuction
+    returnType: Auction
+    queryOptions:
+    - editMyProfile
+    - createAuction
+    - bid
+    - buyout
+    - cancelAuction
+    - createGameItem
+    - editGameItem
+    - updateInventory
+    - editAdsAccount
+    - bugEmail
+    - devEmail
+    - createAdCampaign
+    - setCampaignActivation
+    - setCampaignResponse
+    - pushInventory
+    - addNewGame
+    fields:
+    - index: 0
+      name: id
+      type: ID
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 1
+      name: createdAt
+      type: AWSDateTime
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 2
+      name: bid
+      type: Float
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 3
+      name: buyout
+      type: Float
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 4
+      name: expiration
+      type: AWSDateTime
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 5
+      name: quantity
+      type: Int
+      parentIndexes: 
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 6
+      name: gameItem
+      type: GameItem
+      parentIndexes: 
+      hasSubField: 1
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 0
+      name: itemId
+      type: ID
+      parentIndexes: 06000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: gameName
+      type: String
+      parentIndexes: 06000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: itemName
+      type: String
+      parentIndexes: 06000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 06000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 4
+      name: description
+      type: String
+      parentIndexes: 06000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 7
+      name: highBidderProfile
+      type: OtherProfile
+      parentIndexes: 
+      hasSubField: 1
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 0
+      name: id
+      type: ID
+      parentIndexes: 0c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: name
+      type: String
+      parentIndexes: 0c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: screenName
+      type: String
+      parentIndexes: 0c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 0c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 4
+      name: backgroundImageUrl
+      type: AWSURL
+      parentIndexes: 0c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 5
+      name: createdAt
+      type: AWSDateTime
+      parentIndexes: 0c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 7
+      name: postedAuctionsCount
+      type: Int
+      parentIndexes: 0c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 8
+      name: buyCount
+      type: Int
+      parentIndexes: 0c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 9
+      name: soldCount
+      type: Int
+      parentIndexes: 0c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 10
+      name: buyAmount
+      type: Float
+      parentIndexes: 0c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 11
+      name: soldAmount
+      type: Float
+      parentIndexes: 0c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 12
+      name: title
+      type: String
+      parentIndexes: 0c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 13
+      name: role
+      type: String
+      parentIndexes: 0c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 8
+      name: sellerProfile
+      type: OtherProfile
+      parentIndexes: 
+      hasSubField: 1
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 0
+      name: id
+      type: ID
+      parentIndexes: 1a000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: name
+      type: String
+      parentIndexes: 1a000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: screenName
+      type: String
+      parentIndexes: 1a000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 1a000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 4
+      name: backgroundImageUrl
+      type: AWSURL
+      parentIndexes: 1a000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 5
+      name: createdAt
+      type: AWSDateTime
+      parentIndexes: 1a000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 7
+      name: postedAuctionsCount
+      type: Int
+      parentIndexes: 1a000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 8
+      name: buyCount
+      type: Int
+      parentIndexes: 1a000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 9
+      name: soldCount
+      type: Int
+      parentIndexes: 1a000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 10
+      name: buyAmount
+      type: Float
+      parentIndexes: 1a000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 11
+      name: soldAmount
+      type: Float
+      parentIndexes: 1a000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 12
+      name: title
+      type: String
+      parentIndexes: 1a000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 13
+      name: role
+      type: String
+      parentIndexes: 1a000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    isComplete: 1
+  - name: bid
+    type: 1
+    query: 
+    queryString: bid
+    returnType: Boolean
+    queryOptions:
+    - editMyProfile
+    - createAuction
+    - bid
+    - buyout
+    - cancelAuction
+    - createGameItem
+    - editGameItem
+    - updateInventory
+    - editAdsAccount
+    - bugEmail
+    - devEmail
+    - createAdCampaign
+    - setCampaignActivation
+    - setCampaignResponse
+    - pushInventory
+    - addNewGame
+    fields: []
+    isComplete: 0
+  - name: buyout
+    type: 1
+    query: 
+    queryString: buyout
+    returnType: Boolean
+    queryOptions:
+    - editMyProfile
+    - createAuction
+    - bid
+    - buyout
+    - cancelAuction
+    - createGameItem
+    - editGameItem
+    - updateInventory
+    - editAdsAccount
+    - bugEmail
+    - devEmail
+    - createAdCampaign
+    - setCampaignActivation
+    - setCampaignResponse
+    - pushInventory
+    - addNewGame
+    fields: []
+    isComplete: 0
+  - name: cancelAuction
+    type: 1
+    query: 
+    queryString: cancelAuction
+    returnType: Boolean
+    queryOptions:
+    - editMyProfile
+    - createAuction
+    - bid
+    - buyout
+    - cancelAuction
+    - createGameItem
+    - editGameItem
+    - updateInventory
+    - editAdsAccount
+    - bugEmail
+    - devEmail
+    - createAdCampaign
+    - setCampaignActivation
+    - setCampaignResponse
+    - pushInventory
+    - addNewGame
+    fields: []
+    isComplete: 0
+  subscriptions: []
+  loading: 0
