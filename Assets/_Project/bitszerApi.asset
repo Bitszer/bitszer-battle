@@ -6691,5 +6691,53 @@ MonoBehaviour:
     - addNewGame
     fields: []
     isComplete: 0
+  - name: updateInventory
+    type: 1
+    query: 
+    queryString: updateInventory
+    returnType: Boolean
+    queryOptions:
+    - editMyProfile
+    - createAuction
+    - bid
+    - buyout
+    - cancelAuction
+    - createGameItem
+    - editGameItem
+    - updateInventory
+    - editAdsAccount
+    - bugEmail
+    - devEmail
+    - createAdCampaign
+    - setCampaignActivation
+    - setCampaignResponse
+    - pushInventory
+    - addNewGame
+    fields: []
+    isComplete: 0
+  - name: pushInventory
+    type: 1
+    query: 
+    queryString: pushInventory
+    returnType: Boolean
+    queryOptions:
+    - editMyProfile
+    - createAuction
+    - bid
+    - buyout
+    - cancelAuction
+    - createGameItem
+    - editGameItem
+    - updateInventory
+    - editAdsAccount
+    - bugEmail
+    - devEmail
+    - createAdCampaign
+    - setCampaignActivation
+    - setCampaignResponse
+    - pushInventory
+    - addNewGame
+    fields: []
+    isComplete: 0
   subscriptions: []
   loading: 0

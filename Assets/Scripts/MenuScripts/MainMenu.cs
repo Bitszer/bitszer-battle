@@ -1,10 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using System.Collections.Generic;
-using Bitszer;
 using Utility.Logging;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour 
 {
@@ -256,7 +254,7 @@ public class MainMenu : MonoBehaviour
 	{
 		SoundManager.Instance.PlayOneShot(SoundManager.SoundState.Click, 1);
 		PopOutScreen();
-		AuctionHouse.Open();
+		//AuctionHouse.Open();
 	}
 
 	// When Auction House Button Clicked From Main Menu Screen.
@@ -264,7 +262,9 @@ public class MainMenu : MonoBehaviour
 	public void GoToAuctionHouseMainMenu()
 	{
 		SoundManager.Instance.PlayOneShot(SoundManager.SoundState.Click, 1);
-		AuctionHouse.Open();
+		SceneManager.LoadScene(1);
+		Screen.orientation = ScreenOrientation.Portrait;
+		//AuctionHouse.Open();
 	}
 	
 	public void OpenSettingsScreen()

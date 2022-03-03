@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-using System;
-using System.Collections.Generic;
-using Bitszer;
+﻿using System;
+using UnityEngine;
 using Utility.Logging;
 
 public class PlayerResourceManager : MonoBehaviour
@@ -41,9 +39,6 @@ public class PlayerResourceManager : MonoBehaviour
             _divideFactor[i] = counter;
             counter++;
         }
-        
-        // Subscribing to Auction House items change.
-        AuctionHouse.OnItemsChanged += OnAuctionHouseItemsChanged;
     }
     
     /*
@@ -59,71 +54,16 @@ public class PlayerResourceManager : MonoBehaviour
         }
 
         _onPlayerResourcesLoaded = onComplete;
-        
-        AuctionHouse.OnSynchronized += OnAuctionHouseSynchronized;
-        AuctionHouse.Sync();
+
+        OnAuctionHouseSynchronized();
     }
 
     private void OnAuctionHouseSynchronized()
     {
         _log.Debug("OnAuctionHouseSynchronized");
-        
-        // This method is called only once during app loading.
-        
-        AuctionHouse.OnSynchronized -= OnAuctionHouseSynchronized;
-        
+
         var playerResources = LoadPlayerResourcesFromPlayerPrefs();
-        
-        // Resources are empty in local storage and in auction house remote storage.
-        if (playerResources == null && AuctionHouse.IsEmpty)
-        {
-            _log.Debug("Resource empty in both places.");
-            
-            playerResources = CreateNewPlayerResources();
-            AuctionHouse.SetItems(playerResources.ToAuctionHouseDictionary(), false);
-        }
-        // Local storage is not empty, but AuctionHouse is. Updating resources in Auction House.
-        else if (playerResources != null && AuctionHouse.IsEmpty)
-        {
-            _log.Debug("Local resources present. AuctionHouse resources empty.");
-            
-            AuctionHouse.SetItems(playerResources.ToAuctionHouseDictionary(), false);
-        }
-        // Local resources are empty but Auction House is not. Using Auction House resources.
-        else if (playerResources == null && !AuctionHouse.IsEmpty)
-        {
-            _log.Debug("Local resources empty. AuctionHouse resources present.");
-            
-            playerResources = HeroResources.FromAuctionHouseDictionary(AuctionHouse.GetItems());
-            SavePlayerResourcesToPlayerPrefs(playerResources);
-        }
-        // Resources present in both places, need to calculate deltas and apply them.
-        else
-        {
-            _log.Debug("==================================================");
-            _log.Debug("Resource present. Merging.");
-            
-            var resourcesLocal = playerResources.ToAuctionHouseDictionary();
-            var resourcesAuctionHouse = AuctionHouse.GetItems();
-            var resourcesDeltas = AuctionHouse.CalculateItemsDeltas(resourcesLocal, resourcesAuctionHouse);
-            if (resourcesDeltas.Count != 0)
-            {
-                _log.Debug("==================================================");
-                _log.Debug("From:");
-                playerResources.Log(_log);
-                
-                playerResources += HeroResources.FromAuctionHouseDictionary(resourcesDeltas);
-                
-                _log.Debug("To:");
-                playerResources.Log(_log);
-                _log.Debug("==================================================");
-            }
-            else
-            {
-                _log.Debug("Not changed.");
-                _log.Debug("==================================================");
-            }
-        }
+        playerResources = CreateNewPlayerResources();
 
         PlayerResources = playerResources;
 
@@ -134,58 +74,33 @@ public class PlayerResourceManager : MonoBehaviour
         }
     }
     
-    private void OnAuctionHouseItemsChanged(Dictionary<string, int> deltas)
-    {
-        if (PlayerResources == null)
-        {
-            _log.Error("OnAuctionHouseItemsChanged: Player resources not loaded.");
-            return;
-        }
-        
-        _log.Debug("==================================================");
-        _log.Debug("Player Resources changed");
-        _log.Debug("==================================================");
-        
-        _log.Debug("From:");
-        PlayerResources.Log(_log);
-        _log.Debug("==================================================");
-        
-        PlayerResources += HeroResources.FromAuctionHouseDictionary(deltas);
-        
-        _log.Debug("To:");
-        PlayerResources.Log(_log);
-        _log.Debug("==================================================");
-        
-        OnPlayerResourcesChanged?.Invoke();
-    }
-    
     private HeroResources CreateNewPlayerResources()
     {
         var playerResources = new HeroResources();
 
-        // if (Debug.isDebugBuild)
-        // {
-        //     playerResources.wood.Stick = 10000;
-        //     playerResources.wood.Lumber = 10000;
-        //     playerResources.wood.Ironwood = 10000;
-        //     playerResources.wood.Bloodwood = 10000;
-        //
-        //     playerResources.ore.Copper = 10000;
-        //     playerResources.ore.Silver = 10000;
-        //     playerResources.ore.Gold = 10000;
-        //     playerResources.ore.Platinum = 10000;
-        //
-        //     playerResources.food.Wheat = 10000;
-        //     playerResources.food.Corn = 10000;
-        //     playerResources.food.Rice = 10000;
-        //     playerResources.food.Potatoes = 10000;
-        //
-        //     playerResources.herbs.Sage = 10000;
-        //     playerResources.herbs.Rosemary = 10000;
-        //     playerResources.herbs.Chamomile = 10000;
-        //     playerResources.herbs.Valerian = 10000;
-        // }
-        
+        if (Debug.isDebugBuild)
+        {
+            playerResources.wood.Stick = 10000;
+            playerResources.wood.Lumber = 10000;
+            playerResources.wood.Ironwood = 10000;
+            playerResources.wood.Bloodwood = 10000;
+
+            playerResources.ore.Copper = 10000;
+            playerResources.ore.Silver = 10000;
+            playerResources.ore.Gold = 10000;
+            playerResources.ore.Platinum = 10000;
+
+            playerResources.food.Wheat = 10000;
+            playerResources.food.Corn = 10000;
+            playerResources.food.Rice = 10000;
+            playerResources.food.Potatoes = 10000;
+
+            playerResources.herbs.Sage = 10000;
+            playerResources.herbs.Rosemary = 10000;
+            playerResources.herbs.Chamomile = 10000;
+            playerResources.herbs.Valerian = 10000;
+        }
+
         return playerResources;
     }
 
@@ -199,15 +114,8 @@ public class PlayerResourceManager : MonoBehaviour
             return;
         }
 
-        // TODO: Implement merging between AH and game data
-        // Before saving anywhere sync with auction house.
-        // Auction house must return delta from the last sync and this delta must be applied to the 
-        
         // Saving to game storage.
         SavePlayerResourcesToPlayerPrefs(PlayerResources);
-        
-        // Syncing with AuctionHouse.
-        AuctionHouse.SetItems(PlayerResources.ToAuctionHouseDictionary(), true);
         
         OnPlayerResourcesChanged?.Invoke();
     }

@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Managers;
 using UnityEngine;
-using System.Collections;
-using Bitszer;
-using Managers;
 using UnityEngine.UI;
 using Utility.Logging;
+using System.Collections;
 
 public sealed class GameManager : MonoBehaviour
 {
@@ -59,11 +57,8 @@ public sealed class GameManager : MonoBehaviour
     {
         _log.Debug("Loading...");
         _log.Debug("Initializing AuctionHouse...");
-        
-        // Initializing Auction House in parallel.
-        AuctionHouse.OnInitialized += OnAuctionHouseInitialized;
-        AuctionHouse.OnInitializationFailed += OnAuctionHouseInitializationFailed;
-        AuctionHouse.Initialize(CentralVariables.AuctionHousePoolId);
+
+        OnAuctionHouseInitialized();
     }
     
     private void OnAuctionHouseInitialized()
@@ -87,12 +82,6 @@ public sealed class GameManager : MonoBehaviour
                 HideLoading();
             });
         });
-    }
-    
-    private void OnAuctionHouseInitializationFailed(Exception exception)
-    {
-        _log.Error("AuctionHouse initialization failed.");
-        _log.Error(exception);
     }
     
     /*

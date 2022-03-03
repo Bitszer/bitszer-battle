@@ -31,9 +31,7 @@ public class UserAuth : MonoBehaviour
         passwordLoginInputField.text = "sumeru@1234#";
 
         if(PlayerPrefs.HasKey("email") && PlayerPrefs.HasKey("password"))
-        {
             LoginUser(PlayerPrefs.GetString("email"), PlayerPrefs.GetString("password"));
-        }
     }
 
     public void SignUpUser()

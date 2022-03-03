@@ -155,5 +155,23 @@ public class DataProvider : Singleton<DataProvider>
 
         await graphApi.Post(createAuctionMutation);
     }
+
+    public async void UpdateInventory(string itemId, int count)
+    {
+        GraphApi.Query updateInventoryMutation = graphApi.GetQueryByName("updateInventory", GraphApi.Query.Type.Mutation);
+
+        updateInventoryMutation.SetArgs(new { configuration.gameId, itemId, count });
+
+        await graphApi.Post(updateInventoryMutation);
+    }
+
+    public async void PushInventory(InventoryDelta[] inventoryDelta)
+    {
+        GraphApi.Query pushInventoryMutation = graphApi.GetQueryByName("pushInventory", GraphApi.Query.Type.Mutation);
+
+        pushInventoryMutation.SetArgs(new { configuration.gameId, inventoryDelta });
+
+        await graphApi.Post(pushInventoryMutation);
+    }
     #endregion
 }
