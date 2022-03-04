@@ -11,7 +11,12 @@ public class UIManager : MonoBehaviour
     public TMPro.TMP_Text usernameText;
     public TMPro.TMP_Text balanceText;
 
-    public Toggle homeToggle, buyToggle, sellToggle, myAuctionsToggle;
+    [Space]
+    [Space]
+    public Toggle homeToggle;
+    public Toggle buyToggle;
+    public Toggle sellToggle;
+    public Toggle myAuctionsToggle;
 
     [Space]
     [Space]
@@ -24,6 +29,8 @@ public class UIManager : MonoBehaviour
     public GameObject bidPopup;
     public GameObject cancelPopup;
 
+    [Space]
+    [Space]
     public Transform buyItemParent;
     public Transform buyItemPrefab;
     public Transform sellItemParent;
@@ -224,7 +231,7 @@ public class UIManager : MonoBehaviour
     private IEnumerator PopulateBuyData(GetAuction getAuction)
     {
         var count = getAuction.data.getAuctions.auctions.Count;
-        
+
         if (count <= 0)
         {
             DataProvider.Instance.loadingPanel.SetActive(false);
@@ -328,66 +335,69 @@ public class UIManager : MonoBehaviour
 
         var item = getInventory.data.getInventory.inventory[sellItemsLength];
 
-        GameObject go = Instantiate(sellItemPrefab.gameObject, sellItemParent);
-        var sellItem = go.GetComponent<SellItem>();
-        StartCoroutine(GetImageFromUrl(item.gameItem.imageUrl, texture =>
+        if (!item.ItemCount.Equals(0))
         {
-            sellItem.itemImage.texture = texture;
-        }));
-        sellItem.itemNameText.text = item.gameItem.itemName;
-        sellItem.availableText.text = item.ItemCount.ToString();
-
-        sellItem.sellButton.onClick.AddListener(() =>
-        {
-            similarItemParent.Clear();
-            StartCoroutine(GetBuyData(item.gameItem.itemName, 10, null));
-
-            var sellItemPanelData = sellItemPanel.GetComponent<SellItemPanel>();
-            sellItemPanelData.usernameText.text = _profile.data.getMyProfile.name;
-            sellItemPanelData.balanceText.text = _profile.data.getMyProfile.balance.ToString();
-            sellItemPanelData.itemImage.texture = sellItem.itemImage.texture;
-            sellItemPanelData.qtyValueText.text = sellItem.availableText.text;
-            sellItemPanelData.itemsSoldValueInputField.text = sellItem.availableText.text;
-            sellItemPanelData.itemNameText.text = sellItem.itemNameText.text;
-            sellItemPanelData.totalItemsValueText.text = sellItem.availableText.text;
-
-            AuctionInput newAuction = new AuctionInput();
-            newAuction.gameId = DataProvider.Instance.configuration.gameId;
-            newAuction.itemId = item.gameItem.itemId;
-
-            int duration = sellItemPanelData.sellDurationDropdown.value switch
+            GameObject go = Instantiate(sellItemPrefab.gameObject, sellItemParent);
+            var sellItem = go.GetComponent<SellItem>();
+            StartCoroutine(GetImageFromUrl(item.gameItem.imageUrl, texture =>
             {
-                0 => 24,
-                1 => 48,
-                2 => 72,
-                _ => 24
-            };
-            newAuction.auctionDuration = duration;
+                sellItem.itemImage.texture = texture;
+            }));
+            sellItem.itemNameText.text = item.gameItem.itemName;
+            sellItem.availableText.text = item.ItemCount.ToString();
 
-            float bidResult, buyoutResult;
-            int qtyResult;
-
-            if (float.TryParse(sellItemPanelData.totalBidValueText.text, out bidResult))
-                newAuction.bid = bidResult;
-
-            if (float.TryParse(sellItemPanelData.totalBuyoutValueText.text, out buyoutResult))
-                newAuction.buyout = buyoutResult;
-
-            if (int.TryParse(sellItemPanelData.itemsSoldValueInputField.text, out qtyResult))
-                newAuction.quantity = qtyResult;
-
-            sellItemPanel.SetActive(true);
-
-            sellItemPanelData.confirmButton.onClick.AddListener(() =>
+            sellItem.sellButton.onClick.AddListener(() =>
             {
-                DataProvider.Instance.CreateAuction(newAuction);
+                similarItemParent.Clear();
+                StartCoroutine(GetBuyData(item.gameItem.itemName, 10, null));
+
+                var sellItemPanelData = sellItemPanel.GetComponent<SellItemPanel>();
+                sellItemPanelData.usernameText.text = _profile.data.getMyProfile.name;
+                sellItemPanelData.balanceText.text = _profile.data.getMyProfile.balance.ToString();
+                sellItemPanelData.itemImage.texture = sellItem.itemImage.texture;
+                sellItemPanelData.qtyValueText.text = sellItem.availableText.text;
+                sellItemPanelData.itemsSoldValueInputField.text = sellItem.availableText.text;
+                sellItemPanelData.itemNameText.text = sellItem.itemNameText.text;
+                sellItemPanelData.totalItemsValueText.text = sellItem.availableText.text;
+
+                AuctionInput newAuction = new AuctionInput();
+                newAuction.gameId = DataProvider.Instance.configuration.gameId;
+                newAuction.itemId = item.gameItem.itemId;
+
+                int duration = sellItemPanelData.sellDurationDropdown.value switch
+                {
+                    0 => 24,
+                    1 => 48,
+                    2 => 72,
+                    _ => 24
+                };
+                newAuction.auctionDuration = duration;
+
+                float bidResult, buyoutResult;
+                int qtyResult;
+
+                if (float.TryParse(sellItemPanelData.totalBidValueText.text, out bidResult))
+                    newAuction.bid = bidResult;
+
+                if (float.TryParse(sellItemPanelData.totalBuyoutValueText.text, out buyoutResult))
+                    newAuction.buyout = buyoutResult;
+
+                if (int.TryParse(sellItemPanelData.itemsSoldValueInputField.text, out qtyResult))
+                    newAuction.quantity = qtyResult;
+
+                sellItemPanel.SetActive(true);
+
+                sellItemPanelData.confirmButton.onClick.AddListener(() =>
+                {
+                    DataProvider.Instance.CreateAuction(newAuction);
+                });
+
+                sellItemPanelData.resetAllButton.onClick.AddListener(() =>
+                {
+
+                });
             });
-
-            sellItemPanelData.resetAllButton.onClick.AddListener(() =>
-            {
-
-            });
-        });
+        }
 
         yield return null;
 
@@ -428,6 +438,9 @@ public class UIManager : MonoBehaviour
         auctionItem.buyoutText.text = item.buyout.ToString();
         auctionItem.bidText.text = item.bid.ToString();
 
+        if (!item.sellerProfile.id.Equals(_profile.data.getMyProfile.id))
+            auctionItem.cancelButton.gameObject.SetActive(false);
+
         auctionItem.cancelButton.onClick.AddListener(() =>
         {
             cancelPopup.SetActive(true);
@@ -441,6 +454,7 @@ public class UIManager : MonoBehaviour
             cancelPopupData.cancelAuctionButton.onClick.AddListener(() =>
             {
                 DataProvider.Instance.CancelAuction(item.id);
+                getAuctionbyGame.data.getAuctionsbyGame.auctions.Remove(item);
             });
         });
 

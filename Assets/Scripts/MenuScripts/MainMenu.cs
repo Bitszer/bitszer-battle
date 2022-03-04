@@ -14,9 +14,10 @@ public class MainMenu : MonoBehaviour
 	[Header("Dependencies")]
 	[SerializeField] private GameManager gameManager = null;
 	[SerializeField] private Levels levels = null;
-	
+
 	// Menu Screens
 	[Header("MENU SCREENS")]
+	public GameObject bitszerScreen;
 	public GameObject MainMenuScreen;
 	public GameObject environmentSelectionScreen;
 	public GameObject characterUpgardeScreen;
@@ -262,8 +263,9 @@ public class MainMenu : MonoBehaviour
 	public void GoToAuctionHouseMainMenu()
 	{
 		SoundManager.Instance.PlayOneShot(SoundManager.SoundState.Click, 1);
-		SceneManager.LoadScene(1);
-		Screen.orientation = ScreenOrientation.Portrait;
+		PushInScreen(bitszerScreen);
+		//SceneManager.LoadScene(1);
+		//Screen.orientation = ScreenOrientation.Portrait;
 		//AuctionHouse.Open();
 	}
 	
