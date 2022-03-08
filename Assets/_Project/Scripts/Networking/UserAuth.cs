@@ -28,7 +28,16 @@ public class UserAuth : MonoBehaviour
 
     private void Start()
     {
-        _provider = new AmazonCognitoIdentityProviderClient(new Amazon.Runtime.AnonymousAWSCredentials(), Amazon.RegionEndpoint.USWest2);
+        try
+        {
+            _provider = new AmazonCognitoIdentityProviderClient(new Amazon.Runtime.AnonymousAWSCredentials(), Amazon.RegionEndpoint.USWest2);
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Bitszer HelpLink: " + e.HelpLink);
+            Debug.Log("Bitszer Message: " + e.Message);
+            Debug.Log("Bitszer InnerException.Message: " + e.InnerException.Message);
+        }
 
         emailLoginInputField.text = "dhaval3879@gmail.com";
         passwordLoginInputField.text = "sumeru@1234#";
