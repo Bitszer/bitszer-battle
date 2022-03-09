@@ -1,9 +1,12 @@
 <linker>
-    <assembly fullname="AWSSDK.Core" preserve="all" />
-    <assembly fullname="AWSSDK.CognitoIdentity" preserve="all" />
-    <assembly fullname="AWSSDK.CognitoSync" preserve="all" />
-    <assembly fullname="AWSSDK.SecurityToken" preserve="all" />
-    <assembly fullname="AWSSDK.IdentityManagement" preserve="all" />
+	
+	<assembly fullname="AWSSDK.Core" preserve="all">
+		<namespace fullname="Amazon.Util.Internal.PlatformServices" preserve="all"/>
+	</assembly>
+	<assembly fullname="AWSSDK.CognitoIdentity" preserve="all"/>
+	<assembly fullname="AWSSDK.SecurityToken" preserve="all"/>
+	<assembly fullname="AWSSDK.CognitoIdentityProvider" preserve="all"/>
+	<assembly fullname="AWSSDK.Extensions.CognitoAuthentication" preserve="all"/>
     
 	<assembly fullname="mscorlib">
     	<namespace fullname="System.Security.Cryptography" preserve="all"/>

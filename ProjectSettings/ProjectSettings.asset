@@ -250,7 +250,7 @@ PlayerSettings:
   AndroidTargetDevices: 1
   AndroidSplashScreenScale: 2
   androidSplashScreen: {fileID: 2800000, guid: fe3021b4dddbaf746a77e75bc6125a82, type: 3}
-  AndroidKeystoreName: '{inproject}: bitszer.keystore'
+  AndroidKeystoreName: C:/Users/dhava/Downloads/Slack/bitszer.keystore
   AndroidKeyaliasName: bitszer
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
@@ -766,7 +766,8 @@ PlayerSettings:
     Android: 1
     WebPlayer: 0
   il2cppCompilerConfiguration: {}
-  managedStrippingLevel: {}
+  managedStrippingLevel:
+    Android: 1
   incrementalIl2cppBuild: {}
   suppressCommonWarnings: 1
   allowUnsafeCode: 0
@@ -779,7 +780,7 @@ PlayerSettings:
   assemblyVersionValidation: 1
   gcWBarrierValidation: 0
   apiCompatibilityLevelPerPlatform:
-    Android: 3
+    Android: 6
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: BitszerBattleSVN
