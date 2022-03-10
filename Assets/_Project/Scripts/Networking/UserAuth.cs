@@ -21,8 +21,8 @@ public class UserAuth : MonoBehaviour
     public TMP_InputField passwordSignupInputField;
     public TMP_InputField confirmPasswordSignupInputField;
 
-    private string poolId = "us-west-2_wItToCbsB";
-    private string clientId = "553o5tjm99c10p22m6aopmtaat";
+    private const string poolId = "us-west-2_wItToCbsB";
+    private const string clientId = "553o5tjm99c10p22m6aopmtaat";
 
     private AmazonCognitoIdentityProviderClient _provider;
 
@@ -85,7 +85,9 @@ public class UserAuth : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.Log(e.Message);
+            Debug.Log("e.Message: " + e.Message);
+            Debug.Log("e.Source: " + e.Source);
+            Debug.Log("e.StackTrace: " + e.StackTrace);
         }
     }
 
