@@ -273,7 +273,7 @@ public class MainMenu : MonoBehaviour
 	public void GoBackToGameFromAuctionHouse()
     {
 		bitszerScreen.SetActive(false);
-		Screen.orientation = ScreenOrientation.Landscape;
+		Screen.orientation = ScreenOrientation.AutoRotation;
     }
 	
 	public void OpenSettingsScreen()

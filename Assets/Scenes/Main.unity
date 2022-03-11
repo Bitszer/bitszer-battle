@@ -25804,10 +25804,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1738260506}
     m_Modifications:
+    - target: {fileID: 5961883448364595640, guid: 5a5b7ecddbbf0e34c89d9a830c487896,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 964320849}
+    - target: {fileID: 5961883448364595640, guid: 5a5b7ecddbbf0e34c89d9a830c487896,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SignInUser
+      objectReference: {fileID: 0}
+    - target: {fileID: 5961883448472915670, guid: 5a5b7ecddbbf0e34c89d9a830c487896,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1447235753}
+    - target: {fileID: 5961883448472915670, guid: 5a5b7ecddbbf0e34c89d9a830c487896,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenSignupPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 5961883448634967513, guid: 5a5b7ecddbbf0e34c89d9a830c487896,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5961883448743577918, guid: 5a5b7ecddbbf0e34c89d9a830c487896,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1447235753}
+    - target: {fileID: 5961883448743577918, guid: 5a5b7ecddbbf0e34c89d9a830c487896,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenLoginPanel
       objectReference: {fileID: 0}
     - target: {fileID: 5961883448774221520, guid: 5a5b7ecddbbf0e34c89d9a830c487896,
         type: 3}
@@ -25973,6 +26003,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5961883449700276379, guid: 5a5b7ecddbbf0e34c89d9a830c487896,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 964320849}
+    - target: {fileID: 5961883449700276379, guid: 5a5b7ecddbbf0e34c89d9a830c487896,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SignUpUser
       objectReference: {fileID: 0}
     - target: {fileID: 5961883449752386108, guid: 5a5b7ecddbbf0e34c89d9a830c487896,
         type: 3}
@@ -27825,7 +27865,7 @@ Transform:
   m_LocalScale: {x: 1.05469, y: 1.05469, z: 1.05469}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &964891832
 GameObject:
@@ -42429,7 +42469,7 @@ Transform:
   m_LocalScale: {x: 1.05469, y: 1.05469, z: 1.05469}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1448835237
 GameObject:
@@ -55461,7 +55501,7 @@ Transform:
   m_LocalScale: {x: 1.05469, y: 1.05469, z: 1.05469}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1970092295
 GameObject:
