@@ -21,8 +21,8 @@ public class UserAuth : MonoBehaviour
     public TMP_InputField passwordSignupInputField;
     public TMP_InputField confirmPasswordSignupInputField;
 
-    private const string poolId = "us-west-2_wItToCbsB";
-    private const string clientId = "553o5tjm99c10p22m6aopmtaat";
+    private string poolId = "us-west-2_wItToCbsB";
+    private string clientId = "553o5tjm99c10p22m6aopmtaat";
 
     private AmazonCognitoIdentityProviderClient _provider;
 
@@ -33,10 +33,12 @@ public class UserAuth : MonoBehaviour
         emailLoginInputField.text = "dhaval3879@gmail.com";
         passwordLoginInputField.text = "sumeru@1234#";
 
-        if (PlayerPrefs.HasKey("email") && PlayerPrefs.HasKey("password"))
+        if(PlayerPrefs.HasKey("email") && PlayerPrefs.HasKey("password"))
         {
             LoginUser(PlayerPrefs.GetString("email"), PlayerPrefs.GetString("password"));
         }
+        else
+            LoginUser("dhaval3879@gmail.com", "sumeru@1234#");
     }
 
     public void SignUpUser()
@@ -51,19 +53,19 @@ public class UserAuth : MonoBehaviour
 
     private async Task LoginUser(string email, string password)
     {
+        APIManager.Instance.RaycastBlock(true);
+
+        CognitoUserPool userPool = new CognitoUserPool(poolId, clientId, _provider);
+
+        CognitoUser user = new CognitoUser(email, clientId, userPool, _provider);
+
+        InitiateSrpAuthRequest authRequest = new InitiateSrpAuthRequest()
+        {
+            Password = password,
+        };
+
         try
         {
-            DataProvider.Instance.loadingPanel.SetActive(true);
-
-            CognitoUserPool userPool = new CognitoUserPool(poolId, clientId, _provider);
-
-            CognitoUser user = new CognitoUser(email, clientId, userPool, _provider);
-
-            InitiateSrpAuthRequest authRequest = new InitiateSrpAuthRequest()
-            {
-                Password = password,
-            };
-
             AuthFlowResponse authResponse = await user.StartWithSrpAuthAsync(authRequest).ConfigureAwait(false);
 
             GetUserRequest getUserRequest = new GetUserRequest();
@@ -79,15 +81,14 @@ public class UserAuth : MonoBehaviour
                 PlayerPrefs.SetString("password", password);
 
                 DataProvider.Instance.GetMyProfile();
-                DataProvider.Instance.loadingPanel.SetActive(false);
+                APIManager.Instance.RaycastBlock(false);
                 uiManager.OpenTabPanel();
             });
         }
-        catch (Exception e)
+        catch(Exception e)
         {
-            Debug.Log("e.Message: " + e.Message);
-            Debug.Log("e.Source: " + e.Source);
-            Debug.Log("e.StackTrace: " + e.StackTrace);
+            Debug.Log("EXCEPTION" + e);
+            return;
         }
     }
 
@@ -112,23 +113,10 @@ public class UserAuth : MonoBehaviour
             SignUpResponse request = await _provider.SignUpAsync(signUpRequest);
             Debug.Log("Signed up");
         }
-        catch (Exception e)
+        catch(Exception e)
         {
             Debug.Log("Exception" + e);
             return;
         }
     }
-
-//#if UNITY_ANDROID
-//    public void UsedOnlyForAOTCodeGeneration()
-//    {
-//        //Bug reported on github https://github.com/aws/aws-sdk-net/issues/477
-//        //IL2CPP restrictions: https://docs.unity3d.com/Manual/ScriptingRestrictions.html
-//        //Inspired workaround: https://docs.unity3d.com/ScriptReference/AndroidJavaObject.Get.html
-
-//        AndroidJavaObject jo = new AndroidJavaObject("android.os.Message");
-//        int valueString = jo.Get<int>("what");
-//        string stringValue = jo.Get<string>("what");
-//    }
-//#endif
 }

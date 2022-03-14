@@ -3,6 +3,9 @@ using System;
 public static class Events
 {
     public static readonly Evt<Profile> OnProfileReceived = new Evt<Profile>();
+    public static readonly Evt<GetAuction> OnAuctionsReceived = new Evt<GetAuction>();
+    public static readonly Evt<GetInventory> OnInventoryReceived = new Evt<GetInventory>();
+    public static readonly Evt<GetAuctionbyGame> OnAuctionsByGameReceived = new Evt<GetAuctionbyGame>();
 
     public static readonly Evt<ScrollController.SCROLL_PANEL> OnScrolledToBottom = new Evt<ScrollController.SCROLL_PANEL>();
 }

@@ -265,14 +265,13 @@ public class MainMenu : MonoBehaviour
 		SoundManager.Instance.PlayOneShot(SoundManager.SoundState.Click, 1);
 		PushInScreen(bitszerScreen);
         Screen.orientation = ScreenOrientation.Portrait;
-        //SceneManager.LoadScene(1);
-        //AuctionHouse.Open();
     }
 
 	// Assigned to "Return to Game" Button
 	public void GoBackToGameFromAuctionHouse()
     {
 		bitszerScreen.SetActive(false);
+		Screen.orientation = ScreenOrientation.LandscapeLeft;
 		Screen.orientation = ScreenOrientation.AutoRotation;
     }
 	
