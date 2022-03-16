@@ -24,28 +24,31 @@ public class DataProvider : Singleton<DataProvider>
         return data;
     }
 
-    public async void GetMyProfile()
+    public async Task<Profile> GetMyProfile()
     {
         APIManager.Instance.RaycastBlock(true);
 
-        var www = await graphApi.Post("getMyProfile", GraphApi.Query.Type.Query);
+        GraphApi.Query getProfileQuery = graphApi.GetQueryByName("getMyProfile", GraphApi.Query.Type.Query);
 
-        while (!www.isDone)
-            return;
-
+        var www = await graphApi.Post(getProfileQuery);
         var data = JsonConvert.DeserializeObject<Profile>(www.downloadHandler.text);
 
         if (data != null)
             Events.OnProfileReceived.Invoke(data);
+
+        return data;
     }
 
-    public async void GetProfile(string screenName)
+    public async Task<Profile> GetProfile(string screenName)
     {
         GraphApi.Query getProfileQuery = graphApi.GetQueryByName("getProfile", GraphApi.Query.Type.Query);
 
         getProfileQuery.SetArgs(new { screenName, });
 
-        await graphApi.Post(getProfileQuery);
+        var www = await graphApi.Post(getProfileQuery);
+        var data = JsonConvert.DeserializeObject<Profile>(www.downloadHandler.text);
+
+        return data;
     }
 
     public async Task<GetAuction> GetAuctions(string itemName, int limit, string nextToken)
@@ -84,7 +87,7 @@ public class DataProvider : Singleton<DataProvider>
         return data;
     }
 
-    public async void GetMyInventoryByGame(int limit, string nextToken)
+    public async Task<GetMyInventoryByGame> GetMyInventoryByGame(int limit, string nextToken)
     {
         GraphApi.Query getMyInventorybyGameQuery = graphApi.GetQueryByName("getMyInventorybyGame", GraphApi.Query.Type.Query);
 
@@ -93,7 +96,13 @@ public class DataProvider : Singleton<DataProvider>
         else
             getMyInventorybyGameQuery.SetArgs(new { limit, nextToken, configuration.gameId, });
 
-        await graphApi.Post(getMyInventorybyGameQuery);
+        var www = await graphApi.Post(getMyInventorybyGameQuery);
+        var data = JsonConvert.DeserializeObject<GetMyInventoryByGame>(www.downloadHandler.text);
+
+        if (data != null)
+            Events.OnMyInventoryByGameReceived.Invoke(data);
+
+        return data;
     }
 
     public async Task<GetAuctionbyGame> GetAuctionsByGame(int limit, string nextToken)
@@ -114,7 +123,7 @@ public class DataProvider : Singleton<DataProvider>
         return data;
     }
 
-    public async void GetGameItemsByGame(int limit, string nextToken)
+    public async Task<GetGameItembyGame> GetGameItemsByGame(int limit, string nextToken)
     {
         GraphApi.Query getGameItemsbyGameQuery = graphApi.GetQueryByName("getGameItemsbyGame", GraphApi.Query.Type.Query);
 
@@ -123,7 +132,13 @@ public class DataProvider : Singleton<DataProvider>
         else
             getGameItemsbyGameQuery.SetArgs(new { configuration.gameId, limit, nextToken, });
 
-        await graphApi.Post(getGameItemsbyGameQuery);
+        var www = await graphApi.Post(getGameItemsbyGameQuery);
+        var data = JsonConvert.DeserializeObject<GetGameItembyGame>(www.downloadHandler.text);
+
+        if (data != null)
+            Events.OnGameItemByGameReceived.Invoke(data);
+
+        return data;
     }
     #endregion
 

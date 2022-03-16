@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 
 public enum ErrorType : byte
 {
-    InternetError, ServerError, 
+    InternetError, ServerError,
 }
 
 public class APIManager : Singleton<APIManager>
@@ -81,5 +81,16 @@ public class APIManager : Singleton<APIManager>
             if (x)
                 RaycastBlock(false);
         }));
+    }
+
+    public IEnumerator GetImageFromUrl(string url, Action<Texture> texture)
+    {
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.ConnectionError)
+            Debug.Log(request.error);
+        else
+            texture(((DownloadHandlerTexture)request.downloadHandler).texture);
     }
 }
