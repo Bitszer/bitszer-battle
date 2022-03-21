@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class ItemDescPopup : MonoBehaviour
+namespace Bitszer
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ItemDescPopup : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public TMP_Text descriptionText;
     }
 }

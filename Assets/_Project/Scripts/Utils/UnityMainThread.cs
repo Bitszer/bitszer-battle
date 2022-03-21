@@ -2,24 +2,27 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 
-internal class UnityMainThread : MonoBehaviour
+namespace Bitszer
 {
-    internal static UnityMainThread wkr;
-    Queue<Action> jobs = new Queue<Action>();
-
-    void Awake()
+    internal class UnityMainThread : MonoBehaviour
     {
-        wkr = this;
-    }
+        internal static UnityMainThread wkr;
+        Queue<Action> jobs = new Queue<Action>();
 
-    void Update()
-    {
-        while (jobs.Count > 0)
-            jobs.Dequeue().Invoke();
-    }
+        void Awake()
+        {
+            wkr = this;
+        }
 
-    internal void AddJob(Action newJob)
-    {
-        jobs.Enqueue(newJob);
+        void Update()
+        {
+            while (jobs.Count > 0)
+                jobs.Dequeue().Invoke();
+        }
+
+        internal void AddJob(Action newJob)
+        {
+            jobs.Enqueue(newJob);
+        }
     }
 }

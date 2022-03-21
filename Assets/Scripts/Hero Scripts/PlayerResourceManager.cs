@@ -1,10 +1,11 @@
 ﻿using System;
+using Bitszer;
 using UnityEngine;
 using Utility.Logging;
 
 public class PlayerResourceManager : MonoBehaviour
 {
-    private readonly ILog _log = LogManager.GetLogger<PlayerResourceManager>().Disable();
+    private readonly ILog _log = LogManager.GetLogger<PlayerResourceManager>().Enable();
 
     [Header("Dependencies")]
     [SerializeField] private GameManager               gameManager = null;
@@ -78,7 +79,31 @@ public class PlayerResourceManager : MonoBehaviour
     {
         var playerResources = new HeroResources();
 
-        if (Debug.isDebugBuild)
+        StartCoroutine(AuctionHouse.Instance.GetMyInventoryByGame(10, "", result =>
+        {
+            playerResources.wood.StickId = result.data.getMyInventorybyGame.inventory[0].gameItem.itemId;
+            playerResources.wood.Stick = result.data.getMyInventorybyGame.inventory[0].ItemCount;
+            playerResources.wood.Lumber = 10000;
+            playerResources.wood.Ironwood = 10000;
+            playerResources.wood.Bloodwood = 10000;
+
+            playerResources.ore.Copper = 10000;
+            playerResources.ore.Silver = 10000;
+            playerResources.ore.Gold = 10000;
+            playerResources.ore.Platinum = 10000;
+
+            playerResources.food.Wheat = 10000;
+            playerResources.food.Corn = 10000;
+            playerResources.food.Rice = 10000;
+            playerResources.food.Potatoes = 10000;
+
+            playerResources.herbs.Sage = 10000;
+            playerResources.herbs.Rosemary = 10000;
+            playerResources.herbs.Chamomile = 10000;
+            playerResources.herbs.Valerian = 10000;
+        }));
+
+        /*if (Debug.isDebugBuild)
         {
             playerResources.wood.Stick = 10000;
             playerResources.wood.Lumber = 10000;
@@ -99,7 +124,7 @@ public class PlayerResourceManager : MonoBehaviour
             playerResources.herbs.Rosemary = 10000;
             playerResources.herbs.Chamomile = 10000;
             playerResources.herbs.Valerian = 10000;
-        }
+        }*/
 
         return playerResources;
     }
@@ -116,6 +141,17 @@ public class PlayerResourceManager : MonoBehaviour
 
         // Saving to game storage.
         SavePlayerResourcesToPlayerPrefs(PlayerResources);
+
+        InventoryDelta[] inventories =
+        {
+            new InventoryDelta 
+            { 
+                itemId = PlayerResources.wood.StickId,
+                itemCount = PlayerResources.wood.Stick,
+            },
+        };
+
+        StartCoroutine(AuctionHouse.Instance.PushInventory(inventories, result => { }));
         
         OnPlayerResourcesChanged?.Invoke();
     }

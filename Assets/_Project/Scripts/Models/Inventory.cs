@@ -1,6 +1,9 @@
-public class Inventory
+namespace Bitszer
 {
-    public int ItemCount { get; set; }
-    public string username { get; set; }
-    public GameItem gameItem { get; set; }
+    public class Inventory
+    {
+        public int ItemCount { get; set; }
+        public string username { get; set; }
+        public GameItem gameItem { get; set; }
+    }
 }

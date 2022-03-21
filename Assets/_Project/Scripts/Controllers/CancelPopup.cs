@@ -2,12 +2,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CancelPopup : MonoBehaviour
+namespace Bitszer
 {
-    public TMP_Text titleText;
-    public RawImage itemImage;
-    public TMP_Text qtyText;
-    public TMP_Text itemNameText;
-    public TMP_Text expirationText;
-    public Button cancelAuctionButton;
+    public class CancelPopup : MonoBehaviour
+    {
+        public TMP_Text titleText;
+        public RawImage itemImage;
+        public TMP_Text qtyText;
+        public TMP_Text itemNameText;
+        public TMP_Text expirationText;
+        public Button cancelAuctionButton;
+    }
 }

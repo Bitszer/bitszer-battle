@@ -5,92 +5,95 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Networking;
 
-public enum ErrorType : byte
+namespace Bitszer
 {
-    InternetError, ServerError,
-}
-
-public class APIManager : Singleton<APIManager>
-{
-    public Button okayButton;
-    public TMP_Text errorText;
-
-    public GameObject errorDialog;
-    public GameObject raycastBlocker;
-
-    public ErrorType type;
-
-    public override void Awake()
+    public enum ErrorType : byte
     {
-        base.Awake();
-
-        okayButton.onClick.AddListener(() => OkayButton());
+        InternetError, ServerError,
     }
 
-    private void OkayButton()
+    public class APIManager : Singleton<APIManager>
     {
-        errorDialog.SetActive(true);
+        public Button okayButton;
+        public TMP_Text errorText;
 
-        switch (type)
+        public GameObject errorDialog;
+        public GameObject raycastBlocker;
+
+        public ErrorType type;
+
+        public override void Awake()
         {
-            case ErrorType.InternetError:
-                CheckConnection();
-                break;
-            case ErrorType.ServerError:
-                errorDialog.SetActive(false);
-                break;
-            default:
-                errorDialog.SetActive(false);
-                break;
+            base.Awake();
+
+            okayButton.onClick.AddListener(() => OkayButton());
         }
-    }
 
-    public void SetError(string errorMessage, string buttonText, ErrorType errorType)
-    {
-        this.errorText.text = errorMessage;
-        okayButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonText;
-        type = errorType;
-        errorDialog.SetActive(true);
-    }
-
-    public void RaycastBlock(bool setActive)
-    {
-        raycastBlocker.SetActive(setActive);
-    }
-
-    public IEnumerator CheckInternet(Action<bool> action)
-    {
-        RaycastBlock(true);
-        UnityWebRequest www = UnityWebRequest.Get("https://www.google.com/");
-        yield return www.SendWebRequest();
-
-        if (www.error != null)
+        private void OkayButton()
         {
-            action(false);
-            SetError("Internet connection is required.", "Try Again", ErrorType.InternetError);
-            RaycastBlock(false);
+            errorDialog.SetActive(true);
+
+            switch (type)
+            {
+                case ErrorType.InternetError:
+                    CheckConnection();
+                    break;
+                case ErrorType.ServerError:
+                    errorDialog.SetActive(false);
+                    break;
+                default:
+                    errorDialog.SetActive(false);
+                    break;
+            }
         }
-        else
-            action(true);
-    }
 
-    private void CheckConnection()
-    {
-        StartCoroutine(CheckInternet(x =>
+        public void SetError(string errorMessage, string buttonText, ErrorType errorType)
         {
-            if (x)
+            this.errorText.text = errorMessage;
+            okayButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonText;
+            type = errorType;
+            errorDialog.SetActive(true);
+        }
+
+        public void RaycastBlock(bool setActive)
+        {
+            raycastBlocker.SetActive(setActive);
+        }
+
+        public IEnumerator CheckInternet(Action<bool> action)
+        {
+            RaycastBlock(true);
+            UnityWebRequest www = UnityWebRequest.Get("https://www.google.com/");
+            yield return www.SendWebRequest();
+
+            if (www.error != null)
+            {
+                action(false);
+                SetError("Internet connection is required.", "Try Again", ErrorType.InternetError);
                 RaycastBlock(false);
-        }));
-    }
+            }
+            else
+                action(true);
+        }
 
-    public IEnumerator GetImageFromUrl(string url, Action<Texture> texture)
-    {
-        UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
-        yield return request.SendWebRequest();
+        private void CheckConnection()
+        {
+            StartCoroutine(CheckInternet(x =>
+            {
+                if (x)
+                    RaycastBlock(false);
+            }));
+        }
 
-        if (request.result == UnityWebRequest.Result.ConnectionError)
-            Debug.Log(request.error);
-        else
-            texture(((DownloadHandlerTexture)request.downloadHandler).texture);
+        public IEnumerator GetImageFromUrl(string url, Action<Texture> texture)
+        {
+            UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.ConnectionError)
+                Debug.Log(request.error);
+            else
+                texture(((DownloadHandlerTexture)request.downloadHandler).texture);
+        }
     }
 }

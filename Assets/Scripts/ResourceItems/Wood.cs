@@ -8,6 +8,8 @@ public class Wood
 	public int Lumber;
 	public int Ironwood;
 	public int Bloodwood;
+
+	public string StickId;
 	
 	public Wood()
 	{

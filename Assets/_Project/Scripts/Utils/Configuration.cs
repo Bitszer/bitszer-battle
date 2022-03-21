@@ -1,7 +1,10 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Configuration", menuName = "GraphQlClient/Configuration")]
-public class Configuration : ScriptableObject
+namespace Bitszer
 {
-    public string gameId;
+    [CreateAssetMenu(fileName = "Configuration", menuName = "GraphQlClient/Configuration")]
+    public class Configuration : ScriptableObject
+    {
+        public string gameId;
+    }
 }

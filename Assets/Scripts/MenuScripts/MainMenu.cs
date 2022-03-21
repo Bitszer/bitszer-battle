@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Bitszer;
+using UnityEngine;
 using UnityEngine.UI;
 using Utility.Logging;
 using System.Collections.Generic;
@@ -262,15 +263,15 @@ public class MainMenu : MonoBehaviour
 	// It sends the updated Resources of the Plyaer to Auction House.
 	public void GoToAuctionHouseMainMenu()
 	{
+		AuctionHouse.Instance.Open();
 		SoundManager.Instance.PlayOneShot(SoundManager.SoundState.Click, 1);
-		PushInScreen(bitszerScreen);
         Screen.orientation = ScreenOrientation.Portrait;
     }
 
 	// Assigned to "Return to Game" Button
 	public void GoBackToGameFromAuctionHouse()
     {
-		bitszerScreen.SetActive(false);
+		AuctionHouse.Instance.Close();
 		Screen.orientation = ScreenOrientation.LandscapeLeft;
 		Screen.orientation = ScreenOrientation.AutoRotation;
     }

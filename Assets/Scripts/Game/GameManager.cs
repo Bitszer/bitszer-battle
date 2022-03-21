@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Utility.Logging;
 using System.Collections;
+using Bitszer;
 
 public sealed class GameManager : MonoBehaviour
 {
@@ -37,7 +38,17 @@ public sealed class GameManager : MonoBehaviour
         ShowLoading();
         Load();
     }
-    
+
+    private void OnEnable()
+    {
+        Events.OnAuctionHouseInitialized.AddListener(OnAuctionHouseInitialized);
+    }
+
+    private void OnDisable()
+    {
+        Events.OnAuctionHouseInitialized.RemoveListener(OnAuctionHouseInitialized);
+    }
+
     /*
      * Initialization.
      */
@@ -58,7 +69,7 @@ public sealed class GameManager : MonoBehaviour
         _log.Debug("Loading...");
         _log.Debug("Initializing AuctionHouse...");
 
-        OnAuctionHouseInitialized();
+        //OnAuctionHouseInitialized();
     }
     
     private void OnAuctionHouseInitialized()

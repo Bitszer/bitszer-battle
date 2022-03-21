@@ -1,15 +1,18 @@
 using UnityEngine;
 
-public class LoadingSpinner : MonoBehaviour
+namespace Bitszer
 {
-    public float speed = .05f;
-
-    private void Update()
+    public class LoadingSpinner : MonoBehaviour
     {
-        Quaternion rotation = Quaternion.AngleAxis(180, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed);
+        public float speed = .05f;
 
-        if (Quaternion.Angle(transform.rotation, rotation) < 1)
-            transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+        private void Update()
+        {
+            Quaternion rotation = Quaternion.AngleAxis(180, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed);
+
+            if (Quaternion.Angle(transform.rotation, rotation) < 1)
+                transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+        }
     }
 }
