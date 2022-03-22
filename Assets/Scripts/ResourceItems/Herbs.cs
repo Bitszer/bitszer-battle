@@ -9,6 +9,11 @@ public class Herbs
 	public int Chamomile;
 	public int Valerian;
 
+	public string SageId;
+	public string RosemaryId;
+	public string ChamomileId;
+	public string ValerianId;
+
 	public Herbs()
 	{
 		Sage = 0;

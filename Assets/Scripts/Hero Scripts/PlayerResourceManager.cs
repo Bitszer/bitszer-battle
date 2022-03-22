@@ -79,52 +79,77 @@ public class PlayerResourceManager : MonoBehaviour
     {
         var playerResources = new HeroResources();
 
-        StartCoroutine(AuctionHouse.Instance.GetMyInventoryByGame(10, "", result =>
+        playerResources.wood.StickId = "01FYCYA8JNWBCPZNSYJPGDXGDT";
+        playerResources.wood.LumberId = "01FYCYATHWBDCJ06V4ZR4RY92K";
+        playerResources.wood.IronwoodId = "01FYCYBP1Z7NF1MD3429JHJWCS";
+        playerResources.wood.BloodwoodId = "01FYCYCM0SCD0PE4XW3P545CJY";
+
+        playerResources.ore.CopperId = "01FYPKX6SXPEDH3MYQVTFQBZGJ";
+        playerResources.ore.SilverId = "01FYPM6AS1RTWR9GE1693QG16F";
+        playerResources.ore.GoldId = "01FYR28026P8SECR96893NG965";
+        playerResources.ore.PlatinumId = "01FYR28Z9EC96FQRN7YS9EZTSS";
+
+        playerResources.food.WheatId = "01FYR29K5JDVQRE0P141EGPXS2";
+        playerResources.food.CornId = "01FYR2A453HX5R8661KD6NK3JP";
+        playerResources.food.RiceId = "01FYR29WEEGJBC8BPXKHRQYW7C";
+        playerResources.food.PotatoesId = "01FYR2AFGD2A670MZDT9JQZV82";
+
+        playerResources.herbs.SageId = "01FYR2AYNV0YNF0F7KKPT9X8CQ";
+        playerResources.herbs.RosemaryId = "01FYR2BHWNJBMJZVKQ6ABGHVPW";
+        playerResources.herbs.ChamomileId = "01FYR2CCG7BF8E8BVHHJTKN2PT";
+        playerResources.herbs.ValerianId = "01FYR2D3VV2Y4N6V423A9V84NE";
+
+        StartCoroutine(AuctionHouse.Instance.GetMyInventoryByGame(20, "", result =>
         {
-            playerResources.wood.StickId = result.data.getMyInventorybyGame.inventory[0].gameItem.itemId;
-            playerResources.wood.Stick = result.data.getMyInventorybyGame.inventory[0].ItemCount;
-            playerResources.wood.Lumber = 10000;
-            playerResources.wood.Ironwood = 10000;
-            playerResources.wood.Bloodwood = 10000;
+            if (result.data.getMyInventorybyGame.inventory.Count != 0)
+            {
+                foreach (var item in result.data.getMyInventorybyGame.inventory)
+                {
+                    var data = item.gameItem.itemName switch
+                    {
+                        "Stick" => playerResources.wood.Stick = item.ItemCount,
+                        "Lumber" => playerResources.wood.Lumber = item.ItemCount,
+                        "Ironwood" => playerResources.wood.Ironwood = item.ItemCount,
+                        "Bloodwood" => playerResources.wood.Bloodwood = item.ItemCount,
+                        "Copper" => playerResources.ore.Copper = item.ItemCount,
+                        "Silver" => playerResources.ore.Silver = item.ItemCount,
+                        "Gold" => playerResources.ore.Gold = item.ItemCount,
+                        "Platinum" => playerResources.ore.Platinum = item.ItemCount,
+                        "Wheat" => playerResources.food.Wheat = item.ItemCount,
+                        "Corn" => playerResources.food.Corn = item.ItemCount,
+                        "Rice" => playerResources.food.Rice = item.ItemCount,
+                        "Potatoes" => playerResources.food.Potatoes = item.ItemCount,
+                        "Sage" => playerResources.herbs.Sage = item.ItemCount,
+                        "Rosemary" => playerResources.herbs.Rosemary = item.ItemCount,
+                        "Chamomile" => playerResources.herbs.Chamomile = item.ItemCount,
+                        "Valerian" => playerResources.herbs.Valerian = item.ItemCount,
+                        _ => 0,
+                    };
+                }
+            }
+            else
+            {
+                playerResources.wood.Stick = 100;
+                playerResources.wood.Lumber = 100;
+                playerResources.wood.Ironwood = 100;
+                playerResources.wood.Bloodwood = 100;
 
-            playerResources.ore.Copper = 10000;
-            playerResources.ore.Silver = 10000;
-            playerResources.ore.Gold = 10000;
-            playerResources.ore.Platinum = 10000;
+                playerResources.ore.Copper = 100;
+                playerResources.ore.Silver = 100;
+                playerResources.ore.Gold = 100;
+                playerResources.ore.Platinum = 100;
 
-            playerResources.food.Wheat = 10000;
-            playerResources.food.Corn = 10000;
-            playerResources.food.Rice = 10000;
-            playerResources.food.Potatoes = 10000;
+                playerResources.food.Wheat = 100;
+                playerResources.food.Corn = 100;
+                playerResources.food.Rice = 100;
+                playerResources.food.Potatoes = 100;
 
-            playerResources.herbs.Sage = 10000;
-            playerResources.herbs.Rosemary = 10000;
-            playerResources.herbs.Chamomile = 10000;
-            playerResources.herbs.Valerian = 10000;
+                playerResources.herbs.Sage = 100;
+                playerResources.herbs.Rosemary = 100;
+                playerResources.herbs.Chamomile = 100;
+                playerResources.herbs.Valerian = 100;
+            }
         }));
-
-        /*if (Debug.isDebugBuild)
-        {
-            playerResources.wood.Stick = 10000;
-            playerResources.wood.Lumber = 10000;
-            playerResources.wood.Ironwood = 10000;
-            playerResources.wood.Bloodwood = 10000;
-
-            playerResources.ore.Copper = 10000;
-            playerResources.ore.Silver = 10000;
-            playerResources.ore.Gold = 10000;
-            playerResources.ore.Platinum = 10000;
-
-            playerResources.food.Wheat = 10000;
-            playerResources.food.Corn = 10000;
-            playerResources.food.Rice = 10000;
-            playerResources.food.Potatoes = 10000;
-
-            playerResources.herbs.Sage = 10000;
-            playerResources.herbs.Rosemary = 10000;
-            playerResources.herbs.Chamomile = 10000;
-            playerResources.herbs.Valerian = 10000;
-        }*/
 
         return playerResources;
     }
@@ -142,12 +167,87 @@ public class PlayerResourceManager : MonoBehaviour
         // Saving to game storage.
         SavePlayerResourcesToPlayerPrefs(PlayerResources);
 
-        InventoryDelta[] inventories =
+        InventoryDelta[] inventories = new InventoryDelta[]
         {
             new InventoryDelta 
             { 
                 itemId = PlayerResources.wood.StickId,
                 itemCount = PlayerResources.wood.Stick,
+            },
+            new InventoryDelta
+            {
+                itemId = PlayerResources.wood.LumberId,
+                itemCount = PlayerResources.wood.Lumber,
+            },
+            new InventoryDelta
+            {
+                itemId = PlayerResources.wood.IronwoodId,
+                itemCount = PlayerResources.wood.Ironwood,
+            },
+            new InventoryDelta
+            {
+                itemId = PlayerResources.wood.BloodwoodId,
+                itemCount = PlayerResources.wood.Bloodwood,
+            },
+            new InventoryDelta
+            {
+                itemId = PlayerResources.ore.CopperId,
+                itemCount = PlayerResources.ore.Copper,
+            },
+            new InventoryDelta
+            {
+                itemId = PlayerResources.ore.SilverId,
+                itemCount = PlayerResources.ore.Silver,
+            },
+            new InventoryDelta
+            {
+                itemId = PlayerResources.ore.GoldId,
+                itemCount = PlayerResources.ore.Gold,
+            },
+            new InventoryDelta
+            {
+                itemId = PlayerResources.ore.PlatinumId,
+                itemCount = PlayerResources.ore.Platinum,
+            },
+            new InventoryDelta
+            {
+                itemId = PlayerResources.food.WheatId,
+                itemCount = PlayerResources.food.Wheat,
+            },
+            new InventoryDelta
+            {
+                itemId = PlayerResources.food.CornId,
+                itemCount = PlayerResources.food.Corn,
+            },
+            new InventoryDelta
+            {
+                itemId = PlayerResources.food.RiceId,
+                itemCount = PlayerResources.food.Rice,
+            },
+            new InventoryDelta
+            {
+                itemId = PlayerResources.food.PotatoesId,
+                itemCount = PlayerResources.food.Potatoes,
+            },
+            new InventoryDelta
+            {
+                itemId = PlayerResources.herbs.SageId,
+                itemCount = PlayerResources.herbs.Sage,
+            },
+            new InventoryDelta
+            {
+                itemId = PlayerResources.herbs.RosemaryId,
+                itemCount = PlayerResources.herbs.Rosemary,
+            },
+            new InventoryDelta
+            {
+                itemId = PlayerResources.herbs.ChamomileId,
+                itemCount = PlayerResources.herbs.Chamomile,
+            },
+            new InventoryDelta
+            {
+                itemId = PlayerResources.herbs.ValerianId,
+                itemCount = PlayerResources.herbs.Valerian,
             },
         };
 

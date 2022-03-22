@@ -10,6 +10,9 @@ public class Wood
 	public int Bloodwood;
 
 	public string StickId;
+	public string LumberId;
+	public string IronwoodId;
+	public string BloodwoodId;
 	
 	public Wood()
 	{

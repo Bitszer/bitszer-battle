@@ -9,6 +9,11 @@ public class Food
 	public int Corn;
 	public int Potatoes;
 
+	public string WheatId;
+	public string RiceId;
+	public string CornId;
+	public string PotatoesId;
+
 	public Food()
 	{
 		Wheat = 0;

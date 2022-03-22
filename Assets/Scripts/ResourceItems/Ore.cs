@@ -9,6 +9,11 @@ public class Ore
 	public int Gold;
 	public int Platinum;
 
+	public string CopperId;
+	public string SilverId;
+	public string GoldId;
+	public string PlatinumId;
+
 	public Ore()
 	{
 		Copper = 0;
