@@ -303,6 +303,12 @@ namespace Bitszer
 
                 buyoutPopupData.confirmButton.onClick.AddListener(() =>
                 {
+                    if (float.Parse(buyoutPopupData.priceText.text) > _profile.data.getMyProfile.balance)
+                    {
+                        APIManager.Instance.SetError("Not sufficient balance.", "Okay", ErrorType.CustomMessage);
+                        return;
+                    }
+
                     APIManager.Instance.RaycastBlock(true);
 
                     StartCoroutine(AuctionHouse.Instance.Buyout(item.id, result =>
@@ -332,10 +338,25 @@ namespace Bitszer
 
                 bidPopupData.confirmButton.onClick.AddListener(() =>
                 {
+                    if (string.IsNullOrEmpty(bidPopupData.totalBidInputField.text))
+                        return;
+
+                    if (float.Parse(bidPopupData.totalBidInputField.text) > _profile.data.getMyProfile.balance)
+                    {
+                        APIManager.Instance.SetError("Not sufficient balance.", "Okay", ErrorType.CustomMessage);
+                        return;
+                    }
+
                     APIManager.Instance.RaycastBlock(true);
 
                     StartCoroutine(AuctionHouse.Instance.Bid(item.id, float.Parse(bidPopupData.totalBidInputField.text), result =>
                     {
+                        if (result.data == null)
+                        {
+                            APIManager.Instance.RaycastBlock(false);
+                            return;
+                        }
+
                         if (result.data.bid)
                         {
                             getAuction.data.getAuctions.auctions.Remove(item);
@@ -419,6 +440,17 @@ namespace Bitszer
 
                     sellItemPanelData.confirmButton.onClick.AddListener(() =>
                     {
+                        if (float.Parse(sellItemPanelData.buyoutItemValueInputField.text) <= 0)
+                            return;
+                        if (float.Parse(sellItemPanelData.startingBidItemValueInputField.text) <= 0)
+                            return;
+
+                        if (float.Parse(sellItemPanelData.itemsSoldValueInputField.text) > float.Parse(sellItemPanelData.totalItemsValueText.text))
+                        {
+                            APIManager.Instance.SetError("You can't sell more than Total Items.", "Okay", ErrorType.CustomMessage);
+                            return;
+                        }
+
                         APIManager.Instance.RaycastBlock(true);
 
                         AuctionInput newAuction = new AuctionInput();
@@ -459,7 +491,10 @@ namespace Bitszer
 
                     sellItemPanelData.resetAllButton.onClick.AddListener(() =>
                     {
-
+                        sellItemPanelData.itemsSoldValueInputField.text = sellItem.availableText.text;
+                        sellItemPanelData.buyoutItemValueInputField.text = "0.0";
+                        sellItemPanelData.startingBidItemValueInputField.text = "0.0";
+                        sellItemPanelData.sellDurationDropdown.value = 0;
                     });
                 });
             }

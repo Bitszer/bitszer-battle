@@ -223,11 +223,11 @@ namespace Bitszer
             result(data);
         }
 
-        public IEnumerator UpdateInventory(string itemId, int itemCount, Action<UpdateInventory> result)
+        public IEnumerator UpdateInventory(string itemId, int count, Action<UpdateInventory> result)
         {
             GraphApi.Query updateInventoryMutation = graphApi.GetQueryByName("updateInventory", GraphApi.Query.Type.Mutation);
 
-            updateInventoryMutation.SetArgs(new { configuration.gameId, itemId, itemCount });
+            updateInventoryMutation.SetArgs(new { configuration.gameId, itemId, count });
 
             var www = graphApi.Post(updateInventoryMutation);
             yield return new WaitUntil(() => www.IsCompleted);

@@ -9,7 +9,7 @@ namespace Bitszer
 {
     public enum ErrorType : byte
     {
-        InternetError, ServerError,
+        InternetError, ServerError, CustomMessage,
     }
 
     public class APIManager : Singleton<APIManager>
@@ -39,6 +39,9 @@ namespace Bitszer
                     CheckConnection();
                     break;
                 case ErrorType.ServerError:
+                    errorDialog.SetActive(false);
+                    break;
+                case ErrorType.CustomMessage:
                     errorDialog.SetActive(false);
                     break;
                 default:
