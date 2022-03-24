@@ -15780,6 +15780,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: BitszerCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8685842559654430569, guid: 016d349c26554574bbeda114674d80cc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1939633272}
+    - target: {fileID: 8685842559654430569, guid: 016d349c26554574bbeda114674d80cc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoBackToGameFromAuctionHouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685842559654430569, guid: 016d349c26554574bbeda114674d80cc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 016d349c26554574bbeda114674d80cc, type: 3}
 --- !u!1 &585476084 stripped

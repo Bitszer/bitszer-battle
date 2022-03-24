@@ -31,6 +31,8 @@ public sealed class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Application.targetFrameRate = 120;
+
         if (battleEnvironmentsManager == null)
             _log.Error("BattleEnvironmentsManager dependency not set.");
 
@@ -68,13 +70,14 @@ public sealed class GameManager : MonoBehaviour
     {
         _log.Debug("Loading...");
         _log.Debug("Initializing AuctionHouse...");
-
-        //OnAuctionHouseInitialized();
     }
     
     private void OnAuctionHouseInitialized()
     {
         _log.Debug("AuctionHouse initialized.");
+
+        AuctionHouse.Instance.Close();
+        Screen.orientation = ScreenOrientation.Landscape;
         
         _log.Debug("Level progression loading...");
         levelProgression.LoadLevelProgression(() =>

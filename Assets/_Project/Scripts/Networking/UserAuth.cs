@@ -32,15 +32,13 @@ namespace Bitszer
         {
             _provider = new AmazonCognitoIdentityProviderClient(new Amazon.Runtime.AnonymousAWSCredentials(), Amazon.RegionEndpoint.USWest2);
 
-            emailLoginInputField.text = "dhaval3879@gmail.com";
-            passwordLoginInputField.text = "sumeru@1234#";
-
             if (PlayerPrefs.HasKey("email") && PlayerPrefs.HasKey("password"))
             {
+                Screen.orientation = ScreenOrientation.Landscape;
+                uiManager.loginPanel.SetActive(false);
+                AuctionHouse.Instance.Close();
                 LoginUser(PlayerPrefs.GetString("email"), PlayerPrefs.GetString("password"));
             }
-            else
-                LoginUser(emailLoginInputField.text, passwordLoginInputField.text);
         }
 
         public void SignUpUser()

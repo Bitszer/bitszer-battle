@@ -46,26 +46,38 @@ namespace Bitszer
 
         private void Start()
         {
+            itemsSoldValueInputField.onValueChanged.AddListener(value =>
+            {
+                if (int.Parse(value) > int.Parse(totalItemsValueText.text))
+                {
+                    itemsSoldValueInputField.text = totalItemsValueText.text;
+                    return;
+                }
+
+                totalBuyoutValueText.text = (int.Parse(value) * int.Parse(buyoutItemValueInputField.text)).ToString();
+                totalBidValueText.text = (int.Parse(value) * int.Parse(startingBidItemValueInputField.text)).ToString();
+            });
+
             buyoutItemValueInputField.onValueChanged.AddListener(value =>
             {
                 if (value.Length <= 0)
                 {
-                    totalBuyoutValueText.text = "0.0";
+                    totalBuyoutValueText.text = "0";
                     return;
                 }
 
-                totalBuyoutValueText.text = value;
+                totalBuyoutValueText.text = (int.Parse(value) * int.Parse(itemsSoldValueInputField.text)).ToString();
             });
 
             startingBidItemValueInputField.onValueChanged.AddListener(value =>
             {
                 if (value.Length <= 0)
                 {
-                    totalBidValueText.text = "0.0";
+                    totalBidValueText.text = "0";
                     return;
                 }
 
-                totalBidValueText.text = value;
+                totalBidValueText.text = (int.Parse(value) * int.Parse(itemsSoldValueInputField.text)).ToString();
             });
         }
 

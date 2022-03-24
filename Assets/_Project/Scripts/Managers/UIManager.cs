@@ -7,6 +7,7 @@ namespace Bitszer
 {
     public class UIManager : MonoBehaviour
     {
+        #region Variables
         [Header("UI")]
         public TMPro.TMP_Text titleText;
         public TMPro.TMP_Text usernameText;
@@ -52,6 +53,7 @@ namespace Bitszer
         private Profile _profile;
 
         private string _nextToken = null;
+        #endregion
 
         #region Unity Methods
         private void OnEnable()
@@ -107,7 +109,7 @@ namespace Bitszer
                 GetSellData(10, _nextToken);
 
             if (!string.IsNullOrEmpty(_nextToken) && scrollPanel.Equals(ScrollController.SCROLL_PANEL.MY_AUCTIONS))
-                GetAuctionsByGameData(10, _nextToken);
+                GetMyAuctionsData(10, _nextToken);
 
             if (!string.IsNullOrEmpty(_nextToken) && scrollPanel.Equals(ScrollController.SCROLL_PANEL.SIMILAR_ITEMS))
                 GetBuyData("", 10, _nextToken);
@@ -162,7 +164,7 @@ namespace Bitszer
                 buyItemParent.Clear();
                 sellItemParent.Clear();
 
-                GetAuctionsByGameData(3, null);
+                GetMyAuctionsData(10, null);
 
                 titleText.text = "My Auctions";
             }
@@ -199,16 +201,16 @@ namespace Bitszer
             }));
         }
 
-        public void GetAuctionsByGameData(int limit, string nextToken)
+        public void GetMyAuctionsData(int limit, string nextToken)
         {
             AuctionHouse dataProvider = AuctionHouse.Instance;
             APIManager.Instance.RaycastBlock(true);
 
             _myAuctionsLength = 0;
 
-            StartCoroutine(dataProvider.GetAuctionsByGame(limit, nextToken, result =>
+            StartCoroutine(dataProvider.GetUserAuctions(_profile.data.getMyProfile.id, limit, nextToken, result =>
             {
-                StartCoroutine(PopulateAuctionsByGameData(result));
+                StartCoroutine(PopulateGetUserAuctionsData(result));
             }));
         }
 
@@ -243,130 +245,143 @@ namespace Bitszer
 
             var item = getAuction.data.getAuctions.auctions[_buyItemsLength];
 
-            GameObject go = Instantiate(buyItemPrefab.gameObject, buyItemParent);
-            var buyItem = go.GetComponent<BuyItem>();
-            StartCoroutine(APIManager.Instance.GetImageFromUrl(item.gameItem.imageUrl, texture =>
-            {
-                buyItem.itemImage.texture = texture;
-            }));
-            buyItem.qtyText.text = item.quantity.ToString();
-            buyItem.itemNameText.text = item.gameItem.itemName;
-            buyItem.usernameText.text = item.sellerProfile.name;
-            buyItem.expirationText.text = item.expiration;
-            buyItem.buyoutText.text = item.buyout.ToString();
-            buyItem.bidText.text = item.bid.ToString();
-
-            buyItem.itemImageButton.onClick.AddListener(() =>
-            {
-                var itemDescPopupData = itemDescPopup.GetComponent<ItemDescPopup>();
-                itemDescPopupData.descriptionText.text = item.gameItem.description;
-
-                itemDescPopup.SetActive(true);
-            });
-
-            buyItem.itemNameButton.onClick.AddListener(() =>
-            {
-                var itemDescPopupData = itemDescPopup.GetComponent<ItemDescPopup>();
-                itemDescPopupData.descriptionText.text = item.gameItem.description;
-
-                itemDescPopup.SetActive(true);
-            });
-
-            buyItem.usernameButton.onClick.AddListener(() =>
-            {
-                var profilePopupData = profilePopup.GetComponent<ProfilePopup>();
-                StartCoroutine(APIManager.Instance.GetImageFromUrl(item.sellerProfile.imageUrl, texture =>
+            if (!item.sellerProfile.id.Equals(_profile.data.getMyProfile.id))
+            { 
+                GameObject go = Instantiate(buyItemPrefab.gameObject, buyItemParent);
+                var buyItem = go.GetComponent<BuyItem>();
+                StartCoroutine(APIManager.Instance.GetImageFromUrl(item.gameItem.imageUrl, texture =>
                 {
-                    profilePopupData.profileImage.texture = texture;
+                    buyItem.itemImage.texture = texture;
                 }));
-                profilePopupData.usernameText.text = item.sellerProfile.screenName;
-                profilePopupData.titleText.text = item.sellerProfile.title;
-                profilePopupData.lifetimePurchasedText.text = item.sellerProfile.buyCount.ToString();
-                profilePopupData.lifetimeSpentText.text = item.sellerProfile.buyAmount.ToString();
-                profilePopupData.lifetimeSoldText.text = item.sellerProfile.soldCount.ToString();
-                profilePopupData.lifetimeEarnedText.text = item.sellerProfile.soldAmount.ToString();
+                buyItem.qtyText.text = item.quantity.ToString();
+                buyItem.itemNameText.text = item.gameItem.itemName;
+                buyItem.usernameText.text = item.sellerProfile.name;
+                buyItem.expirationText.text = item.expiration;
+                buyItem.buyoutText.text = item.buyout.ToString();
+                buyItem.bidText.text = item.bid.ToString();
 
-                profilePopup.SetActive(true);
-            });
-
-            buyItem.buyoutButton.onClick.AddListener(() =>
-            {
-                buyoutPopup.SetActive(true);
-                var buyoutPopupData = buyoutPopup.GetComponent<BuyoutPopup>();
-                buyoutPopupData.titleText.text = $"Are you sure you want to purchase {buyItem.qtyText.text} {buyItem.itemNameText.text} for {buyItem.buyoutText.text}?";
-                buyoutPopupData.itemImage.texture = buyItem.itemImage.texture;
-                buyoutPopupData.qtyValueText.text = buyItem.qtyText.text;
-                buyoutPopupData.itemNameText.text = buyItem.itemNameText.text;
-                buyoutPopupData.usernameText.text = buyItem.usernameText.text;
-                buyoutPopupData.expirationText.text = buyItem.expirationText.text;
-                buyoutPopupData.priceText.text = buyItem.buyoutText.text;
-
-                buyoutPopupData.confirmButton.onClick.AddListener(() =>
+                buyItem.itemImageButton.onClick.AddListener(() =>
                 {
-                    if (float.Parse(buyoutPopupData.priceText.text) > _profile.data.getMyProfile.balance)
-                    {
-                        APIManager.Instance.SetError("Not sufficient balance.", "Okay", ErrorType.CustomMessage);
-                        return;
-                    }
+                    buyItem.itemImageButton.onClick.RemoveAllListeners();
 
-                    APIManager.Instance.RaycastBlock(true);
+                    var itemDescPopupData = itemDescPopup.GetComponent<ItemDescPopup>();
+                    itemDescPopupData.descriptionText.text = item.gameItem.description;
 
-                    StartCoroutine(AuctionHouse.Instance.Buyout(item.id, result =>
-                    {
-                        if (result.data.buyout)
-                        {
-                            getAuction.data.getAuctions.auctions.Remove(item);
-                            Destroy(go);
-
-                            APIManager.Instance.RaycastBlock(false);
-                        }
-                    }));
+                    itemDescPopup.SetActive(true);
                 });
-            });
 
-            buyItem.bidButton.onClick.AddListener(() =>
-            {
-                bidPopup.SetActive(true);
-                var bidPopupData = bidPopup.GetComponent<BidPopup>();
-                bidPopupData.titleText.text = $"Place bid for {buyItem.itemNameText.text}. Your bid must be greater than {buyItem.bidText.text}.";
-                bidPopupData.itemImage.texture = buyItem.itemImage.texture;
-                bidPopupData.qtyValueText.text = buyItem.qtyText.text;
-                bidPopupData.itemNameText.text = buyItem.itemNameText.text;
-                bidPopupData.usernameText.text = buyItem.usernameText.text;
-                bidPopupData.expirationText.text = buyItem.expirationText.text;
-                bidPopupData.bid = item.bid;
-
-                bidPopupData.confirmButton.onClick.AddListener(() =>
+                buyItem.itemNameButton.onClick.AddListener(() =>
                 {
-                    if (string.IsNullOrEmpty(bidPopupData.totalBidInputField.text))
-                        return;
+                    buyItem.itemNameButton.onClick.RemoveAllListeners();
 
-                    if (float.Parse(bidPopupData.totalBidInputField.text) > _profile.data.getMyProfile.balance)
+                    var itemDescPopupData = itemDescPopup.GetComponent<ItemDescPopup>();
+                    itemDescPopupData.descriptionText.text = item.gameItem.description;
+
+                    itemDescPopup.SetActive(true);
+                });
+
+                buyItem.usernameButton.onClick.AddListener(() =>
+                {
+                    buyItem.usernameButton.onClick.RemoveAllListeners();
+
+                    var profilePopupData = profilePopup.GetComponent<ProfilePopup>();
+                    StartCoroutine(APIManager.Instance.GetImageFromUrl(item.sellerProfile.imageUrl, texture =>
                     {
-                        APIManager.Instance.SetError("Not sufficient balance.", "Okay", ErrorType.CustomMessage);
-                        return;
-                    }
+                        profilePopupData.profileImage.texture = texture;
+                    }));
+                    profilePopupData.usernameText.text = item.sellerProfile.screenName;
+                    profilePopupData.titleText.text = item.sellerProfile.title;
+                    profilePopupData.lifetimePurchasedText.text = item.sellerProfile.buyCount.ToString();
+                    profilePopupData.lifetimeSpentText.text = item.sellerProfile.buyAmount.ToString();
+                    profilePopupData.lifetimeSoldText.text = item.sellerProfile.soldCount.ToString();
+                    profilePopupData.lifetimeEarnedText.text = item.sellerProfile.soldAmount.ToString();
 
-                    APIManager.Instance.RaycastBlock(true);
+                    profilePopup.SetActive(true);
+                });
 
-                    StartCoroutine(AuctionHouse.Instance.Bid(item.id, float.Parse(bidPopupData.totalBidInputField.text), result =>
+                buyItem.buyoutButton.onClick.AddListener(() =>
+                {
+                    buyItem.buyoutButton.onClick.RemoveAllListeners();
+
+                    buyoutPopup.SetActive(true);
+                    var buyoutPopupData = buyoutPopup.GetComponent<BuyoutPopup>();
+                    buyoutPopupData.titleText.text = $"Are you sure you want to purchase {buyItem.qtyText.text} {buyItem.itemNameText.text} for {buyItem.buyoutText.text}?";
+                    buyoutPopupData.itemImage.texture = buyItem.itemImage.texture;
+                    buyoutPopupData.qtyValueText.text = buyItem.qtyText.text;
+                    buyoutPopupData.itemNameText.text = buyItem.itemNameText.text;
+                    buyoutPopupData.usernameText.text = buyItem.usernameText.text;
+                    buyoutPopupData.expirationText.text = buyItem.expirationText.text;
+                    buyoutPopupData.priceText.text = buyItem.buyoutText.text;
+
+                    buyoutPopupData.confirmButton.onClick.AddListener(() =>
                     {
-                        if (result.data == null)
+                        if (float.Parse(buyoutPopupData.priceText.text) > _profile.data.getMyProfile.balance)
                         {
-                            APIManager.Instance.RaycastBlock(false);
+                            APIManager.Instance.SetError("Not sufficient balance.", "Okay", ErrorType.CustomMessage);
                             return;
                         }
 
-                        if (result.data.bid)
-                        {
-                            getAuction.data.getAuctions.auctions.Remove(item);
-                            Destroy(go);
+                        APIManager.Instance.RaycastBlock(true);
 
-                            APIManager.Instance.RaycastBlock(false);
-                        }
-                    }));
+                        StartCoroutine(AuctionHouse.Instance.Buyout(item.id, result =>
+                        {
+                            if (result.data.buyout)
+                            {
+                                getAuction.data.getAuctions.auctions.Remove(item);
+                                Destroy(go);
+
+                                APIManager.Instance.RaycastBlock(false);
+                            }
+                        }));
+                    });
                 });
-            });
+
+                buyItem.bidButton.onClick.AddListener(() =>
+                {
+                    buyItem.bidButton.onClick.RemoveAllListeners();
+
+                    bidPopup.SetActive(true);
+                    var bidPopupData = bidPopup.GetComponent<BidPopup>();
+                    bidPopupData.titleText.text = $"Place bid for {buyItem.itemNameText.text}. Your bid must be greater than {buyItem.bidText.text}.";
+                    bidPopupData.itemImage.texture = buyItem.itemImage.texture;
+                    bidPopupData.qtyValueText.text = buyItem.qtyText.text;
+                    bidPopupData.itemNameText.text = buyItem.itemNameText.text;
+                    bidPopupData.usernameText.text = buyItem.usernameText.text;
+                    bidPopupData.expirationText.text = buyItem.expirationText.text;
+                    bidPopupData.bid = item.bid;
+
+                    bidPopupData.confirmButton.onClick.AddListener(() =>
+                    {
+                        if (string.IsNullOrEmpty(bidPopupData.totalBidInputField.text))
+                            return;
+
+                        if (float.Parse(bidPopupData.totalBidInputField.text) > _profile.data.getMyProfile.balance)
+                        {
+                            APIManager.Instance.SetError("Not sufficient balance.", "Okay", ErrorType.CustomMessage);
+                            return;
+                        }
+
+                        APIManager.Instance.RaycastBlock(true);
+
+                        StartCoroutine(AuctionHouse.Instance.Bid(item.id, float.Parse(bidPopupData.totalBidInputField.text), result =>
+                        {
+                            if (result.data == null)
+                            {
+                                APIManager.Instance.RaycastBlock(false);
+                                return;
+                            }
+
+                            if (result.data.bid)
+                            {
+                                getAuction.data.getAuctions.auctions.Remove(item);
+                                Destroy(go);
+
+                                APIManager.Instance.RaycastBlock(false);
+                            }
+                        }));
+                    });
+                });
+            }
 
             yield return null;
 
@@ -424,6 +439,8 @@ namespace Bitszer
 
                 sellItem.sellButton.onClick.AddListener(() =>
                 {
+                    sellItem.sellButton.onClick.RemoveAllListeners();
+
                     similarItemParent.Clear();
                     GetBuyData(item.gameItem.itemName, 10, null);
 
@@ -440,6 +457,8 @@ namespace Bitszer
 
                     sellItemPanelData.confirmButton.onClick.AddListener(() =>
                     {
+                        sellItemPanelData.confirmButton.onClick.RemoveAllListeners();
+
                         if (float.Parse(sellItemPanelData.buyoutItemValueInputField.text) <= 0)
                             return;
                         if (float.Parse(sellItemPanelData.startingBidItemValueInputField.text) <= 0)
@@ -483,17 +502,19 @@ namespace Bitszer
                             if (result.data != null)
                             {
                                 sellItemPanel.SetActive(false);
-                                sellItemParent.Clear();
-                                GetSellData(10, null);
+
+                                myAuctionsToggle.isOn = true;
                             }
                         }));
                     });
 
                     sellItemPanelData.resetAllButton.onClick.AddListener(() =>
                     {
+                        sellItemPanelData.resetAllButton.onClick.RemoveAllListeners();
+
                         sellItemPanelData.itemsSoldValueInputField.text = sellItem.availableText.text;
-                        sellItemPanelData.buyoutItemValueInputField.text = "0.0";
-                        sellItemPanelData.startingBidItemValueInputField.text = "0.0";
+                        sellItemPanelData.buyoutItemValueInputField.text = "0";
+                        sellItemPanelData.startingBidItemValueInputField.text = "0";
                         sellItemPanelData.sellDurationDropdown.value = 0;
                     });
                 });
@@ -512,9 +533,9 @@ namespace Bitszer
             }
         }
 
-        private IEnumerator PopulateAuctionsByGameData(GetAuctionbyGame getAuctionbyGame)
+        private IEnumerator PopulateGetUserAuctionsData(GetUserAuction getUserAuctions)
         {
-            var count = getAuctionbyGame.data.getAuctionsbyGame.auctions.Count;
+            var count = getUserAuctions.data.getUserAuctions.auctions.Count;
 
             if (count <= 0)
             {
@@ -522,9 +543,9 @@ namespace Bitszer
                 yield break;
             }
 
-            _nextToken = getAuctionbyGame.data.getAuctionsbyGame.nextToken;
+            _nextToken = getUserAuctions.data.getUserAuctions.nextToken;
 
-            var item = getAuctionbyGame.data.getAuctionsbyGame.auctions[_myAuctionsLength];
+            var item = getUserAuctions.data.getUserAuctions.auctions[_myAuctionsLength];
 
             if (item.sellerProfile.id.Equals(_profile.data.getMyProfile.id))
             {
@@ -540,6 +561,8 @@ namespace Bitszer
 
                 auctionItem.cancelButton.onClick.AddListener(() =>
                 {
+                    auctionItem.cancelButton.onClick.RemoveAllListeners();
+
                     cancelPopup.SetActive(true);
                     var cancelPopupData = cancelPopup.GetComponent<CancelPopup>();
                     cancelPopupData.titleText.text = $"Are you sure you want to cancel {auctionItem.itemNameText.text}";
@@ -550,13 +573,15 @@ namespace Bitszer
 
                     cancelPopupData.cancelAuctionButton.onClick.AddListener(() =>
                     {
+                        cancelPopupData.cancelAuctionButton.onClick.RemoveAllListeners();
+
                         APIManager.Instance.RaycastBlock(true);
 
                         StartCoroutine(AuctionHouse.Instance.CancelAuction(item.id, result =>
                         {
                             if (result.data.cancelAuction)
                             {
-                                getAuctionbyGame.data.getAuctionsbyGame.auctions.Remove(item);
+                                getUserAuctions.data.getUserAuctions.auctions.Remove(item);
                                 Destroy(go);
 
                                 APIManager.Instance.RaycastBlock(false);
@@ -571,7 +596,7 @@ namespace Bitszer
             _myAuctionsLength++;
 
             if (_myAuctionsLength < count)
-                StartCoroutine(PopulateAuctionsByGameData(getAuctionbyGame));
+                StartCoroutine(PopulateGetUserAuctionsData(getUserAuctions));
             else
             {
                 _myAuctionsLength = 0;
@@ -593,92 +618,101 @@ namespace Bitszer
 
             var item = getAuction.data.getAuctions.auctions[_buyItemsLength];
 
-            GameObject go = Instantiate(buyItemPrefab.gameObject, similarItemParent);
-            var buyItem = go.GetComponent<BuyItem>();
-            StartCoroutine(APIManager.Instance.GetImageFromUrl(item.gameItem.imageUrl, texture =>
+            if (!item.sellerProfile.id.Equals(_profile.data.getMyProfile.id))
             {
-                buyItem.itemImage.texture = texture;
-            }));
-            buyItem.qtyText.text = item.quantity.ToString();
-            buyItem.itemNameText.text = item.gameItem.itemName;
-            buyItem.usernameText.text = item.sellerProfile.name;
-            buyItem.expirationText.text = item.expiration;
-            buyItem.buyoutText.text = item.buyout.ToString();
-            buyItem.bidText.text = item.bid.ToString();
-
-            buyItem.usernameButton.onClick.AddListener(() =>
-            {
-                var profilePopupData = profilePopup.GetComponent<ProfilePopup>();
-                StartCoroutine(APIManager.Instance.GetImageFromUrl(item.sellerProfile.imageUrl, texture =>
+                GameObject go = Instantiate(buyItemPrefab.gameObject, similarItemParent);
+                var buyItem = go.GetComponent<BuyItem>();
+                StartCoroutine(APIManager.Instance.GetImageFromUrl(item.gameItem.imageUrl, texture =>
                 {
-                    profilePopupData.profileImage.texture = texture;
+                    buyItem.itemImage.texture = texture;
                 }));
-                profilePopupData.usernameText.text = item.sellerProfile.screenName;
-                profilePopupData.titleText.text = item.sellerProfile.title;
-                profilePopupData.lifetimePurchasedText.text = item.sellerProfile.buyCount.ToString();
-                profilePopupData.lifetimeSpentText.text = item.sellerProfile.buyAmount.ToString();
-                profilePopupData.lifetimeSoldText.text = item.sellerProfile.soldCount.ToString();
-                profilePopupData.lifetimeEarnedText.text = item.sellerProfile.soldAmount.ToString();
+                buyItem.qtyText.text = item.quantity.ToString();
+                buyItem.itemNameText.text = item.gameItem.itemName;
+                buyItem.usernameText.text = item.sellerProfile.name;
+                buyItem.expirationText.text = item.expiration;
+                buyItem.buyoutText.text = item.buyout.ToString();
+                buyItem.bidText.text = item.bid.ToString();
 
-                profilePopup.SetActive(true);
-            });
-
-            buyItem.buyoutButton.onClick.AddListener(() =>
-            {
-                buyoutPopup.SetActive(true);
-                var buyoutPopupData = buyoutPopup.GetComponent<BuyoutPopup>();
-                buyoutPopupData.titleText.text = $"Are you sure you want to purchase {buyItem.qtyText.text} {buyItem.itemNameText.text} for {buyItem.buyoutText.text}?";
-                buyoutPopupData.itemImage.texture = buyItem.itemImage.texture;
-                buyoutPopupData.qtyValueText.text = buyItem.qtyText.text;
-                buyoutPopupData.itemNameText.text = buyItem.itemNameText.text;
-                buyoutPopupData.usernameText.text = buyItem.usernameText.text;
-                buyoutPopupData.expirationText.text = buyItem.expirationText.text;
-                buyoutPopupData.priceText.text = buyItem.buyoutText.text;
-
-                buyoutPopupData.confirmButton.onClick.AddListener(() =>
+                buyItem.usernameButton.onClick.AddListener(() =>
                 {
-                    APIManager.Instance.RaycastBlock(true);
+                    buyItem.usernameButton.onClick.RemoveAllListeners();
 
-                    StartCoroutine(AuctionHouse.Instance.Buyout(item.id, result =>
+                    var profilePopupData = profilePopup.GetComponent<ProfilePopup>();
+                    StartCoroutine(APIManager.Instance.GetImageFromUrl(item.sellerProfile.imageUrl, texture =>
                     {
-                        if (result.data.buyout)
-                        {
-                            getAuction.data.getAuctions.auctions.Remove(item);
-                            Destroy(go);
-
-                            APIManager.Instance.RaycastBlock(false);
-                        }
+                        profilePopupData.profileImage.texture = texture;
                     }));
+                    profilePopupData.usernameText.text = item.sellerProfile.screenName;
+                    profilePopupData.titleText.text = item.sellerProfile.title;
+                    profilePopupData.lifetimePurchasedText.text = item.sellerProfile.buyCount.ToString();
+                    profilePopupData.lifetimeSpentText.text = item.sellerProfile.buyAmount.ToString();
+                    profilePopupData.lifetimeSoldText.text = item.sellerProfile.soldCount.ToString();
+                    profilePopupData.lifetimeEarnedText.text = item.sellerProfile.soldAmount.ToString();
+
+                    profilePopup.SetActive(true);
                 });
-            });
 
-            buyItem.bidButton.onClick.AddListener(() =>
-            {
-                bidPopup.SetActive(true);
-                var bidPopupData = bidPopup.GetComponent<BidPopup>();
-                bidPopupData.titleText.text = $"Place bid for {buyItem.itemNameText.text}. Your bid must be greater than {buyItem.bidText.text}.";
-                bidPopupData.itemImage.texture = buyItem.itemImage.texture;
-                bidPopupData.qtyValueText.text = buyItem.qtyText.text;
-                bidPopupData.itemNameText.text = buyItem.itemNameText.text;
-                bidPopupData.usernameText.text = buyItem.usernameText.text;
-                bidPopupData.expirationText.text = buyItem.expirationText.text;
-
-                bidPopupData.confirmButton.onClick.AddListener(() =>
+                buyItem.buyoutButton.onClick.AddListener(() =>
                 {
-                    APIManager.Instance.RaycastBlock(true);
+                    buyItem.buyoutButton.onClick.RemoveAllListeners();
 
-                    StartCoroutine(AuctionHouse.Instance.Bid(item.id, float.Parse(bidPopupData.totalBidInputField.text), result =>
+                    buyoutPopup.SetActive(true);
+                    var buyoutPopupData = buyoutPopup.GetComponent<BuyoutPopup>();
+                    buyoutPopupData.titleText.text = $"Are you sure you want to purchase {buyItem.qtyText.text} {buyItem.itemNameText.text} for {buyItem.buyoutText.text}?";
+                    buyoutPopupData.itemImage.texture = buyItem.itemImage.texture;
+                    buyoutPopupData.qtyValueText.text = buyItem.qtyText.text;
+                    buyoutPopupData.itemNameText.text = buyItem.itemNameText.text;
+                    buyoutPopupData.usernameText.text = buyItem.usernameText.text;
+                    buyoutPopupData.expirationText.text = buyItem.expirationText.text;
+                    buyoutPopupData.priceText.text = buyItem.buyoutText.text;
+
+                    buyoutPopupData.confirmButton.onClick.AddListener(() =>
                     {
-                        if (result.data.bid)
-                        {
-                            getAuction.data.getAuctions.auctions.Remove(item);
-                            Destroy(go);
+                        APIManager.Instance.RaycastBlock(true);
 
-                            APIManager.Instance.RaycastBlock(false);
-                        }
-                    }));
+                        StartCoroutine(AuctionHouse.Instance.Buyout(item.id, result =>
+                        {
+                            if (result.data.buyout)
+                            {
+                                getAuction.data.getAuctions.auctions.Remove(item);
+                                Destroy(go);
+
+                                APIManager.Instance.RaycastBlock(false);
+                            }
+                        }));
+                    });
                 });
-            });
+
+                buyItem.bidButton.onClick.AddListener(() =>
+                {
+                    buyItem.bidButton.onClick.RemoveAllListeners();
+
+                    bidPopup.SetActive(true);
+                    var bidPopupData = bidPopup.GetComponent<BidPopup>();
+                    bidPopupData.titleText.text = $"Place bid for {buyItem.itemNameText.text}. Your bid must be greater than {buyItem.bidText.text}.";
+                    bidPopupData.itemImage.texture = buyItem.itemImage.texture;
+                    bidPopupData.qtyValueText.text = buyItem.qtyText.text;
+                    bidPopupData.itemNameText.text = buyItem.itemNameText.text;
+                    bidPopupData.usernameText.text = buyItem.usernameText.text;
+                    bidPopupData.expirationText.text = buyItem.expirationText.text;
+
+                    bidPopupData.confirmButton.onClick.AddListener(() =>
+                    {
+                        APIManager.Instance.RaycastBlock(true);
+
+                        StartCoroutine(AuctionHouse.Instance.Bid(item.id, float.Parse(bidPopupData.totalBidInputField.text), result =>
+                        {
+                            if (result.data.bid)
+                            {
+                                getAuction.data.getAuctions.auctions.Remove(item);
+                                Destroy(go);
+
+                                APIManager.Instance.RaycastBlock(false);
+                            }
+                        }));
+                    });
+                });
+            }
 
             yield return null;
 
@@ -722,6 +756,8 @@ namespace Bitszer
 
             buyItem.usernameButton.onClick.AddListener(() =>
             {
+                buyItem.usernameButton.onClick.RemoveAllListeners();
+
                 var profilePopupData = profilePopup.GetComponent<ProfilePopup>();
                 StartCoroutine(APIManager.Instance.GetImageFromUrl(item.sellerProfile.imageUrl, texture =>
                 {
@@ -739,6 +775,8 @@ namespace Bitszer
 
             buyItem.buyoutButton.onClick.AddListener(() =>
             {
+                buyItem.buyoutButton.onClick.RemoveAllListeners();
+
                 buyoutPopup.SetActive(true);
                 var buyoutPopupData = buyoutPopup.GetComponent<BuyoutPopup>();
                 buyoutPopupData.titleText.text = $"Are you sure you want to purchase {buyItem.qtyText.text} {buyItem.itemNameText.text} for {buyItem.buyoutText.text}?";
@@ -768,6 +806,8 @@ namespace Bitszer
 
             buyItem.bidButton.onClick.AddListener(() =>
             {
+                buyItem.bidButton.onClick.RemoveAllListeners();
+
                 bidPopup.SetActive(true);
                 var bidPopupData = bidPopup.GetComponent<BidPopup>();
                 bidPopupData.titleText.text = $"Place bid for {buyItem.itemNameText.text}. Your bid must be greater than {buyItem.bidText.text}.";
