@@ -50,6 +50,11 @@ namespace Bitszer
         private int _myAuctionsLength = 0;
         private int _searchItemsLength = 0;
 
+        private bool _isHomeToggleOn = false;
+        private bool _isBuyToggleOn = false;
+        private bool _isSellToggleOn = false;
+        private bool _isMyAuctionsToggleOn = false;
+
         private Profile _profile;
 
         private string _nextToken = null;
@@ -97,7 +102,7 @@ namespace Bitszer
             _profile = profile;
 
             usernameText.text = _profile.data.getMyProfile.name;
-            balanceText.text = _profile.data.getMyProfile.balance.ToString();
+            balanceText.text = _profile.data.getMyProfile.balance.ToString("F3");
         }
 
         private void OnScrolledToBottom(ScrollController.SCROLL_PANEL scrollPanel)
@@ -124,11 +129,22 @@ namespace Bitszer
         {
             if (isOn)
             {
-                buyItemParent.Clear();
-                sellItemParent.Clear();
-                auctionItemParent.Clear();
+                if (!_isHomeToggleOn)
+                {
+                    _isHomeToggleOn = true;
+                    _isBuyToggleOn = false;
+                    _isSellToggleOn = false;
+                    _isMyAuctionsToggleOn = false;
 
-                titleText.text = "Home";
+                    buyItemParent.Clear();
+                    sellItemParent.Clear();
+                    auctionItemParent.Clear();
+
+                    titleText.text = "Home";
+
+                    if (sellItemPanel.activeSelf)
+                        sellItemPanel.SetActive(false);
+                }
             }
         }
 
@@ -136,11 +152,23 @@ namespace Bitszer
         {
             if (isOn)
             {
-                sellItemParent.Clear();
-                auctionItemParent.Clear();
+                if (!_isBuyToggleOn)
+                {
+                    _isHomeToggleOn = false;
+                    _isBuyToggleOn = true;
+                    _isSellToggleOn = false;
+                    _isMyAuctionsToggleOn = false;
 
-                titleText.text = "Buy";
-                GetBuyData("", 10, null);
+                    sellItemParent.Clear();
+                    auctionItemParent.Clear();
+
+                    titleText.text = "Buy";
+
+                    GetBuyData("", 10, null);
+
+                    if (sellItemPanel.activeSelf)
+                        sellItemPanel.SetActive(false);
+                }
             }
         }
 
@@ -148,12 +176,20 @@ namespace Bitszer
         {
             if (isOn)
             {
-                buyItemParent.Clear();
-                auctionItemParent.Clear();
+                if (!_isSellToggleOn)
+                {
+                    _isHomeToggleOn = false;
+                    _isBuyToggleOn = false;
+                    _isSellToggleOn = true;
+                    _isMyAuctionsToggleOn = false;
 
-                GetSellData(10, null);
+                    buyItemParent.Clear();
+                    auctionItemParent.Clear();
 
-                titleText.text = "Sell";
+                    GetSellData(10, null);
+
+                    titleText.text = "Sell";
+                }
             }
         }
 
@@ -161,12 +197,23 @@ namespace Bitszer
         {
             if (isOn)
             {
-                buyItemParent.Clear();
-                sellItemParent.Clear();
+                if (!_isMyAuctionsToggleOn)
+                {
+                    _isHomeToggleOn = false;
+                    _isBuyToggleOn = false;
+                    _isSellToggleOn = false;
+                    _isMyAuctionsToggleOn = true;
 
-                GetMyAuctionsData(10, null);
+                    buyItemParent.Clear();
+                    sellItemParent.Clear();
 
-                titleText.text = "My Auctions";
+                    GetMyAuctionsData(10, null);
+
+                    titleText.text = "My Auctions";
+
+                    if (sellItemPanel.activeSelf)
+                        sellItemPanel.SetActive(false);
+                }
             }
         }
         #endregion
@@ -195,7 +242,7 @@ namespace Bitszer
 
             _sellItemsLength = 0;
 
-            StartCoroutine(dataProvider.GetInventory(limit, nextToken, result =>
+            StartCoroutine(dataProvider.GetMyInventoryByGame(limit, nextToken, result =>
             {
                 StartCoroutine(PopulateSellData(result));
             }));
@@ -262,8 +309,6 @@ namespace Bitszer
 
                 buyItem.itemImageButton.onClick.AddListener(() =>
                 {
-                    buyItem.itemImageButton.onClick.RemoveAllListeners();
-
                     var itemDescPopupData = itemDescPopup.GetComponent<ItemDescPopup>();
                     itemDescPopupData.descriptionText.text = item.gameItem.description;
 
@@ -272,8 +317,6 @@ namespace Bitszer
 
                 buyItem.itemNameButton.onClick.AddListener(() =>
                 {
-                    buyItem.itemNameButton.onClick.RemoveAllListeners();
-
                     var itemDescPopupData = itemDescPopup.GetComponent<ItemDescPopup>();
                     itemDescPopupData.descriptionText.text = item.gameItem.description;
 
@@ -282,8 +325,6 @@ namespace Bitszer
 
                 buyItem.usernameButton.onClick.AddListener(() =>
                 {
-                    buyItem.usernameButton.onClick.RemoveAllListeners();
-
                     var profilePopupData = profilePopup.GetComponent<ProfilePopup>();
                     StartCoroutine(APIManager.Instance.GetImageFromUrl(item.sellerProfile.imageUrl, texture =>
                     {
@@ -301,8 +342,6 @@ namespace Bitszer
 
                 buyItem.buyoutButton.onClick.AddListener(() =>
                 {
-                    buyItem.buyoutButton.onClick.RemoveAllListeners();
-
                     buyoutPopup.SetActive(true);
                     var buyoutPopupData = buyoutPopup.GetComponent<BuyoutPopup>();
                     buyoutPopupData.titleText.text = $"Are you sure you want to purchase {buyItem.qtyText.text} {buyItem.itemNameText.text} for {buyItem.buyoutText.text}?";
@@ -338,8 +377,6 @@ namespace Bitszer
 
                 buyItem.bidButton.onClick.AddListener(() =>
                 {
-                    buyItem.bidButton.onClick.RemoveAllListeners();
-
                     bidPopup.SetActive(true);
                     var bidPopupData = bidPopup.GetComponent<BidPopup>();
                     bidPopupData.titleText.text = $"Place bid for {buyItem.itemNameText.text}. Your bid must be greater than {buyItem.bidText.text}.";
@@ -350,6 +387,8 @@ namespace Bitszer
                     bidPopupData.expirationText.text = buyItem.expirationText.text;
                     bidPopupData.bid = item.bid;
 
+                    bidPopupData.totalBidInputField.keyboardType = TouchScreenKeyboardType.NumbersAndPunctuation;
+                    bidPopupData.totalQuantityInputField.keyboardType = TouchScreenKeyboardType.NumbersAndPunctuation;
                     bidPopupData.confirmButton.onClick.AddListener(() =>
                     {
                         if (string.IsNullOrEmpty(bidPopupData.totalBidInputField.text))
@@ -396,9 +435,9 @@ namespace Bitszer
             }
         }
 
-        private IEnumerator PopulateSellData(GetInventory getInventory)
+        private IEnumerator PopulateSellData(GetMyInventoryByGame getMyInventoryByGame)
         {
-            var count = getInventory.data.getInventory.inventory.Count;
+            var count = getMyInventoryByGame.data.getMyInventorybyGame.inventory.Count;
 
             if (count <= 0)
             {
@@ -406,9 +445,9 @@ namespace Bitszer
                 yield break;
             }
 
-            _nextToken = getInventory.data.getInventory.nextToken;
+            _nextToken = getMyInventoryByGame.data.getMyInventorybyGame.nextToken;
 
-            var item = getInventory.data.getInventory.inventory[_sellItemsLength];
+            var item = getMyInventoryByGame.data.getMyInventorybyGame.inventory[_sellItemsLength];
 
             if (item.ItemCount > 0)
             {
@@ -453,11 +492,17 @@ namespace Bitszer
                     sellItemPanelData.itemNameText.text = sellItem.itemNameText.text;
                     sellItemPanelData.totalItemsValueText.text = sellItem.availableText.text;
 
+                    sellItemPanelData.itemsSoldValueInputField.keyboardType = TouchScreenKeyboardType.NumbersAndPunctuation;
+                    sellItemPanelData.buyoutItemValueInputField.keyboardType = TouchScreenKeyboardType.NumbersAndPunctuation;
+                    sellItemPanelData.startingBidItemValueInputField.keyboardType = TouchScreenKeyboardType.NumbersAndPunctuation;
+                    sellItemPanelData.totalBuyoutValueInputField.keyboardType = TouchScreenKeyboardType.NumbersAndPunctuation;
+                    sellItemPanelData.totalBidValueInputField.keyboardType = TouchScreenKeyboardType.NumbersAndPunctuation;
+
                     sellItemPanel.SetActive(true);
 
+                    sellItemPanelData.confirmButton.onClick.RemoveAllListeners();
                     sellItemPanelData.confirmButton.onClick.AddListener(() =>
                     {
-                        sellItemPanelData.confirmButton.onClick.RemoveAllListeners();
 
                         if (float.Parse(sellItemPanelData.buyoutItemValueInputField.text) <= 0)
                             return;
@@ -508,10 +553,9 @@ namespace Bitszer
                         }));
                     });
 
+                    sellItemPanelData.resetAllButton.onClick.RemoveAllListeners();
                     sellItemPanelData.resetAllButton.onClick.AddListener(() =>
                     {
-                        sellItemPanelData.resetAllButton.onClick.RemoveAllListeners();
-
                         sellItemPanelData.itemsSoldValueInputField.text = sellItem.availableText.text;
                         sellItemPanelData.buyoutItemValueInputField.text = "0";
                         sellItemPanelData.startingBidItemValueInputField.text = "0";
@@ -525,7 +569,7 @@ namespace Bitszer
             _sellItemsLength++;
 
             if (_sellItemsLength < count)
-                StartCoroutine(PopulateSellData(getInventory));
+                StartCoroutine(PopulateSellData(getMyInventoryByGame));
             else
             {
                 _sellItemsLength = 0;
@@ -559,10 +603,9 @@ namespace Bitszer
                 auctionItem.itemNameText.text = item.gameItem.itemName;
                 auctionItem.expirationText.text = item.expiration;
 
+                auctionItem.cancelButton.onClick.RemoveAllListeners();
                 auctionItem.cancelButton.onClick.AddListener(() =>
                 {
-                    auctionItem.cancelButton.onClick.RemoveAllListeners();
-
                     cancelPopup.SetActive(true);
                     var cancelPopupData = cancelPopup.GetComponent<CancelPopup>();
                     cancelPopupData.titleText.text = $"Are you sure you want to cancel {auctionItem.itemNameText.text}";
@@ -571,10 +614,9 @@ namespace Bitszer
                     cancelPopupData.itemNameText.text = auctionItem.itemNameText.text;
                     cancelPopupData.expirationText.text = auctionItem.expirationText.text;
 
+                    cancelPopupData.cancelAuctionButton.onClick.RemoveAllListeners();
                     cancelPopupData.cancelAuctionButton.onClick.AddListener(() =>
                     {
-                        cancelPopupData.cancelAuctionButton.onClick.RemoveAllListeners();
-
                         APIManager.Instance.RaycastBlock(true);
 
                         StartCoroutine(AuctionHouse.Instance.CancelAuction(item.id, result =>
@@ -635,8 +677,6 @@ namespace Bitszer
 
                 buyItem.usernameButton.onClick.AddListener(() =>
                 {
-                    buyItem.usernameButton.onClick.RemoveAllListeners();
-
                     var profilePopupData = profilePopup.GetComponent<ProfilePopup>();
                     StartCoroutine(APIManager.Instance.GetImageFromUrl(item.sellerProfile.imageUrl, texture =>
                     {
@@ -654,8 +694,6 @@ namespace Bitszer
 
                 buyItem.buyoutButton.onClick.AddListener(() =>
                 {
-                    buyItem.buyoutButton.onClick.RemoveAllListeners();
-
                     buyoutPopup.SetActive(true);
                     var buyoutPopupData = buyoutPopup.GetComponent<BuyoutPopup>();
                     buyoutPopupData.titleText.text = $"Are you sure you want to purchase {buyItem.qtyText.text} {buyItem.itemNameText.text} for {buyItem.buyoutText.text}?";
@@ -685,8 +723,6 @@ namespace Bitszer
 
                 buyItem.bidButton.onClick.AddListener(() =>
                 {
-                    buyItem.bidButton.onClick.RemoveAllListeners();
-
                     bidPopup.SetActive(true);
                     var bidPopupData = bidPopup.GetComponent<BidPopup>();
                     bidPopupData.titleText.text = $"Place bid for {buyItem.itemNameText.text}. Your bid must be greater than {buyItem.bidText.text}.";
@@ -756,8 +792,6 @@ namespace Bitszer
 
             buyItem.usernameButton.onClick.AddListener(() =>
             {
-                buyItem.usernameButton.onClick.RemoveAllListeners();
-
                 var profilePopupData = profilePopup.GetComponent<ProfilePopup>();
                 StartCoroutine(APIManager.Instance.GetImageFromUrl(item.sellerProfile.imageUrl, texture =>
                 {
@@ -775,8 +809,6 @@ namespace Bitszer
 
             buyItem.buyoutButton.onClick.AddListener(() =>
             {
-                buyItem.buyoutButton.onClick.RemoveAllListeners();
-
                 buyoutPopup.SetActive(true);
                 var buyoutPopupData = buyoutPopup.GetComponent<BuyoutPopup>();
                 buyoutPopupData.titleText.text = $"Are you sure you want to purchase {buyItem.qtyText.text} {buyItem.itemNameText.text} for {buyItem.buyoutText.text}?";
@@ -806,8 +838,6 @@ namespace Bitszer
 
             buyItem.bidButton.onClick.AddListener(() =>
             {
-                buyItem.bidButton.onClick.RemoveAllListeners();
-
                 bidPopup.SetActive(true);
                 var bidPopupData = bidPopup.GetComponent<BidPopup>();
                 bidPopupData.titleText.text = $"Place bid for {buyItem.itemNameText.text}. Your bid must be greater than {buyItem.bidText.text}.";

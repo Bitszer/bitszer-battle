@@ -25,13 +25,13 @@ namespace Bitszer
         [Space]
         [Space]
         public TMP_InputField buyoutItemValueInputField;
-        public TMP_Text totalBuyoutValueText;
+        public TMP_InputField totalBuyoutValueInputField;
 
         [Header("ThirdRow")]
         [Space]
         [Space]
         public TMP_InputField startingBidItemValueInputField;
-        public TMP_Text totalBidValueText;
+        public TMP_InputField totalBidValueInputField;
 
         [Header("FourthRow")]
         [Space]
@@ -48,36 +48,46 @@ namespace Bitszer
         {
             itemsSoldValueInputField.onValueChanged.AddListener(value =>
             {
-                if (int.Parse(value) > int.Parse(totalItemsValueText.text))
+                if (float.Parse(value) > float.Parse(totalItemsValueText.text))
                 {
                     itemsSoldValueInputField.text = totalItemsValueText.text;
                     return;
                 }
 
-                totalBuyoutValueText.text = (int.Parse(value) * int.Parse(buyoutItemValueInputField.text)).ToString();
-                totalBidValueText.text = (int.Parse(value) * int.Parse(startingBidItemValueInputField.text)).ToString();
+                totalBuyoutValueInputField.text = (float.Parse(value) * float.Parse(buyoutItemValueInputField.text)).ToString();
+                totalBidValueInputField.text = (float.Parse(value) * float.Parse(startingBidItemValueInputField.text)).ToString();
             });
 
             buyoutItemValueInputField.onValueChanged.AddListener(value =>
             {
                 if (value.Length <= 0)
                 {
-                    totalBuyoutValueText.text = "0";
+                    totalBuyoutValueInputField.text = "0";
                     return;
                 }
 
-                totalBuyoutValueText.text = (int.Parse(value) * int.Parse(itemsSoldValueInputField.text)).ToString();
+                totalBuyoutValueInputField.text = (float.Parse(value) * float.Parse(itemsSoldValueInputField.text)).ToString();
             });
 
             startingBidItemValueInputField.onValueChanged.AddListener(value =>
             {
                 if (value.Length <= 0)
                 {
-                    totalBidValueText.text = "0";
+                    totalBidValueInputField.text = "0";
                     return;
                 }
 
-                totalBidValueText.text = (int.Parse(value) * int.Parse(itemsSoldValueInputField.text)).ToString();
+                totalBidValueInputField.text = (float.Parse(value) * float.Parse(itemsSoldValueInputField.text)).ToString();
+            });
+
+            totalBuyoutValueInputField.onValueChanged.AddListener(value =>
+            {
+                buyoutItemValueInputField.text = (float.Parse(value) / float.Parse(itemsSoldValueInputField.text)).ToString();
+            });
+
+            totalBidValueInputField.onValueChanged.AddListener(value =>
+            {
+                startingBidItemValueInputField.text = (float.Parse(value) / float.Parse(itemsSoldValueInputField.text)).ToString();
             });
         }
 
