@@ -256,7 +256,9 @@ public class MainMenu : MonoBehaviour
 	{
 		SoundManager.Instance.PlayOneShot(SoundManager.SoundState.Click, 1);
 		PopOutScreen();
+		AuctionHouse.Instance.Open();
 		//AuctionHouse.Open();
+		Screen.orientation = ScreenOrientation.Portrait;
 	}
 
 	// When Auction House Button Clicked From Main Menu Screen.

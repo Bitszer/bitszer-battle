@@ -48,6 +48,8 @@ public sealed class PlayerSpawnManager : MonoBehaviour
 
     public void StartGame()
     {
+        Debug.Log("Starting of StartGame()");
+
         _mana = 0;
         superPower.Initialize();
 
@@ -64,6 +66,8 @@ public sealed class PlayerSpawnManager : MonoBehaviour
             StopCoroutine(_manaSpawningCoroutine);
         
         _manaSpawningCoroutine = StartCoroutine(ManaGeneration());
+
+        Debug.Log("Ending of StartGame()");
     }
 
     /*

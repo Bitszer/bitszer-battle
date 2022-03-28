@@ -205,6 +205,7 @@ public sealed class GameManager : MonoBehaviour
 
     public void StopGame()
     {
+        CentralVariables.IS_GAME_END = false;
         CentralVariables.IS_GAME_STOPPED = true;
         CentralVariables.IS_GAME_STARTED = false;
 
