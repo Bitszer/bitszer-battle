@@ -53,13 +53,13 @@
    },
    "InfantryResources":{
       "wood":{
-         "Stick":53,
+         "Stick":60,
          "Lumber":44,
          "Ironwood":37,
          "Bloodwood":3
       },
       "ore":{
-         "Copper":3,
+         "Copper":30,
          "Silver":33,
          "Gold":63,
          "Platinum":7
@@ -68,10 +68,10 @@
          "Wheat":73,
          "Rice":46,
          "Corn":24,
-         "Potatoes":23
+         "Potatoes":25
       },
       "herbs":{
-         "Sage":97,
+         "Sage":107,
          "Rosemary":37,
          "Chamomile":55,
          "Valerian":14
@@ -82,49 +82,49 @@
          "Stick":91,
          "Lumber":59,
          "Ironwood":29,
-         "Bloodwood":10
+         "Bloodwood":13
       },
       "ore":{
          "Copper":54,
-         "Silver":83,
+         "Silver":91,
          "Gold":10,
          "Platinum":9
       },
       "food":{
          "Wheat":70,
          "Rice":37,
-         "Corn":30,
+         "Corn":36,
          "Potatoes":7
       },
       "herbs":{
-         "Sage":89,
+         "Sage":96,
          "Rosemary":46,
-         "Chamomile":24,
-         "Valerian":15
+         "Chamomile":33,
+         "Valerian":17
       }
    },
    "CavalryResources":{
       "wood":{
-         "Stick":19,
+         "Stick":23,
          "Lumber":67,
          "Ironwood":32,
          "Bloodwood":19
       },
       "ore":{
          "Copper":30,
-         "Silver":46,
+         "Silver":49,
          "Gold":74,
-         "Platinum":2
+         "Platinum":3
       },
       "food":{
          "Wheat":93,
          "Rice":61,
-         "Corn":15,
-         "Potatoes":71
+         "Corn":16,
+         "Potatoes":73
       },
       "herbs":{
          "Sage":36,
-         "Rosemary":21,
+         "Rosemary":25,
          "Chamomile":37,
          "Valerian":75
       }
@@ -134,22 +134,22 @@
          "Stick":68,
          "Lumber":11,
          "Ironwood":42,
-         "Bloodwood":17
+         "Bloodwood":20
       },
       "ore":{
          "Copper":18,
          "Silver":47,
          "Gold":52,
-         "Platinum":1
+         "Platinum":2
       },
       "food":{
          "Wheat":31,
          "Rice":61,
          "Corn":89,
-         "Potatoes":79
+         "Potatoes":81
       },
       "herbs":{
-         "Sage":68,
+         "Sage":81,
          "Rosemary":15,
          "Chamomile":57,
          "Valerian":44
@@ -157,16 +157,16 @@
    },
    "CatapultResources":{
       "wood":{
-         "Stick":86,
+         "Stick":92,
          "Lumber":68,
-         "Ironwood":59,
+         "Ironwood":61,
          "Bloodwood":7
       },
       "ore":{
          "Copper":60,
          "Silver":39,
          "Gold":33,
-         "Platinum":5
+         "Platinum":7
       },
       "food":{
          "Wheat":94,
@@ -176,7 +176,7 @@
       },
       "herbs":{
          "Sage":84,
-         "Rosemary":36,
+         "Rosemary":39,
          "Chamomile":40,
          "Valerian":78
       }
@@ -185,51 +185,51 @@
       "wood":{
          "Stick":82,
          "Lumber":68,
-         "Ironwood":37,
+         "Ironwood":41,
          "Bloodwood":2
       },
       "ore":{
-         "Copper":82,
+         "Copper":84,
          "Silver":10,
          "Gold":78,
-         "Platinum":1
+         "Platinum":2
       },
       "food":{
          "Wheat":46,
          "Rice":95,
          "Corn":42,
-         "Potatoes":99
+         "Potatoes":103
       },
       "herbs":{
          "Sage":79,
          "Rosemary":22,
          "Chamomile":49,
-         "Valerian":31
+         "Valerian":33
       }
    },
    "DragonHawkResources":{
       "wood":{
          "Stick":99,
-         "Lumber":82,
+         "Lumber":84,
          "Ironwood":54,
          "Bloodwood":6
       },
       "ore":{
-         "Copper":11,
-         "Silver":44,
+         "Copper":14,
+         "Silver":45,
          "Gold":64,
          "Platinum":8
       },
       "food":{
-         "Wheat":30,
-         "Rice":21,
+         "Wheat":41,
+         "Rice":22,
          "Corn":30,
-         "Potatoes":31
+         "Potatoes":33
       },
       "herbs":{
          "Sage":75,
          "Rosemary":11,
-         "Chamomile":35,
+         "Chamomile":37,
          "Valerian":32
       }
    },
@@ -237,144 +237,144 @@
       "wood":{
          "Stick":26,
          "Lumber":75,
-         "Ironwood":28,
+         "Ironwood":30,
          "Bloodwood":8
       },
       "ore":{
-         "Copper":41,
+         "Copper":45,
          "Silver":43,
          "Gold":21,
-         "Platinum":5
+         "Platinum":6
       },
       "food":{
          "Wheat":62,
          "Rice":99,
          "Corn":29,
-         "Potatoes":57
+         "Potatoes":60
       },
       "herbs":{
          "Sage":92,
          "Rosemary":15,
          "Chamomile":16,
-         "Valerian":21
+         "Valerian":23
       }
    },
    "DragonSlayerResources":{
       "wood":{
          "Stick":70,
-         "Lumber":76,
-         "Ironwood":33,
+         "Lumber":78,
+         "Ironwood":35,
          "Bloodwood":7
       },
       "ore":{
          "Copper":34,
          "Silver":99,
          "Gold":49,
-         "Platinum":4
+         "Platinum":5
       },
       "food":{
          "Wheat":26,
          "Rice":67,
          "Corn":36,
-         "Potatoes":87
+         "Potatoes":89
       },
       "herbs":{
          "Sage":46,
-         "Rosemary":6,
-         "Chamomile":34,
+         "Rosemary":9,
+         "Chamomile":37,
          "Valerian":97
       }
    },
    "TitanResources":{
       "wood":{
-         "Stick":90,
+         "Stick":101,
          "Lumber":62,
-         "Ironwood":71,
+         "Ironwood":76,
          "Bloodwood":7
       },
       "ore":{
          "Copper":68,
-         "Silver":69,
+         "Silver":71,
          "Gold":73,
-         "Platinum":7
+         "Platinum":10
       },
       "food":{
-         "Wheat":28,
-         "Rice":60,
+         "Wheat":30,
+         "Rice":63,
          "Corn":15,
-         "Potatoes":95
+         "Potatoes":104
       },
       "herbs":{
-         "Sage":74,
+         "Sage":76,
          "Rosemary":38,
          "Chamomile":41,
-         "Valerian":18
+         "Valerian":21
       }
    },
    "HippogryphyResources":{
       "wood":{
-         "Stick":28,
+         "Stick":33,
          "Lumber":88,
          "Ironwood":5,
-         "Bloodwood":8
+         "Bloodwood":9
       },
       "ore":{
          "Copper":54,
-         "Silver":65,
-         "Gold":21,
+         "Silver":67,
+         "Gold":24,
          "Platinum":4
       },
       "food":{
-         "Wheat":80,
+         "Wheat":83,
          "Rice":42,
-         "Corn":65,
+         "Corn":67,
          "Potatoes":30
       },
       "herbs":{
-         "Sage":22,
+         "Sage":25,
          "Rosemary":14,
-         "Chamomile":12,
+         "Chamomile":14,
          "Valerian":89
       }
    },
    "BeastLordResources":{
       "wood":{
-         "Stick":73,
+         "Stick":77,
          "Lumber":42,
-         "Ironwood":92,
+         "Ironwood":95,
          "Bloodwood":12
       },
       "ore":{
-         "Copper":16,
-         "Silver":64,
-         "Gold":6,
+         "Copper":18,
+         "Silver":67,
+         "Gold":9,
          "Platinum":5
       },
       "food":{
-         "Wheat":92,
-         "Rice":61,
+         "Wheat":94,
+         "Rice":66,
          "Corn":52,
          "Potatoes":79
       },
       "herbs":{
          "Sage":98,
          "Rosemary":1,
-         "Chamomile":19,
-         "Valerian":48
+         "Chamomile":21,
+         "Valerian":49
       }
    },
    "TempleResources":{
       "wood":{
          "Stick":250,
          "Lumber":110,
-         "Ironwood":75,
-         "Bloodwood":10
+         "Ironwood":80,
+         "Bloodwood":15
       },
       "ore":{
          "Copper":135,
          "Silver":400,
          "Gold":45,
-         "Platinum":5
+         "Platinum":10
       },
       "food":{
          "Wheat":410,
@@ -383,10 +383,10 @@
          "Potatoes":15
       },
       "herbs":{
-         "Sage":340,
+         "Sage":350,
          "Rosemary":12,
          "Chamomile":120,
-         "Valerian":100
+         "Valerian":110
       }
    },
    "UltimateResources":{
@@ -394,7 +394,7 @@
          "Stick":250,
          "Lumber":110,
          "Ironwood":75,
-         "Bloodwood":10
+         "Bloodwood":15
       },
       "ore":{
          "Copper":135,
@@ -403,16 +403,16 @@
          "Platinum":5
       },
       "food":{
-         "Wheat":410,
+         "Wheat":440,
          "Rice":120,
-         "Corn":65,
+         "Corn":70,
          "Potatoes":15
       },
       "herbs":{
-         "Sage":340,
-         "Rosemary":12,
+         "Sage":350,
+         "Rosemary":20,
          "Chamomile":120,
-         "Valerian":100
+         "Valerian":120
       }
    }
 }

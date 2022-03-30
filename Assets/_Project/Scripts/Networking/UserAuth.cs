@@ -15,10 +15,12 @@ namespace Bitszer
         public UIManager uiManager;
 
         [Header("Login UI")]
+        public TMP_Text loginErrorText;
         public TMP_InputField emailLoginInputField;
         public TMP_InputField passwordLoginInputField;
 
         [Header("Signup UI")]
+        public TMP_Text signupErrorText;
         public TMP_InputField emailSignupInputField;
         public TMP_InputField passwordSignupInputField;
         public TMP_InputField confirmPasswordSignupInputField;
@@ -41,18 +43,39 @@ namespace Bitszer
             }
         }
 
-        public void SignUpUser()
-        {
-            RegisterUser();
-        }
-
         public void SignInUser()
         {
-            LoginUser(emailLoginInputField.text, passwordLoginInputField.text);
+            LoginUser(emailLoginInputField.text.ToLowerInvariant(), passwordLoginInputField.text);
+        }
+
+        public void SignUpUser()
+        {
+            RegisterUser(emailSignupInputField.text.ToLowerInvariant(), passwordSignupInputField.text);
         }
 
         private async Task LoginUser(string email, string password)
         {
+            loginErrorText.gameObject.SetActive(false);
+
+            if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
+            {
+                loginErrorText.SetText("All fields are required!");
+                loginErrorText.gameObject.SetActive(true);
+                return;
+            }
+            else if (string.IsNullOrEmpty(email))
+            {
+                loginErrorText.SetText("Email is required!");
+                loginErrorText.gameObject.SetActive(true);
+                return;
+            }
+            else if (string.IsNullOrEmpty(password))
+            {
+                loginErrorText.SetText("Password is required!");
+                loginErrorText.gameObject.SetActive(true);
+                return;
+            }
+
             APIManager.Instance.RaycastBlock(true);
 
             CognitoUserPool userPool = new CognitoUserPool(poolId, clientId, _provider);
@@ -90,24 +113,43 @@ namespace Bitszer
             }
             catch (Exception e)
             {
-                Debug.Log("EXCEPTION" + e);
-                return;
+                UnityMainThread.wkr.AddJob(() =>
+                {
+                    Debug.Log("EXCEPTION: " + e);
+
+                    loginErrorText.SetText("Something went wrong!");
+                    loginErrorText.gameObject.SetActive(true);
+                    APIManager.Instance.RaycastBlock(false);
+
+                    return;
+                });
             }
         }
 
-        private async Task RegisterUser()
+        private async Task RegisterUser(string email, string password)
         {
+            if ((string.IsNullOrEmpty(password) && string.IsNullOrEmpty(confirmPasswordSignupInputField.text))
+            || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPasswordSignupInputField.text)
+            || string.IsNullOrEmpty(email))
+            {
+                signupErrorText.SetText("All fields are required!");
+                signupErrorText.gameObject.SetActive(true);
+                return;
+            }
+
+            APIManager.Instance.RaycastBlock(true);
+
             SignUpRequest signUpRequest = new SignUpRequest()
             {
                 ClientId = clientId,
-                Username = emailSignupInputField.text,
-                Password = passwordSignupInputField.text,
+                Username = email,
+                Password = password,
             };
 
             List<AttributeType> attributes = new List<AttributeType>()
-        {
-            new AttributeType() { Name = "email", Value = emailSignupInputField.text },
-        };
+            {
+                new AttributeType() { Name = "email", Value = email },
+            };
 
             signUpRequest.UserAttributes = attributes;
 
@@ -115,11 +157,21 @@ namespace Bitszer
             {
                 SignUpResponse request = await _provider.SignUpAsync(signUpRequest);
                 Debug.Log("Signed up");
+
+                APIManager.Instance.RaycastBlock(false);
             }
             catch (Exception e)
             {
-                Debug.Log("Exception" + e);
-                return;
+                UnityMainThread.wkr.AddJob(() =>
+                {
+                    Debug.Log("EXCEPTION: " + e);
+
+                    signupErrorText.SetText("Something went wrong!");
+                    signupErrorText.gameObject.SetActive(true);
+                    APIManager.Instance.RaycastBlock(false);
+
+                    return;
+                });
             }
         }
     }

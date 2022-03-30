@@ -1,4 +1,5 @@
-﻿using Bitszer;
+﻿using System;
+using Bitszer;
 using UnityEngine;
 using UnityEngine.UI;
 using Utility.Logging;
@@ -61,6 +62,8 @@ public class MainMenu : MonoBehaviour
 
 	private Vector3 soundInitPos = new Vector3(0, 0, 0);
 	private Vector3 accountInitPos = new Vector3(0, 0, 0);
+
+	public static Action OnReturnToGameButtonClicked;
 
 	private bool IsSoundOff 
 	{
@@ -276,7 +279,9 @@ public class MainMenu : MonoBehaviour
 		AuctionHouse.Instance.Close();
 		Screen.orientation = ScreenOrientation.LandscapeLeft;
 		Screen.orientation = ScreenOrientation.AutoRotation;
-    }
+
+		OnReturnToGameButtonClicked?.Invoke();
+	}
 	
 	public void OpenSettingsScreen()
 	{

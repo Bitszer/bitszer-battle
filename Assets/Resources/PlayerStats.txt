@@ -19,23 +19,23 @@
         },
         {
             "name":"Infantry",
-            "health":"14",
+            "health":"15",
             "damage":"3",
-            "speed":"1.5",
+            "speed":"1",
             "cooldown":"3",
             "level":"0"
         },
         {
             "name":"Hunter",
-            "health":"13",
+            "health":"12",
             "damage":"3",
-            "speed":"1",
+            "speed":"1.5",
             "cooldown":"3.5",
             "level":"0"
         },
         {
             "name":"Cavalry",
-            "health":"12",
+            "health":"13",
             "damage":"4",
             "speed":"2",
             "cooldown":"4.5",
@@ -45,7 +45,7 @@
             "name":"Wizard",
             "health":"10",
             "damage":"4",
-            "speed":"1.5",
+            "speed":"0.7",
             "cooldown":"5",
             "level":"0"
         },
@@ -53,7 +53,7 @@
             "name":"Dinosaur",
             "health":"20",
             "damage":"5",
-            "speed":"1.5",
+            "speed":"1.2",
             "cooldown":"5",
             "level":"0"
         },
@@ -62,20 +62,20 @@
             "health":"22",
             "damage":"4",
             "speed":"1",
-            "cooldown":"5",
+            "cooldown":"5.5",
             "level":"0"
         },
         {
             "name":"DragonHawk",
-            "health":"20",
+            "health":"15",
             "damage":"4",
-            "speed":"2",
-            "cooldown":"5",
+            "speed":"2.5",
+            "cooldown":"5.5",
             "level":"0"
         },
         {
             "name":"Hippogryphy",
-            "health":"15",
+            "health":"10",
             "damage":"3",
             "speed":"2.5",
             "cooldown":"5.5",
@@ -86,31 +86,31 @@
             "health":"15",
             "damage":"2",
             "speed":"3",
-            "cooldown":"5",
+            "cooldown":"6",
             "level":"0"
         },
         {
             "name":"DragonSlayer",
             "health":"25",
             "damage":"4",
-            "speed":"1.5",
+            "speed":"1",
             "cooldown":"5.5",
             "level":"0"
         },
         {
             "name":"Titan",
-            "health":"28",
-            "damage":"4",
-            "speed":"1.5",
+            "health":"30",
+            "damage":"6",
+            "speed":"0.5",
             "cooldown":"5.5",
             "level":"0"
         },
         {
             "name":"BeastLord",
-            "health":"50",
-            "damage":"10",
-            "speed":"1.8",
-            "cooldown":"6",
+            "health":"40",
+            "damage":"8",
+            "speed":"2",
+            "cooldown":"7",
             "level":"0"
         }
     ]

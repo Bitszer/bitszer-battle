@@ -25,7 +25,17 @@ public class PlayerResourceManager : MonoBehaviour
     /*
      * Mono Behavior.
      */
-    
+
+    private void OnEnable()
+    {
+        MainMenu.OnReturnToGameButtonClicked += OnMyAssetsButtonClicked;
+    }
+
+    private void OnDisable()
+    {
+        MainMenu.OnReturnToGameButtonClicked -= OnMyAssetsButtonClicked;
+    }
+
     public void Start()
     {
         if (gameManager == null)
@@ -152,6 +162,19 @@ public class PlayerResourceManager : MonoBehaviour
         }));
 
         return playerResources;
+    }
+
+    private void OnMyAssetsButtonClicked()
+    {
+        var playerResources = CreateNewPlayerResources();
+
+        PlayerResources = playerResources;
+
+        if (_onPlayerResourcesLoaded != null)
+        {
+            _onPlayerResourcesLoaded.Invoke();
+            _onPlayerResourcesLoaded = null;
+        }
     }
 
     // After any transaction of resources this method should be called
@@ -409,17 +432,17 @@ public class PlayerResourceManager : MonoBehaviour
         rewardResources.ore.Copper = MakeTenPercentage(50, levelFactor);
         rewardResources.ore.Silver = MakeTenPercentage(10, levelFactor);
         rewardResources.ore.Gold = MakeTenPercentage(15, levelFactor);
-        rewardResources.ore.Platinum = MakeTenPercentage(25, levelFactor);
+        rewardResources.ore.Platinum = MakeTenPercentage(3, levelFactor);
 
         rewardResources.food.Wheat = MakeTenPercentage(65, levelFactor);
         rewardResources.food.Corn = MakeTenPercentage(10, levelFactor);
         rewardResources.food.Rice = MakeTenPercentage(16, levelFactor);
-        rewardResources.food.Potatoes = MakeTenPercentage(25, levelFactor);
+        rewardResources.food.Potatoes = MakeTenPercentage(7, levelFactor);
 
-        rewardResources.herbs.Sage = MakeTenPercentage(70, levelFactor);
+        rewardResources.herbs.Sage = MakeTenPercentage(55, levelFactor);
         rewardResources.herbs.Rosemary = MakeTenPercentage(10, levelFactor);
-        rewardResources.herbs.Chamomile = MakeTenPercentage(65, levelFactor);
-        rewardResources.herbs.Valerian = MakeTenPercentage(20, levelFactor);
+        rewardResources.herbs.Chamomile = MakeTenPercentage(40, levelFactor);
+        rewardResources.herbs.Valerian = MakeTenPercentage(5, levelFactor);
 
         return rewardResources;
     }
