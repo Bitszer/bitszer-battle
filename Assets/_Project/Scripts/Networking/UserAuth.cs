@@ -103,7 +103,15 @@ namespace Bitszer
                     PlayerPrefs.SetString("email", email);
                     PlayerPrefs.SetString("password", password);
 
-                    StartCoroutine(AuctionHouse.Instance.GetMyProfile(result => { }));
+                    StartCoroutine(AuctionHouse.Instance.GetMyProfile(result =>
+                    {
+                        if (result == null)
+                        {
+                            APIManager.Instance.SetError("Something went wrong!", "Okay", ErrorType.CustomMessage);
+                            APIManager.Instance.RaycastBlock(false);
+                            return;
+                        }
+                    }));
 
                     APIManager.Instance.RaycastBlock(false);
                     uiManager.OpenTabPanel();
@@ -137,6 +145,22 @@ namespace Bitszer
                 return;
             }
 
+            if (passwordSignupInputField.text.Length < 8)
+            {
+                signupErrorText.color = Color.red;
+                signupErrorText.SetText("Password must be at least 8 characters long.");
+                signupErrorText.gameObject.SetActive(true);
+                return;
+            }
+
+            if (!confirmPasswordSignupInputField.text.Equals(password))
+            {
+                signupErrorText.color = Color.red;
+                signupErrorText.SetText("Passwords doesn't match");
+                signupErrorText.gameObject.SetActive(true);
+                return;
+            }
+
             APIManager.Instance.RaycastBlock(true);
 
             SignUpRequest signUpRequest = new SignUpRequest()
@@ -158,6 +182,10 @@ namespace Bitszer
                 SignUpResponse request = await _provider.SignUpAsync(signUpRequest);
                 Debug.Log("Signed up");
 
+                signupErrorText.color = Color.green;
+                signupErrorText.SetText("Registered successfully!\nYou can Login now.");
+                signupErrorText.gameObject.SetActive(true);
+
                 APIManager.Instance.RaycastBlock(false);
             }
             catch (Exception e)
@@ -166,6 +194,7 @@ namespace Bitszer
                 {
                     Debug.Log("EXCEPTION: " + e);
 
+                    signupErrorText.color = Color.red;
                     signupErrorText.SetText("Something went wrong!");
                     signupErrorText.gameObject.SetActive(true);
                     APIManager.Instance.RaycastBlock(false);

@@ -274,7 +274,14 @@ public class PlayerResourceManager : MonoBehaviour
             },
         };
 
-        StartCoroutine(AuctionHouse.Instance.PushInventory(inventories, result => { }));
+        StartCoroutine(AuctionHouse.Instance.PushInventory(inventories, result =>
+        {
+            if (result == null || result.data == null)
+            {
+                APIManager.Instance.SetError("Something went wrong!", "Okay", ErrorType.CustomMessage);
+                APIManager.Instance.RaycastBlock(false);
+            }
+        }));
         
         OnPlayerResourcesChanged?.Invoke();
     }

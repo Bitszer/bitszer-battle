@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -228,6 +229,13 @@ namespace Bitszer
 
             StartCoroutine(dataProvider.GetAuctions(itemName, limit, nextToken, result =>
             {
+                if (result == null)
+                {
+                    APIManager.Instance.SetError("Something went wrong!", "Okay", ErrorType.CustomMessage);
+                    APIManager.Instance.RaycastBlock(false);
+                    return;
+                }
+
                 if (string.IsNullOrEmpty(itemName))
                     StartCoroutine(PopulateBuyData(result));
                 else
@@ -244,6 +252,13 @@ namespace Bitszer
 
             StartCoroutine(dataProvider.GetMyInventoryByGame(limit, nextToken, result =>
             {
+                if (result == null)
+                {
+                    APIManager.Instance.SetError("Something went wrong!", "Okay", ErrorType.CustomMessage);
+                    APIManager.Instance.RaycastBlock(false);
+                    return;
+                }
+
                 StartCoroutine(PopulateSellData(result));
             }));
         }
@@ -257,6 +272,13 @@ namespace Bitszer
 
             StartCoroutine(dataProvider.GetUserAuctions(_profile.data.getMyProfile.id, limit, nextToken, result =>
             {
+                if (result == null)
+                {
+                    APIManager.Instance.SetError("Something went wrong!", "Okay", ErrorType.CustomMessage);
+                    APIManager.Instance.RaycastBlock(false);
+                    return;
+                }
+
                 StartCoroutine(PopulateGetUserAuctionsData(result));
             }));
         }
@@ -270,6 +292,12 @@ namespace Bitszer
 
             StartCoroutine(dataProvider.GetAuctions(itemName, limit, nextToken, result =>
             {
+                if (result == null)
+                {
+                    APIManager.Instance.SetError("Something went wrong!", "Okay", ErrorType.CustomMessage);
+                    APIManager.Instance.RaycastBlock(false);
+                    return;
+                }
 
                 if (!string.IsNullOrEmpty(itemName))
                     StartCoroutine(PopulateSearchItems(result));
@@ -303,7 +331,11 @@ namespace Bitszer
                 buyItem.qtyText.text = item.quantity.ToString();
                 buyItem.itemNameText.text = item.gameItem.itemName;
                 buyItem.usernameText.text = item.sellerProfile.name;
-                buyItem.expirationText.text = item.expiration;
+
+                DateTime currentDate = DateTime.Now;
+                DateTime expirationDate = DateTime.Parse(item.expiration, null, System.Globalization.DateTimeStyles.RoundtripKind);
+
+                buyItem.expirationText.text = $"Less than {(expirationDate - currentDate).Days} Days";
                 buyItem.buyoutText.text = item.buyout.ToString();
                 buyItem.bidText.text = item.bid.ToString();
 
@@ -364,6 +396,13 @@ namespace Bitszer
 
                         StartCoroutine(AuctionHouse.Instance.Buyout(item.id, result =>
                         {
+                            if (result == null || result.data == null)
+                            {
+                                APIManager.Instance.SetError("Something went wrong!", "Okay", ErrorType.CustomMessage);
+                                APIManager.Instance.RaycastBlock(false);
+                                return;
+                            }
+
                             if (result.data.buyout)
                             {
                                 getAuction.data.getAuctions.auctions.Remove(item);
@@ -404,8 +443,9 @@ namespace Bitszer
 
                         StartCoroutine(AuctionHouse.Instance.Bid(item.id, float.Parse(bidPopupData.totalBidInputField.text), result =>
                         {
-                            if (result.data == null)
+                            if (result == null || result.data == null)
                             {
+                                APIManager.Instance.SetError("Something went wrong!", "Okay", ErrorType.CustomMessage);
                                 APIManager.Instance.RaycastBlock(false);
                                 return;
                             }
@@ -544,6 +584,13 @@ namespace Bitszer
 
                         StartCoroutine(AuctionHouse.Instance.CreateAuction(newAuction, result =>
                         {
+                            if (result == null || result.data == null)
+                            {
+                                APIManager.Instance.SetError("Something went wrong!", "Okay", ErrorType.CustomMessage);
+                                APIManager.Instance.RaycastBlock(false);
+                                return;
+                            }
+
                             if (result.data != null)
                             {
                                 sellItemPanel.SetActive(false);
@@ -601,8 +648,11 @@ namespace Bitszer
                 }));
                 auctionItem.qtyText.text = item.quantity.ToString();
                 auctionItem.itemNameText.text = item.gameItem.itemName;
-                auctionItem.expirationText.text = item.expiration;
 
+                DateTime currentDate = DateTime.Now;
+                DateTime expirationDate = DateTime.Parse(item.expiration, null, System.Globalization.DateTimeStyles.RoundtripKind);
+
+                auctionItem.expirationText.text = $"Less than {(expirationDate - currentDate).Days} Days";
                 auctionItem.cancelButton.onClick.RemoveAllListeners();
                 auctionItem.cancelButton.onClick.AddListener(() =>
                 {
@@ -621,6 +671,13 @@ namespace Bitszer
 
                         StartCoroutine(AuctionHouse.Instance.CancelAuction(item.id, result =>
                         {
+                            if (result == null || result.data == null)
+                            {
+                                APIManager.Instance.SetError("Something went wrong!", "Okay", ErrorType.CustomMessage);
+                                APIManager.Instance.RaycastBlock(false);
+                                return;
+                            }
+
                             if (result.data.cancelAuction)
                             {
                                 getUserAuctions.data.getUserAuctions.auctions.Remove(item);
@@ -671,7 +728,11 @@ namespace Bitszer
                 buyItem.qtyText.text = item.quantity.ToString();
                 buyItem.itemNameText.text = item.gameItem.itemName;
                 buyItem.usernameText.text = item.sellerProfile.name;
-                buyItem.expirationText.text = item.expiration;
+
+                DateTime currentDate = DateTime.Now;
+                DateTime expirationDate = DateTime.Parse(item.expiration, null, System.Globalization.DateTimeStyles.RoundtripKind);
+
+                buyItem.expirationText.text = $"Less than {(expirationDate - currentDate).Days} Days";
                 buyItem.buyoutText.text = item.buyout.ToString();
                 buyItem.bidText.text = item.bid.ToString();
 
@@ -710,6 +771,13 @@ namespace Bitszer
 
                         StartCoroutine(AuctionHouse.Instance.Buyout(item.id, result =>
                         {
+                            if (result == null || result.data == null)
+                            {
+                                APIManager.Instance.SetError("Something went wrong!", "Okay", ErrorType.CustomMessage);
+                                APIManager.Instance.RaycastBlock(false);
+                                return;
+                            }
+
                             if (result.data.buyout)
                             {
                                 getAuction.data.getAuctions.auctions.Remove(item);
@@ -738,6 +806,13 @@ namespace Bitszer
 
                         StartCoroutine(AuctionHouse.Instance.Bid(item.id, float.Parse(bidPopupData.totalBidInputField.text), result =>
                         {
+                            if (result == null || result.data == null)
+                            {
+                                APIManager.Instance.SetError("Something went wrong!", "Okay", ErrorType.CustomMessage);
+                                APIManager.Instance.RaycastBlock(false);
+                                return;
+                            }
+
                             if (result.data.bid)
                             {
                                 getAuction.data.getAuctions.auctions.Remove(item);
@@ -786,7 +861,11 @@ namespace Bitszer
             buyItem.qtyText.text = item.quantity.ToString();
             buyItem.itemNameText.text = item.gameItem.itemName;
             buyItem.usernameText.text = item.sellerProfile.name;
-            buyItem.expirationText.text = item.expiration;
+
+            DateTime currentDate = DateTime.Now;
+            DateTime expirationDate = DateTime.Parse(item.expiration, null, System.Globalization.DateTimeStyles.RoundtripKind);
+
+            buyItem.expirationText.text = $"Less than {(expirationDate - currentDate).Days} Days";
             buyItem.buyoutText.text = item.buyout.ToString();
             buyItem.bidText.text = item.bid.ToString();
 
@@ -825,6 +904,13 @@ namespace Bitszer
 
                     StartCoroutine(AuctionHouse.Instance.Buyout(item.id, result =>
                     {
+                        if (result == null || result.data == null)
+                        {
+                            APIManager.Instance.SetError("Something went wrong!", "Okay", ErrorType.CustomMessage);
+                            APIManager.Instance.RaycastBlock(false);
+                            return;
+                        }
+
                         if (result.data.buyout)
                         {
                             getAuction.data.getAuctions.auctions.Remove(item);
@@ -853,6 +939,13 @@ namespace Bitszer
 
                     StartCoroutine(AuctionHouse.Instance.Bid(item.id, float.Parse(bidPopupData.totalBidInputField.text), result =>
                     {
+                        if (result == null || result.data == null)
+                        {
+                            APIManager.Instance.SetError("Something went wrong!", "Okay", ErrorType.CustomMessage);
+                            APIManager.Instance.RaycastBlock(false);
+                            return;
+                        }
+
                         if (result.data.bid)
                         {
                             getAuction.data.getAuctions.auctions.Remove(item);
