@@ -590,7 +590,7 @@ public class CharResourcesMenu : MonoBehaviour
         templeResource = gameManager.heroResourceRequirement.GetRequiredResourcesForTemple(gameManager.playerHeroManager.temple.level);
         playerResource = gameManager.playerResources.PlayerResources;
 
-        Debug.Log("@@@@ Temple Level -> " + gameManager.playerHeroManager.temple.level);
+        //Debug.Log("@@@@ Temple Level -> " + gameManager.playerHeroManager.temple.level);
 
         if (gameManager.playerHeroManager.temple.level > 0)
         {
@@ -1171,7 +1171,7 @@ public class CharResourcesMenu : MonoBehaviour
     
     private void OnPlayerResourcesChanged()
     {
-        _log.Debug("OnPlayerResourcesChanged");
+        //_log.Debug("OnPlayerResourcesChanged");
         
         if (playerResource == null)
             return;

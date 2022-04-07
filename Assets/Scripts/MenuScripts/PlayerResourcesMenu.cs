@@ -140,7 +140,7 @@ public sealed class PlayerResourcesMenu : MonoBehaviour
 
 	private void OnPlayerResourcesChanged()
 	{
-		_log.Debug("OnPlayerResourcesChanged");
+		//_log.Debug("OnPlayerResourcesChanged");
 		
 		UpgradeCharacterResources();
 	}

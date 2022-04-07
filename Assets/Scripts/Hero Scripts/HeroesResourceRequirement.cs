@@ -131,9 +131,11 @@ public sealed class HeroesResourceRequirement : MonoBehaviour
     {
         if (currentLevel >= HeroUnitData.LevelMax)
             return false;
+
         var resources = GetUnitResources(unitId);
         if (resources.IsEnoughForUpgrade(playerResources, currentLevel))
             return true;
+
         return false;
     }
 }
