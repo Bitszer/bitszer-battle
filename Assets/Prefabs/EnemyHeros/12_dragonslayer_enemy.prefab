@@ -384,12 +384,12 @@ MonoBehaviour:
   id: 12
   typeName: DragonSlayer
   description: Full body armour soldier
-  health: 25
-  damage: 5.5
+  health: 55
+  damage: 3.8
   heroSpeed: 1.5
-  coolDownTime: 5.5
-  spawnCost: 450
-  attackRange: 2
+  coolDownTime: 5
+  spawnCost: 400
+  attackRange: 1.5
   isRangeHero: 0
   isFlyingHero: 0
   BloodAnimController: {fileID: 9571580}

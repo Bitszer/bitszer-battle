@@ -635,12 +635,12 @@ MonoBehaviour:
   id: 2
   typeName: Warder
   description: Prison Guard
-  health: 10
-  damage: 3
+  health: 5
+  damage: 1.4
   heroSpeed: 1
   coolDownTime: 3
   spawnCost: 200
-  attackRange: 6.5
+  attackRange: 5.5
   isRangeHero: 1
   isFlyingHero: 0
   BloodAnimController: {fileID: 9580414}

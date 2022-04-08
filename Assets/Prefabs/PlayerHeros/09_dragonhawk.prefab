@@ -367,11 +367,11 @@ MonoBehaviour:
   id: 9
   typeName: DragonHawk
   description: Flying Dragon
-  health: 20
-  damage: 3.5
+  health: 15
+  damage: 6
   heroSpeed: 2
   coolDownTime: 5
-  spawnCost: 400
+  spawnCost: 500
   attackRange: 6.5
   isRangeHero: 1
   isFlyingHero: 1

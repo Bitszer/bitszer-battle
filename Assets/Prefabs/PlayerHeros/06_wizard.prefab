@@ -625,12 +625,12 @@ MonoBehaviour:
   id: 6
   typeName: Wizard
   description: Wizard with a long coat and beard
-  health: 20
-  damage: 4.5
+  health: 15
+  damage: 3.5
   heroSpeed: 1.5
   coolDownTime: 5
-  spawnCost: 300
-  attackRange: 6
+  spawnCost: 350
+  attackRange: 8
   isRangeHero: 1
   isFlyingHero: 0
   BloodAnimController: {fileID: 9545914}

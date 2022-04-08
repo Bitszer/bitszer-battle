@@ -186,26 +186,28 @@ public class HeroResources
 
     public bool IsEnoughForUpgrade(HeroResources resources, int currentLevel)
     {
-        currentLevel = currentLevel < 0 ? 1 : currentLevel + 1;
+        //currentLevel = currentLevel < 0 ? 1 : currentLevel + 1;
+        currentLevel = currentLevel < 0 ? 1 : currentLevel;
 
-        Debug.Log("wood.Stick: " + (wood.Stick * currentLevel <= resources.wood.Stick));
-        Debug.Log("wood.Lumber: " + (wood.Lumber * currentLevel <= resources.wood.Lumber));
-        Debug.Log("wood.Ironwood: " + (wood.Ironwood * currentLevel <= resources.wood.Ironwood));
-        Debug.Log("wood.Bloodwood: " + (wood.Bloodwood * currentLevel <= resources.wood.Bloodwood));
-        Debug.Log("ore.Copper: " + (ore.Copper * currentLevel <= resources.ore.Copper));
-        Debug.Log("ore.Silver: " + (ore.Silver * currentLevel <= resources.ore.Silver));
-        Debug.Log("ore.Gold: " + (ore.Gold * currentLevel <= resources.ore.Gold));
-        Debug.Log("ore.Platinum: " + (ore.Platinum * currentLevel <= resources.ore.Platinum));
-        Debug.Log("food.Wheat: " + (food.Wheat * currentLevel <= resources.food.Wheat));
-        Debug.Log("food.Corn: " + (food.Corn * currentLevel <= resources.food.Corn));
-        Debug.Log("food.Rice: " + (food.Rice * currentLevel <= resources.food.Rice));
-        Debug.Log("food.Potatoes: " + (food.Potatoes * currentLevel <= resources.food.Potatoes));
-        Debug.Log("herbs.Sage: " + (herbs.Sage * currentLevel <= resources.herbs.Sage));
-        Debug.Log("herbs.Sage: " + herbs.Sage);
-        Debug.Log("resources.herbs.Sage: " + resources.herbs.Sage);
-        Debug.Log("herbs.Rosemary: " + (herbs.Rosemary * currentLevel <= resources.herbs.Rosemary));
-        Debug.Log("herbs.Chamomile: " + (herbs.Chamomile * currentLevel <= resources.herbs.Chamomile));
-        Debug.Log("herbs.Valerian: " + (herbs.Valerian * currentLevel <= resources.herbs.Valerian));
+        //Debug.Log("wood.Stick: " + (wood.Stick * currentLevel <= resources.wood.Stick));
+        //Debug.Log("wood.Lumber: " + (wood.Lumber * currentLevel <= resources.wood.Lumber));
+        //Debug.Log("wood.Ironwood: " + (wood.Ironwood * currentLevel <= resources.wood.Ironwood));
+        //Debug.Log("wood.Bloodwood: " + (wood.Bloodwood * currentLevel <= resources.wood.Bloodwood));
+        //Debug.Log("ore.Copper: " + (ore.Copper * currentLevel <= resources.ore.Copper));
+        //Debug.Log("ore.Silver: " + (ore.Silver * currentLevel <= resources.ore.Silver));
+        //Debug.Log("ore.Gold: " + (ore.Gold * currentLevel <= resources.ore.Gold));
+        //Debug.Log("ore.Platinum: " + (ore.Platinum * currentLevel <= resources.ore.Platinum));
+        //Debug.Log("food.Wheat: " + (food.Wheat * currentLevel <= resources.food.Wheat));
+        //Debug.Log("food.Corn: " + (food.Corn * currentLevel <= resources.food.Corn));
+        //Debug.Log("food.Rice: " + (food.Rice * currentLevel <= resources.food.Rice));
+        //Debug.Log("food.Potatoes: " + (food.Potatoes * currentLevel <= resources.food.Potatoes));
+        //Debug.Log("herbs.Sage: " + (herbs.Sage * currentLevel <= resources.herbs.Sage));
+        //Debug.Log("herbs.Sage: " + herbs.Sage);
+        //Debug.Log("herbs.Sage * currentLevel: " + herbs.Sage * currentLevel);
+        //Debug.Log("resources.herbs.Sage: " + resources.herbs.Sage);
+        //Debug.Log("herbs.Rosemary: " + (herbs.Rosemary * currentLevel <= resources.herbs.Rosemary));
+        //Debug.Log("herbs.Chamomile: " + (herbs.Chamomile * currentLevel <= resources.herbs.Chamomile));
+        //Debug.Log("herbs.Valerian: " + (herbs.Valerian * currentLevel <= resources.herbs.Valerian));
 
         if (wood.Stick * currentLevel <= resources.wood.Stick &&
             wood.Lumber * currentLevel <= resources.wood.Lumber &&

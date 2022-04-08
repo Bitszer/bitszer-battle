@@ -225,12 +225,12 @@ MonoBehaviour:
   id: 11
   typeName: Ardliz
   description: Cat woman much like bob-cat
-  health: 15
-  damage: 7
+  health: 10
+  damage: 10
   heroSpeed: 2.5
   coolDownTime: 5
-  spawnCost: 450
-  attackRange: 2
+  spawnCost: 550
+  attackRange: 1
   isRangeHero: 0
   isFlyingHero: 0
   BloodAnimController: {fileID: 9577820}

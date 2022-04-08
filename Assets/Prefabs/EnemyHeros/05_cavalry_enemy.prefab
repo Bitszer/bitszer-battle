@@ -467,8 +467,8 @@ MonoBehaviour:
   id: 5
   typeName: Cavalry
   description: Horse Man
-  health: 15
-  damage: 4
+  health: 35
+  damage: 2
   heroSpeed: 2
   coolDownTime: 4.5
   spawnCost: 300

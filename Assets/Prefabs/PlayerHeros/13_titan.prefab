@@ -467,12 +467,12 @@ MonoBehaviour:
   id: 13
   typeName: Titan
   description: Giant beast in the shape of a man
-  health: 30
-  damage: 6
-  heroSpeed: 1
-  coolDownTime: 5.5
+  health: 100
+  damage: 2
+  heroSpeed: 0.5
+  coolDownTime: 6
   spawnCost: 450
-  attackRange: 2
+  attackRange: 1
   isRangeHero: 0
   isFlyingHero: 0
   BloodAnimController: {fileID: 9558254}

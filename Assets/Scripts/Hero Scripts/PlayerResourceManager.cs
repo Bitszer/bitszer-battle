@@ -113,49 +113,49 @@ public class PlayerResourceManager : MonoBehaviour
         {
             if (result.data.getMyInventorybyGame.inventory.Count != 0)
             {
-                //foreach (var item in result.data.getMyInventorybyGame.inventory)
-                //{
-                //    var data = item.gameItem.itemName switch
-                //    {
-                //        "Stick" => playerResources.wood.Stick = item.ItemCount,
-                //        "Lumber" => playerResources.wood.Lumber = item.ItemCount,
-                //        "Ironwood" => playerResources.wood.Ironwood = item.ItemCount,
-                //        "Bloodwood" => playerResources.wood.Bloodwood = item.ItemCount,
-                //        "Copper" => playerResources.ore.Copper = item.ItemCount,
-                //        "Silver" => playerResources.ore.Silver = item.ItemCount,
-                //        "Gold" => playerResources.ore.Gold = item.ItemCount,
-                //        "Platinum" => playerResources.ore.Platinum = item.ItemCount,
-                //        "Wheat" => playerResources.food.Wheat = item.ItemCount,
-                //        "Corn" => playerResources.food.Corn = item.ItemCount,
-                //        "Rice" => playerResources.food.Rice = item.ItemCount,
-                //        "Potatoes" => playerResources.food.Potatoes = item.ItemCount,
-                //        "Sage" => playerResources.herbs.Sage = item.ItemCount,
-                //        "Rosemary" => playerResources.herbs.Rosemary = item.ItemCount,
-                //        "Chamomile" => playerResources.herbs.Chamomile = item.ItemCount,
-                //        "Valerian" => playerResources.herbs.Valerian = item.ItemCount,
-                //        _ => 0,
-                //    };
-                //}
+                foreach (var item in result.data.getMyInventorybyGame.inventory)
+                {
+                    var data = item.gameItem.itemName switch
+                    {
+                        "Stick" => playerResources.wood.Stick = item.ItemCount,
+                        "Lumber" => playerResources.wood.Lumber = item.ItemCount,
+                        "Ironwood" => playerResources.wood.Ironwood = item.ItemCount,
+                        "Bloodwood" => playerResources.wood.Bloodwood = item.ItemCount,
+                        "Copper" => playerResources.ore.Copper = item.ItemCount,
+                        "Silver" => playerResources.ore.Silver = item.ItemCount,
+                        "Gold" => playerResources.ore.Gold = item.ItemCount,
+                        "Platinum" => playerResources.ore.Platinum = item.ItemCount,
+                        "Wheat" => playerResources.food.Wheat = item.ItemCount,
+                        "Corn" => playerResources.food.Corn = item.ItemCount,
+                        "Rice" => playerResources.food.Rice = item.ItemCount,
+                        "Potatoes" => playerResources.food.Potatoes = item.ItemCount,
+                        "Sage" => playerResources.herbs.Sage = item.ItemCount,
+                        "Rosemary" => playerResources.herbs.Rosemary = item.ItemCount,
+                        "Chamomile" => playerResources.herbs.Chamomile = item.ItemCount,
+                        "Valerian" => playerResources.herbs.Valerian = item.ItemCount,
+                        _ => 0,
+                    };
+                }
 
-                playerResources.wood.Stick = 10000;
-                playerResources.wood.Lumber = 10000;
-                playerResources.wood.Ironwood = 10000;
-                playerResources.wood.Bloodwood = 10000;
+                //playerResources.wood.Stick = 10000;
+                //playerResources.wood.Lumber = 10000;
+                //playerResources.wood.Ironwood = 10000;
+                //playerResources.wood.Bloodwood = 10000;
 
-                playerResources.ore.Copper = 10000;
-                playerResources.ore.Silver = 10000;
-                playerResources.ore.Gold = 10000;
-                playerResources.ore.Platinum = 10000;
+                //playerResources.ore.Copper = 10000;
+                //playerResources.ore.Silver = 10000;
+                //playerResources.ore.Gold = 10000;
+                //playerResources.ore.Platinum = 10000;
 
-                playerResources.food.Wheat = 10000;
-                playerResources.food.Corn = 10000;
-                playerResources.food.Rice = 10000;
-                playerResources.food.Potatoes = 10000;
+                //playerResources.food.Wheat = 10000;
+                //playerResources.food.Corn = 10000;
+                //playerResources.food.Rice = 10000;
+                //playerResources.food.Potatoes = 10000;
 
-                playerResources.herbs.Sage = 10000;
-                playerResources.herbs.Rosemary = 10000;
-                playerResources.herbs.Chamomile = 10000;
-                playerResources.herbs.Valerian = 10000;
+                //playerResources.herbs.Sage = 10000;
+                //playerResources.herbs.Rosemary = 10000;
+                //playerResources.herbs.Chamomile = 10000;
+                //playerResources.herbs.Valerian = 10000;
             }
             else
             {

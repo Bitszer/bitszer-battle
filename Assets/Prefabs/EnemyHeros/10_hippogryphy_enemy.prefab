@@ -308,12 +308,12 @@ MonoBehaviour:
   id: 10
   typeName: Hippogryphy
   description: Combination of eagle face with wings on horse body
-  health: 30
-  damage: 4
-  heroSpeed: 2
+  health: 60
+  damage: 2
+  heroSpeed: 3
   coolDownTime: 5.5
-  spawnCost: 400
-  attackRange: 2
+  spawnCost: 350
+  attackRange: 1
   isRangeHero: 0
   isFlyingHero: 0
   BloodAnimController: {fileID: 9582614}

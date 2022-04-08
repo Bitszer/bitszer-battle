@@ -327,12 +327,12 @@ MonoBehaviour:
   id: 14
   typeName: BeastLord
   description: Animal Beast Character
-  health: 30
-  damage: 7
-  heroSpeed: 2
-  coolDownTime: 6
-  spawnCost: 500
-  attackRange: 2
+  health: 50
+  damage: 12
+  heroSpeed: 3
+  coolDownTime: 8
+  spawnCost: 600
+  attackRange: 3
   isRangeHero: 0
   isFlyingHero: 0
   BloodAnimController: {fileID: 9580970}
