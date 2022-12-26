@@ -130,6 +130,23 @@ namespace Bitszer
 
             result(data);
         }
+        public IEnumerator GetMyLogs(int limit, string nextToken, Action<GetMyLogs> result)
+        {
+            GraphApi.Query getMyLogs = graphApi.GetQueryByName("getMyLogs", GraphApi.Query.Type.Query);
+
+            if (!string.IsNullOrEmpty(nextToken))
+                getMyLogs.SetArgs(new { nextToken });
+
+            var www = graphApi.Post(getMyLogs);
+            yield return new WaitUntil(() => www.IsCompleted);
+            Debug.Log("Data: " + www.Result.downloadHandler.text);
+            var data = JsonConvert.DeserializeObject<GetMyLogs>(www.Result.downloadHandler.text);
+
+            if (data != null)
+                Events.OnMyLogByGameReceived.Invoke(data);
+
+            result(data);
+        }
 
         public IEnumerator GetAuctionsByGame(int limit, string nextToken, Action<GetAuctionbyGame> result)
         {

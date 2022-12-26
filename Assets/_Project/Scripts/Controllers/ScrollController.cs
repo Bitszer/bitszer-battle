@@ -7,7 +7,7 @@ namespace Bitszer
     {
         public enum SCROLL_PANEL : byte
         {
-            BUY, SELL, MY_AUCTIONS, SIMILAR_ITEMS, SEARCH_ITEMS,
+            BUY, SELL, MY_AUCTIONS, MY_LOGS, SIMILAR_ITEMS, SEARCH_ITEMS,
         }
 
         public SCROLL_PANEL scrollPanel;

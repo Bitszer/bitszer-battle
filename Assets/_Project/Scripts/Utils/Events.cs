@@ -10,6 +10,7 @@ namespace Bitszer
         public static readonly Evt<GetAuction> OnAuctionsReceived = new Evt<GetAuction>();
         public static readonly Evt<GetInventory> OnInventoryReceived = new Evt<GetInventory>();
         public static readonly Evt<GetMyInventoryByGame> OnMyInventoryByGameReceived = new Evt<GetMyInventoryByGame>();
+        public static readonly Evt<GetMyLogs> OnMyLogByGameReceived = new Evt<GetMyLogs>();
         public static readonly Evt<GetAuctionbyGame> OnAuctionsByGameReceived = new Evt<GetAuctionbyGame>();
         public static readonly Evt<GetGameItembyGame> OnGameItemByGameReceived = new Evt<GetGameItembyGame>();
 
