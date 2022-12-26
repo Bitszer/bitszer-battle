@@ -16,20 +16,20 @@ MonoBehaviour:
   queries:
   - name: getUserAuctions
     type: 0
-    query: "query getUserAuctions{\n    getUserAuctions{\n        nextToken\n       
-      auctions{\n            bid\n            buyout\n            createdAt\n           
-      expiration\n            highBidderProfile{\n                backgroundImageUrl\n               
-      buyAmount\n                buyCount\n                createdAt\n               
-      id\n                imageUrl\n                name\n                postedAuctionsCount\n               
-      screenName\n                soldAmount\n                soldCount\n               
-      title\n        }\n            sellerProfile{\n                buyCount\n               
-      createdAt\n                postedAuctionsCount\n                title\n               
-      soldCount\n                soldAmount\n                screenName\n               
-      name\n                backgroundImageUrl\n                buyAmount\n               
-      id\n                imageUrl\n        }\n            gameItem{\n               
-      description\n                gameName\n                imageUrl\n               
-      itemId\n                itemName\n        }\n            id\n            quantity\n       
-      }\n    }\n}"
+    query: "query getUserAuctions{\n    getUserAuctions(  userId :\"d418670c-927e-4402-b999-8ccee7f69262\",
+      limit :10 ){\n        nextToken\n        auctions{\n            bid\n           
+      buyout\n            createdAt\n            expiration\n            highBidderProfile{\n               
+      backgroundImageUrl\n                buyAmount\n                buyCount\n               
+      createdAt\n                id\n                imageUrl\n                name\n               
+      postedAuctionsCount\n                screenName\n                soldAmount\n               
+      soldCount\n                title\n        }\n            sellerProfile{\n               
+      buyCount\n                createdAt\n                postedAuctionsCount\n               
+      title\n                soldCount\n                soldAmount\n               
+      screenName\n                name\n                backgroundImageUrl\n               
+      buyAmount\n                id\n                imageUrl\n        }\n           
+      gameItem{\n                description\n                gameName\n               
+      imageUrl\n                itemId\n                itemName\n        }\n           
+      id\n            quantity\n        }\n    }\n}"
     queryString: getUserAuctions
     returnType: AuctionPage
     queryOptions:
@@ -1981,7 +1981,7 @@ MonoBehaviour:
       - name: titles
         type: String
       hasChanged: 0
-    isComplete: 1
+    isComplete: 0
   - name: getProfile
     type: 0
     query: "query getProfile{\n    getProfile(  screenName :\"Hannah\" ){\n       
@@ -2396,7 +2396,7 @@ MonoBehaviour:
     isComplete: 1
   - name: getAuctions
     type: 0
-    query: "query getAuctions{\n    getAuctions(  itemName :\"\", limit :5 ){\n       
+    query: "query getAuctions{\n    getAuctions(  itemName :\"\", limit :10 ){\n       
       nextToken\n        auctions{\n            bid\n            buyout\n           
       createdAt\n            expiration\n            id\n            quantity\n           
       gameItem{\n                description\n                gameName\n               
@@ -3779,7 +3779,7 @@ MonoBehaviour:
   - name: getMyInventorybyGame
     type: 0
     query: "query getMyInventorybyGame{\n    getMyInventorybyGame(  gameId :\"01FYCY9CE00XVMFD3PJ8EGVMF0\",
-      limit :20 ){\n        nextToken\n        inventory{\n            username\n           
+      limit :10 ){\n        nextToken\n        inventory{\n            username\n           
       ItemCount\n            gameItem{\n                itemId\n                gameName\n               
       itemName\n                imageUrl\n                description\n           
       }\n        }\n    }\n}"
@@ -5368,9 +5368,9 @@ MonoBehaviour:
     query: "query getMyLogs{\n    getMyLogs{\n        logs{\n            action\n           
       auctionItem{\n                bid\n                buyout\n               
       createdAt\n                expiration\n                quantity\n               
-      highBidderProfile{\n                    name\n        }\n                gameItem{\n                   
-      gameName\n                    imageUrl\n            }\n        }\n           
-      timestamp\n        }\n        nextToken\n    }\n}"
+      gameItem{\n                    gameName\n                    imageUrl\n       
+      }\n                highBidderProfile{\n                    name\n           
+      }\n        }\n            timestamp\n        }\n        nextToken\n    }\n}"
     queryString: getMyLogs
     returnType: LogsPage
     queryOptions:
@@ -5560,6 +5560,65 @@ MonoBehaviour:
       - name: sellerProfile
         type: OtherProfile
       hasChanged: 0
+    - index: 6
+      name: gameItem
+      type: GameItem
+      parentIndexes: 0000000002000000
+      hasSubField: 1
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 1
+      name: gameName
+      type: String
+      parentIndexes: 000000000200000008000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
+    - index: 3
+      name: imageUrl
+      type: AWSURL
+      parentIndexes: 000000000200000008000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
     - index: 7
       name: highBidderProfile
       type: OtherProfile
@@ -5588,7 +5647,7 @@ MonoBehaviour:
     - index: 1
       name: name
       type: String
-      parentIndexes: 000000000200000008000000
+      parentIndexes: 00000000020000000b000000
       hasSubField: 0
       possibleFields:
       - name: id
@@ -5618,65 +5677,6 @@ MonoBehaviour:
       - name: title
         type: String
       - name: role
-        type: String
-      hasChanged: 0
-    - index: 6
-      name: gameItem
-      type: GameItem
-      parentIndexes: 0000000002000000
-      hasSubField: 1
-      possibleFields:
-      - name: id
-        type: ID
-      - name: createdAt
-        type: AWSDateTime
-      - name: bid
-        type: Float
-      - name: buyout
-        type: Float
-      - name: expiration
-        type: AWSDateTime
-      - name: quantity
-        type: Int
-      - name: gameItem
-        type: GameItem
-      - name: highBidderProfile
-        type: OtherProfile
-      - name: sellerProfile
-        type: OtherProfile
-      hasChanged: 0
-    - index: 1
-      name: gameName
-      type: String
-      parentIndexes: 00000000020000000a000000
-      hasSubField: 0
-      possibleFields:
-      - name: itemId
-        type: ID
-      - name: gameName
-        type: String
-      - name: itemName
-        type: String
-      - name: imageUrl
-        type: AWSURL
-      - name: description
-        type: String
-      hasChanged: 0
-    - index: 3
-      name: imageUrl
-      type: AWSURL
-      parentIndexes: 00000000020000000a000000
-      hasSubField: 0
-      possibleFields:
-      - name: itemId
-        type: ID
-      - name: gameName
-        type: String
-      - name: itemName
-        type: String
-      - name: imageUrl
-        type: AWSURL
-      - name: description
         type: String
       hasChanged: 0
     - index: 3

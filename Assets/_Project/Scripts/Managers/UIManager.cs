@@ -325,7 +325,9 @@ namespace Bitszer
         public void GetMyAuctionsData(int limit, string nextToken)
         {
             AuctionHouse dataProvider = AuctionHouse.Instance;
-            APIManager.Instance.RaycastBlock(true);
+            if (nextToken != null)
+                APIManager.Instance.RaycastBlock(true);
+            
 
             _myAuctionsLength = 0;
 
@@ -340,6 +342,7 @@ namespace Bitszer
 
                 StartCoroutine(PopulateGetUserAuctionsData(result));
             }));
+
         }
 
         public void GetSearchItemsData(string itemName, int limit, string nextToken)
@@ -728,7 +731,6 @@ namespace Bitszer
         private IEnumerator PopulateGetUserAuctionsData(GetUserAuction getUserAuctions)
         {
             var count = getUserAuctions.data.getUserAuctions.auctions.Count;
-
             if (count <= 0)
             {
                 APIManager.Instance.RaycastBlock(false);
