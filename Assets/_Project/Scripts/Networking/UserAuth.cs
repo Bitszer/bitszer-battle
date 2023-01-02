@@ -30,27 +30,22 @@ namespace Bitszer
 
         private AmazonCognitoIdentityProviderClient _provider;
 
-        public void Start()
+        public async void Start()
         {
             _provider = new AmazonCognitoIdentityProviderClient(new Amazon.Runtime.AnonymousAWSCredentials(), Amazon.RegionEndpoint.USWest2);
 
             if (PlayerPrefs.HasKey("email") && PlayerPrefs.HasKey("password"))
-            {
-                Screen.orientation = ScreenOrientation.Landscape;
-                uiManager.loginPanel.SetActive(false);
-                AuctionHouse.Instance.Close();
-                LoginUser(PlayerPrefs.GetString("email"), PlayerPrefs.GetString("password"));
-            }
+                await LoginUser(PlayerPrefs.GetString("email"), PlayerPrefs.GetString("password"));
         }
 
-        public void SignInUser()
+        public async void SignInUser()
         {
-            LoginUser(emailLoginInputField.text.ToLowerInvariant(), passwordLoginInputField.text);
+            await LoginUser(emailLoginInputField.text.ToLowerInvariant(), passwordLoginInputField.text);
         }
 
-        public void SignUpUser()
+        public async void SignUpUser()
         {
-            RegisterUser(emailSignupInputField.text.ToLowerInvariant(), passwordSignupInputField.text);
+            await RegisterUser(emailSignupInputField.text.ToLowerInvariant(), passwordSignupInputField.text);
         }
 
         private async Task LoginUser(string email, string password)
@@ -113,6 +108,7 @@ namespace Bitszer
                         }
                     }));
 
+                    uiManager.loginSuccessfullPanel.gameObject.SetActive(true);
                     APIManager.Instance.RaycastBlock(false);
                     uiManager.OpenTabPanel();
 
@@ -184,6 +180,7 @@ namespace Bitszer
 
                 signupErrorText.color = Color.green;
                 signupErrorText.SetText("Registered successfully!\nYou can Login now.");
+                uiManager.signupSuccessfullPanel.gameObject.SetActive(true);
                 signupErrorText.gameObject.SetActive(true);
 
                 APIManager.Instance.RaycastBlock(false);
