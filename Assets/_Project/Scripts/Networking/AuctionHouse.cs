@@ -31,6 +31,7 @@ namespace Bitszer
         #region QUERIES
         public IEnumerator GetUserAuctions(string userId, int limit, string nextToken, Action<GetUserAuction> result)
         {
+            APIManager.Instance.RaycastBlock(true);
             GraphApi.Query getUserActionsQuery = graphApi.GetQueryByName("getUserAuctions", GraphApi.Query.Type.Query);
 
             if (string.IsNullOrEmpty(nextToken))
@@ -139,7 +140,6 @@ namespace Bitszer
 
             var www = graphApi.Post(getMyLogs);
             yield return new WaitUntil(() => www.IsCompleted);
-            Debug.Log("Data: " + www.Result.downloadHandler.text);
             var data = JsonConvert.DeserializeObject<GetMyLogs>(www.Result.downloadHandler.text);
 
             if (data != null)

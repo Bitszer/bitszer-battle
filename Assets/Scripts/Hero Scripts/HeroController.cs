@@ -406,6 +406,12 @@ public sealed class HeroController : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+
+
     // Cast a Ray from Center to Find if there is any enemy inside the attack area
     private void GetEnemyForFight()
     {

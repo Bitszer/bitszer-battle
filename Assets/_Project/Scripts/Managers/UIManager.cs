@@ -127,6 +127,9 @@ namespace Bitszer
             if (!string.IsNullOrEmpty(_nextToken) && scrollPanel.Equals(ScrollController.SCROLL_PANEL.MY_AUCTIONS))
                 GetMyAuctionsData(10, _nextToken);
 
+            if (!string.IsNullOrEmpty(_nextToken) && scrollPanel.Equals(ScrollController.SCROLL_PANEL.MY_LOGS))
+                GetLogsData(10, _nextToken);
+
             if (!string.IsNullOrEmpty(_nextToken) && scrollPanel.Equals(ScrollController.SCROLL_PANEL.SIMILAR_ITEMS))
                 GetBuyData("", 10, _nextToken);
 
@@ -696,7 +699,6 @@ namespace Bitszer
             }
 
             _nextToken = getMyLogs.data.getMyLogs.nextToken;
-
             var item = getMyLogs.data.getMyLogs.logs[_logItemsLength];
             GameObject go = Instantiate(LogItemPrefab.gameObject, LogItemParent);
             var LogItem = go.GetComponent<LogItem>();
@@ -704,16 +706,62 @@ namespace Bitszer
             {
                 LogItem.itemImage.texture = texture;
             }));
-            LogItem.ActionName.text = item.action.ToString();
-            LogItem.bid.text = item.auctionItem.bid.ToString();
-            LogItem.buyout.text = item.auctionItem.buyout.ToString();
-            LogItem.createdAt.text = item.auctionItem.createdAt.ToString();
-            LogItem.expiration.text = item.auctionItem.expiration.ToString();
-            LogItem.quantity.text = item.auctionItem.quantity.ToString();
-            LogItem.gameName.text = item.auctionItem.gameItem.gameName.ToString();
-         // LogItem.highBidderProfile.text = item.auctionItem.highBidderProfile.name.ToString();
-            LogItem.timestamp.text = item.timestamp.ToString();
 
+            LogItem.ActionName.text = item.action.ToString();
+            LogItem.gameName.text = item.auctionItem.gameItem.gameName.ToString();
+            LogItem.itemName.text = item.auctionItem.gameItem.itemName.ToString();
+            LogItem.quantity.text = item.auctionItem.quantity.ToString();
+
+            //string[] CreatedWords = item.auctionItem.createdAt.ToString().Split('T');
+            //DateTime CreatedDateTime = DateTime.Parse(CreatedWords[0]);
+            //string[] CreatedTimeString = CreatedWords[1].Split('.');
+            //string CreatedFinalString = CreatedDateTime.ToString("MMMM") + " " + CreatedDateTime.Day + "," + CreatedDateTime.Year + " " + CreatedTimeString[0];
+            //LogItem.createdAt.text = CreatedFinalString;
+
+            //string[] ExpireWords = item.auctionItem.expiration.ToString().Split('T');
+            //DateTime ExpireDateTime = DateTime.Parse(ExpireWords[0]);
+            //string[] ExpireTimeString = ExpireWords[1].Split('.');
+            //string ExpireFinalString = ExpireDateTime.ToString("MMMM") + " " + ExpireDateTime.Day + "," + ExpireDateTime.Year + " " + ExpireTimeString[0];
+            //LogItem.expiration.text = ExpireFinalString;
+
+            string[] TimeStampWords = item.timestamp.ToString().Split('T');
+            DateTime TimeStampDateTime = DateTime.Parse(TimeStampWords[0]);
+            string[] TimeStampTimeString = TimeStampWords[1].Split('.');
+            string TimeStampFinalString = TimeStampDateTime.ToString("MMMM") + " " + TimeStampDateTime.Day + "," + TimeStampDateTime.Year + " " + TimeStampTimeString[0];
+            LogItem.timestamp.text = TimeStampFinalString;
+
+
+            if (LogItem.ActionName.text != "Buyout" && LogItem.ActionName.text != "Sold")
+                LogItem.bid.text = item.auctionItem.bid.ToString();
+            else
+                LogItem.BidObj.SetActive(false);
+
+            if (LogItem.ActionName.text != "Bid" && LogItem.ActionName.text != "Won-Bid" && LogItem.ActionName.text != "Out-Bid")
+                LogItem.buyout.text = item.auctionItem.buyout.ToString();
+            else
+                LogItem.BuyOutObj.SetActive(false);
+
+            if (LogItem.ActionName.text != "Sold" && LogItem.ActionName.text != "Sold-Bid" && LogItem.ActionName.text != "Create-Auction")
+                LogItem.sellerName.text = item.auctionItem.sellerProfile.name.ToString();
+            else
+                LogItem.SellerNameObj.SetActive(false);
+
+            if (LogItem.ActionName.text == "Sold" || LogItem.ActionName.text == "Sold-Bid")
+                LogItem.buyerName.text = item.buyer.name.ToString();
+            else
+                LogItem.BuyerNameObj.SetActive(false);
+
+            if (LogItem.ActionName.text == "Sold" || LogItem.ActionName.text == "Sold-Bid")
+                LogItem.auctionHouseFee.text = (float.Parse(item.auctionItem.buyout.ToString()) * 0.05f).ToString();
+            else
+                LogItem.AuctionFeeObj.SetActive(false);
+
+            if (LogItem.ActionName.text == "Sold" || LogItem.ActionName.text == "Sold-Bid" || LogItem.ActionName.text == "Create-Auction")
+                LogItem.Profit.text = (float.Parse(item.auctionItem.buyout.ToString()) - float.Parse((float.Parse(item.auctionItem.buyout.ToString()) * 0.05f).ToString())).ToString();
+            else
+                LogItem.ProfitObj.SetActive(false);
+
+            // LogItem.highBidderProfile.text = item.auctionItem.highBidderProfile.name.ToString();
 
             yield return null;
 

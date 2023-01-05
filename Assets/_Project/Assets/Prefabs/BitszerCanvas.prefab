@@ -855,10 +855,10 @@ RectTransform:
   m_Father: {fileID: 8685842558654755926}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 720, y: -60}
+  m_SizeDelta: {x: 160, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &552309561
 MonoBehaviour:
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30aea1218423b44d88e610643556912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollPanel: 1
+  scrollPanel: 3
 --- !u!1 &684774658
 GameObject:
   m_ObjectHideFlags: 0
@@ -2175,7 +2175,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: eec65f7d7e3b0e149ad46e28690754fc, type: 3}
+  m_Texture: {fileID: 2800000, guid: 36f4c6d8b74c812469f1f07cf2845060, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3013,7 +3013,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.8
+  m_fontSize: 44.75
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4383,7 +4383,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.8
+  m_fontSize: 44.75
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4920,7 +4920,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.8
+  m_fontSize: 44.75
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6001,7 +6001,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.8
+  m_fontSize: 44.75
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6376,7 +6376,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: eec65f7d7e3b0e149ad46e28690754fc, type: 3}
+  m_Texture: {fileID: 2800000, guid: 36f4c6d8b74c812469f1f07cf2845060, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -10519,10 +10519,10 @@ RectTransform:
   m_Father: {fileID: 8685842558654755926}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 80, y: -60}
+  m_SizeDelta: {x: 160, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8685842558623492657
 MonoBehaviour:
@@ -11641,10 +11641,10 @@ RectTransform:
   m_Father: {fileID: 8685842558654755926}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 240, y: -60}
+  m_SizeDelta: {x: 160, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8685842558724839861
 MonoBehaviour:
@@ -22284,7 +22284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8685842559527837737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23199,9 +23199,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: GoBackToGameFromAuctionHouse
+      - m_Target: {fileID: 552309561}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+        m_MethodName: set_isOn
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24278,17 +24278,13 @@ MonoBehaviour:
   searchScrollView: {fileID: 8685842559326241700}
   logPanel: {fileID: 1333998719}
   buyItemParent: {fileID: 8685842558711678418}
-  buyItemPrefab: {fileID: 7294280335864385008, guid: fd09d35ac9c58144cb8a7974b424e749,
-    type: 3}
+  buyItemPrefab: {fileID: 7294280335864385008, guid: fd09d35ac9c58144cb8a7974b424e749, type: 3}
   sellItemParent: {fileID: 8685842559684919830}
-  sellItemPrefab: {fileID: 7294280335864385008, guid: 1975f4bfab9578c4c9ad2802473a60d1,
-    type: 3}
-  LogItemPrefab: {fileID: 7294280335864385008, guid: e01c47345ed02a44e9ef1d6099bf38eb,
-    type: 3}
+  sellItemPrefab: {fileID: 7294280335864385008, guid: 1975f4bfab9578c4c9ad2802473a60d1, type: 3}
+  LogItemPrefab: {fileID: 7294280335864385008, guid: e01c47345ed02a44e9ef1d6099bf38eb, type: 3}
   LogItemParent: {fileID: 1088432670}
   auctionItemParent: {fileID: 8685842558266981365}
-  auctionItemPrefab: {fileID: 7294280335864385008, guid: 7131aba2061e53c44b75b3a75c7cc507,
-    type: 3}
+  auctionItemPrefab: {fileID: 7294280335864385008, guid: 7131aba2061e53c44b75b3a75c7cc507, type: 3}
   similarItemParent: {fileID: 8685842559313886240}
   searchBuyItemParent: {fileID: 8685842559461098495}
 --- !u!1 &8685842559761599288
@@ -24875,10 +24871,10 @@ RectTransform:
   m_Father: {fileID: 8685842558654755926}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 560, y: -60}
+  m_SizeDelta: {x: 160, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8685842559796603397
 MonoBehaviour:
@@ -28662,7 +28658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: eec65f7d7e3b0e149ad46e28690754fc, type: 3}
+  m_Texture: {fileID: 2800000, guid: 36f4c6d8b74c812469f1f07cf2845060, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -32051,10 +32047,10 @@ RectTransform:
   m_Father: {fileID: 8685842558654755926}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -60}
+  m_SizeDelta: {x: 160, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8685842560293166721
 MonoBehaviour:
@@ -32844,7 +32840,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: eec65f7d7e3b0e149ad46e28690754fc, type: 3}
+  m_Texture: {fileID: 2800000, guid: 36f4c6d8b74c812469f1f07cf2845060, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -33040,7 +33036,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: eec65f7d7e3b0e149ad46e28690754fc, type: 3}
+  m_Texture: {fileID: 2800000, guid: 36f4c6d8b74c812469f1f07cf2845060, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

@@ -15869,6 +15869,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BitszerCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8685842559532361065, guid: 016d349c26554574bbeda114674d80cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8685842559654430569, guid: 016d349c26554574bbeda114674d80cc,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

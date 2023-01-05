@@ -22,6 +22,7 @@ public class Logs
 {
     public string action { get; set; }
     public auctionItem auctionItem { get; set; }
+    public buyer buyer { get; set; }
     public string timestamp { get; set; }
 }
 public class auctionItem
@@ -31,11 +32,21 @@ public class auctionItem
     public string createdAt { get; set; }
     public string expiration { get; set; }
     public string quantity { get; set; }
+    public sellerProfile sellerProfile { get; set; }
     public gameItem gameItem { get; set; }
     public HigherBidderProfile highBidderProfile { get; set; }
 }
+public class buyer
+{
+    public string name { get; set; }
+}
+public class sellerProfile
+{
+    public string name { get; set; }
+}
 public class gameItem
 {
+    public string itemName { get; set; }
     public string gameName { get; set; }
     public string imageUrl { get; set; }
 }
