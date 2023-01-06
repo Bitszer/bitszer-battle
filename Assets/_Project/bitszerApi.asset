@@ -5368,9 +5368,11 @@ MonoBehaviour:
     query: "query getMyLogs{\n    getMyLogs{\n        logs{\n            action\n           
       auctionItem{\n                bid\n                buyout\n               
       createdAt\n                expiration\n                quantity\n               
-      gameItem{\n                    gameName\n                    imageUrl\n       
-      }\n                highBidderProfile{\n                    name\n           
-      }\n        }\n            timestamp\n        }\n        nextToken\n    }\n}"
+      gameItem{\n                    itemName\n                    gameName\n                   
+      imageUrl\n        }\n                highBidderProfile{\n                   
+      name\n        }\n                sellerProfile{\n                    name\n           
+      }\n        }\n            buyer{\n                name\n        }\n           
+      timestamp\n        }\n        nextToken\n    }\n}"
     queryString: getMyLogs
     returnType: LogsPage
     queryOptions:
@@ -5585,6 +5587,23 @@ MonoBehaviour:
       - name: sellerProfile
         type: OtherProfile
       hasChanged: 0
+    - index: 2
+      name: itemName
+      type: String
+      parentIndexes: 000000000200000008000000
+      hasSubField: 0
+      possibleFields:
+      - name: itemId
+        type: ID
+      - name: gameName
+        type: String
+      - name: itemName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: description
+        type: String
+      hasChanged: 0
     - index: 1
       name: gameName
       type: String
@@ -5647,7 +5666,117 @@ MonoBehaviour:
     - index: 1
       name: name
       type: String
-      parentIndexes: 00000000020000000b000000
+      parentIndexes: 00000000020000000c000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 8
+      name: sellerProfile
+      type: OtherProfile
+      parentIndexes: 0000000002000000
+      hasSubField: 1
+      possibleFields:
+      - name: id
+        type: ID
+      - name: createdAt
+        type: AWSDateTime
+      - name: bid
+        type: Float
+      - name: buyout
+        type: Float
+      - name: expiration
+        type: AWSDateTime
+      - name: quantity
+        type: Int
+      - name: gameItem
+        type: GameItem
+      - name: highBidderProfile
+        type: OtherProfile
+      - name: sellerProfile
+        type: OtherProfile
+      hasChanged: 0
+    - index: 1
+      name: name
+      type: String
+      parentIndexes: 00000000020000000e000000
+      hasSubField: 0
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: screenName
+        type: String
+      - name: imageUrl
+        type: AWSURL
+      - name: backgroundImageUrl
+        type: AWSURL
+      - name: createdAt
+        type: AWSDateTime
+      - name: activeAuctions
+        type: AuctionPage
+      - name: postedAuctionsCount
+        type: Int
+      - name: buyCount
+        type: Int
+      - name: soldCount
+        type: Int
+      - name: buyAmount
+        type: Float
+      - name: soldAmount
+        type: Float
+      - name: title
+        type: String
+      - name: role
+        type: String
+      hasChanged: 0
+    - index: 2
+      name: buyer
+      type: OtherProfile
+      parentIndexes: 00000000
+      hasSubField: 1
+      possibleFields:
+      - name: action
+        type: String
+      - name: auctionItem
+        type: Auction
+      - name: buyer
+        type: OtherProfile
+      - name: timestamp
+        type: AWSDateTime
+      hasChanged: 0
+    - index: 1
+      name: name
+      type: String
+      parentIndexes: 0000000010000000
       hasSubField: 0
       possibleFields:
       - name: id
