@@ -708,6 +708,7 @@ namespace Bitszer
             }));
 
             LogItem.ActionName.text = item.action.ToString();
+            //LogItem.ActionName.text = "Sold";
             LogItem.gameName.text = item.auctionItem.gameItem.gameName.ToString();
             LogItem.itemName.text = item.auctionItem.gameItem.itemName.ToString();
             LogItem.quantity.text = item.auctionItem.quantity.ToString();
@@ -737,11 +738,22 @@ namespace Bitszer
                 LogItem.BidObj.SetActive(false);
 
             if (LogItem.ActionName.text != "Bid" && LogItem.ActionName.text != "Won-Bid" && LogItem.ActionName.text != "Out-Bid")
-                LogItem.buyout.text = item.auctionItem.buyout.ToString();
+            {
+                if (LogItem.ActionName.text == "Create-Auction" || LogItem.ActionName.text == "Cancel Auction")
+                    LogItem.buyoutName.text = "Buyout:";
+                else
+                    LogItem.buyoutName.text = "Sell Price:";
+
+                float buyOutValue = float.Parse(item.auctionItem.buyout.ToString());
+                if (buyOutValue == (int)buyOutValue)
+                    LogItem.buyout.text = ((int)buyOutValue).ToString();
+                else
+                    LogItem.buyout.text = buyOutValue.ToString();
+            }
             else
                 LogItem.BuyOutObj.SetActive(false);
 
-            if (LogItem.ActionName.text != "Sold" && LogItem.ActionName.text != "Sold-Bid" && LogItem.ActionName.text != "Create-Auction")
+            if (LogItem.ActionName.text != "Sold" && LogItem.ActionName.text != "Sold-Bid" && LogItem.ActionName.text != "Create-Auction"&& LogItem.ActionName.text != "Cancel Auction")
                 LogItem.sellerName.text = item.auctionItem.sellerProfile.name.ToString();
             else
                 LogItem.SellerNameObj.SetActive(false);
@@ -756,10 +768,28 @@ namespace Bitszer
             else
                 LogItem.AuctionFeeObj.SetActive(false);
 
-            if (LogItem.ActionName.text == "Sold" || LogItem.ActionName.text == "Sold-Bid" || LogItem.ActionName.text == "Create-Auction")
-                LogItem.Profit.text = (float.Parse(item.auctionItem.buyout.ToString()) - float.Parse((float.Parse(item.auctionItem.buyout.ToString()) * 0.05f).ToString())).ToString();
+            if (LogItem.ActionName.text == "Sold" || LogItem.ActionName.text == "Sold-Bid" || LogItem.ActionName.text == "Create-Auction"|| LogItem.ActionName.text == "Cancel Auction")
+            {
+                if (LogItem.ActionName.text == "Create-Auction"|| LogItem.ActionName.text == "Cancel Auction")
+                    LogItem.ProfitName.text = "Potential Profit:";
+                else
+                    LogItem.ProfitName.text = "Profit:";
+
+                float profit = float.Parse(item.auctionItem.buyout.ToString()) - float.Parse((float.Parse(item.auctionItem.buyout.ToString()) * 0.05f).ToString());
+                if (profit == (int)profit)
+                    LogItem.ProfitName.text = LogItem.ProfitName.text + " " + ((int)profit).ToString();
+                else
+                    LogItem.ProfitName.text = LogItem.ProfitName.text + " " + profit.ToString();
+
+            }
             else
                 LogItem.ProfitObj.SetActive(false);
+
+            float t1 = 100.0f;
+            if (t1 == (int)t1)
+                Debug.Log(t1 + "INT");
+            else
+                Debug.Log(t1 + "Float");
 
             // LogItem.highBidderProfile.text = item.auctionItem.highBidderProfile.name.ToString();
 
