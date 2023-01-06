@@ -19,9 +19,10 @@ public class LogItem : MonoBehaviour
     public RawImage itemImage;
     public TMP_Text ActionName;
     public TMP_Text bid;
+    public TMP_Text buyoutName;
     public TMP_Text buyout;
     public TMP_Text auctionHouseFee;
-    public TMP_Text Profit;
+    public TMP_Text ProfitName;
 
     public TMP_Text createdAt;
     public TMP_Text expiration;

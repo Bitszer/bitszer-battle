@@ -2013,7 +2013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -452}
+  m_AnchoredPosition: {x: 0, y: -400}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2541940970584013743
@@ -2101,6 +2101,18 @@ MonoBehaviour:
       - m_Target: {fileID: 8685842559748246085}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: CloseAuctionHouse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: GoBackToGameFromAuctionHouse
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10390,7 +10402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8685842558620490886
@@ -14937,7 +14949,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 300}
+  m_AnchoredPosition: {x: 0, y: 400}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8685842559002020250
@@ -23114,7 +23126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -279}
+  m_AnchoredPosition: {x: 0, y: -200}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8685842559654430567
@@ -24278,13 +24290,17 @@ MonoBehaviour:
   searchScrollView: {fileID: 8685842559326241700}
   logPanel: {fileID: 1333998719}
   buyItemParent: {fileID: 8685842558711678418}
-  buyItemPrefab: {fileID: 7294280335864385008, guid: fd09d35ac9c58144cb8a7974b424e749, type: 3}
+  buyItemPrefab: {fileID: 7294280335864385008, guid: fd09d35ac9c58144cb8a7974b424e749,
+    type: 3}
   sellItemParent: {fileID: 8685842559684919830}
-  sellItemPrefab: {fileID: 7294280335864385008, guid: 1975f4bfab9578c4c9ad2802473a60d1, type: 3}
-  LogItemPrefab: {fileID: 7294280335864385008, guid: e01c47345ed02a44e9ef1d6099bf38eb, type: 3}
+  sellItemPrefab: {fileID: 7294280335864385008, guid: 1975f4bfab9578c4c9ad2802473a60d1,
+    type: 3}
+  LogItemPrefab: {fileID: 7294280335864385008, guid: e01c47345ed02a44e9ef1d6099bf38eb,
+    type: 3}
   LogItemParent: {fileID: 1088432670}
   auctionItemParent: {fileID: 8685842558266981365}
-  auctionItemPrefab: {fileID: 7294280335864385008, guid: 7131aba2061e53c44b75b3a75c7cc507, type: 3}
+  auctionItemPrefab: {fileID: 7294280335864385008, guid: 7131aba2061e53c44b75b3a75c7cc507,
+    type: 3}
   similarItemParent: {fileID: 8685842559313886240}
   searchBuyItemParent: {fileID: 8685842559461098495}
 --- !u!1 &8685842559761599288
@@ -27266,7 +27282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8685842559934944506
